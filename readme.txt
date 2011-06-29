@@ -248,7 +248,7 @@ The tagging made on images will be preserved. Follow these simple instructions:
 
 1. **BACKUP YOUR DATABASE, TAKING CARE TO INCLUDE THE wp_term_relationships_img TABLE** - in case something turns wrong during the upgrade.
 
-2. Deactivate ImageTagger plugin from the extension administration page
+2. **Deactivate ImageTagger plugin from the extension administration page - OTHERWISE YOU RISK TO LOOSE THE TAGGING ALREADY DONE.** 
 
 3. Install and activate MediaTagger plugin
 
