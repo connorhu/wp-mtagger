@@ -208,7 +208,7 @@ Willing to get a visual flavor of what's in the box ? You can see the *MediaTagg
    
 == Installation ==
 
-To install the **WP MediaTagger** plugin just follow this simple 10-step recipe (if you are upgrading from WP ImageTagger, see intructions below) :
+To install the **WP MediaTagger** plugin just follow this simple 10-step recipe (if you are upgrading from WP ImageTagger, **BACKUP YOUR DATABASE, TAKING CARE TO INCLUDE THE wp_term_relationships_img TABLE** and see intructions below) :
 
 1. Download the plugin and expand it to an empty directory of your local disk drive.
 2. Copy the local *wp-mediatagger* folder created by the unzipper onto your server plugins folder (*wp-content/plugins/*). Make sure you end up with all the PHP files, readme.txt and screenshots in *wp-content/plugins/wp-mediatagger* directory.
@@ -246,15 +246,17 @@ That's all for today - Enjoy !
 
 The tagging made on images will be preserved. Follow these simple instructions:
 
-1. Desactivate ImageTagger plugin from the extension administration page
+1. **BACKUP YOUR DATABASE, TAKING CARE TO INCLUDE THE wp_term_relationships_img TABLE** - in case something turns wrong during the upgrade.
 
-2. Install and activate MediaTagger plugin
+2. Desactivate ImageTagger plugin from the extension administration page
 
-3. On your result page : replace the shortcode [mediatagger] by [mediatagger], keeping the same options if you use some
+3. Install and activate MediaTagger plugin
 
-4. If you were using the ImageTagger widget : go to Appearance > Widgets ; reposition the MediaTagger widget in the sidebar, all the settings formerly made for the ImageTagger plugin will be automatically restored. 
+4. On your result page : replace the shortcode [mediatagger] by [mediatagger], keeping the same options if you use some
 
-5. You can de-install the WP ImageTagger plugin from the Extensions interface.
+5. If you were using the ImageTagger widget : go to Appearance > Widgets ; reposition the MediaTagger widget in the sidebar, all the settings formerly made for the ImageTagger plugin will be automatically restored. 
+
+6. You can de-install the WP ImageTagger plugin from the Extensions interface.
 
 
 
