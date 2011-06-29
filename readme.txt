@@ -30,7 +30,7 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 
 = 2.5.6 (last release under "WP ImageTagger" plugin denomination) =
 
-*This is the final version of the WP ImageTagger plugin*. This plugin is now superseded by the generic [WP MediaTagger](http://wordpress.org/extend/plugins/wp-mediatagger/ "WP MediaTagger, an evolution of WP ImageTagger") plugin available soon under the link. You are recommended to ugrade to WP MediaTagger to take benefit of the new features and fixes. WP ImageTagger will remain in version 2.5.6. No more fixes will be made on this final release. 
+*This is the final version of the WP ImageTagger plugin*. This plugin is now superseded by the generic [WP MediaTagger](http://wordpress.org/extend/plugins/wp-mediatagger/ "WP MediaTagger, an evolution of WP ImageTagger") plugin available under the link. You are recommended to ugrade to WP MediaTagger to take benefit of the new features and fixes. WP ImageTagger will remain in version 2.5.6. No more fixes will be made on this final release. 
 
 - Debug comment remove from the administration panel.
 - Added "Settings" link in extension list panel (close to deactivate and modify)
