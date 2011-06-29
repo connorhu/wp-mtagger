@@ -252,7 +252,7 @@ The tagging made on images will be preserved. Follow these simple instructions:
 
 3. Install and activate MediaTagger plugin
 
-4. On your result page : replace the shortcode [mediatagger] by [mediatagger], keeping the same options if you use some
+4. On your result page : replace the shortcode [imagetagger] by [mediatagger], keeping the same options if you use some
 
 5. If you were using the ImageTagger widget : go to Appearance > Widgets ; reposition the MediaTagger widget in the sidebar, all the settings formerly made for the ImageTagger plugin will be automatically restored. 
 
