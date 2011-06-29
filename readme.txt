@@ -12,7 +12,7 @@ Stable tag: 3.0
 = Future possible implementations =
 A lot of some enhancements brought to *MediaTagger* were made thanks to your suggestions. Feel free to [contribute](http://www.photos-dauphine.com/ecrire "Suggestions") with your own proposals :
 
-- Check tags associated to images in the *wp_term_relationships* table. Sometime there are many, although I would expect the only default tag '1' (default category) is there. Possibly cleanup if too mazy.
+- Check tags associated to medias in the *wp_term_relationships* table. Sometime there are many, although I would expect the only default tag '1' (default category) is there. Possibly cleanup if too mazy.
 - Fix GD problem occuring in some cases
 - Plugin cleanup to make the HTML generated code strict XHTML compliant
 - Improved pagination for multipage results, displaying quick access page links
