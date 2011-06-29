@@ -244,7 +244,7 @@ That's all for today - Enjoy !
 
 **If you are upgrading from WP ImageTagger :**
 
-The tagging made on images will be preserved. Follow these simple instructions :
+The tagging made on images will be preserved. Follow these simple instructions:
 
 1. Desactivate ImageTagger plugin from the extension administration page
 
