@@ -977,6 +977,8 @@ function imgt_taxonomy_update(){
 		//print_ro($img_id_all);
 		//print_ro($img_id_tagged);
 		$img_orphean_id = array_diff($img_id_tagged, $img_id_all);
+
+/*
 		if (!empty($img_orphean_id)) {
 			echo "MediaTagger plugin detected media(s) referenced in the media taxonomy but not anymore in the posts table - Probably deleted" . ".<br/>";
 			echo "The entries for media(s)" . " " . implode(', ', $img_orphean_id) . " " . "are removed from the media taxonomy table" . ".<br/>";
@@ -987,6 +989,7 @@ function imgt_taxonomy_update(){
 			echo $sql_query;
 			run_mysql_query($sql_query);
 		}
+*/
 	}
 
 		

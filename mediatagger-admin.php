@@ -246,7 +246,7 @@ if (strlen($_POST['update_tax']) > 0) {		// case : update done on all posts with
 	$wpit_errmsg[] = $n_required . '  ' . _n('post has been updated with the media taxonomy.', 'posts have been updated with the media taxonomy.' , $n_required, 'mediatagger');
 }
 
-// Rebuid tag list
+// Rebuild tag list
 imgt_taxonomy_update();
 //print_ro($g_imgt_tag_taxonomy);
 //$g_imgt_tag_taxonomy = array();		// UNCOMMENT TO SIMULATE NO TAGs
