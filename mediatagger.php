@@ -57,6 +57,7 @@ function wpit_install(){
         term_taxonomy_id BIGINT(20) NOT NULL DEFAULT 0
 	) ENGINE=MyISAM DEFAULT CHARSET=utf8;';
     $wpdb->query($structure);
+
 }
 
 //////////////////////
@@ -675,9 +676,9 @@ add_shortcode('caption', 'imgt_img_caption_shortcode');
 //
 //	Add "settings" link to the plugin list page, on top of default "desactivate" and "modify" links
 //
-add_filter('plugin_action_links', 'myplugin_plugin_action_links', 10, 2);
+add_filter('plugin_action_links', 'imgt_plugin_action_links', 10, 2);
 
-function myplugin_plugin_action_links($links, $file) {
+function imgt_plugin_action_links($links, $file) {
     static $this_plugin;
 
     if (!$this_plugin) {
@@ -711,5 +712,18 @@ function imgt_set_plugin_meta($links, $file) {
 }
 	 
 add_filter( 'plugin_row_meta', 'imgt_set_plugin_meta', 10, 2 );
+
+//
+// check conflict
+//
+/********
+function plugin_activation_check(){
+        if (function_exists(imgt_multisort_insert)) {
+                deactivate_plugins(basename(__FILE__)); // Deactivate ourself
+                wp_die("Plugin conflict.");
+        }
+}
+register_activation_hook(__FILE__, 'plugin_activation_check'); 
+*********/
 
 ?>
