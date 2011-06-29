@@ -244,7 +244,7 @@ That's all for today - Enjoy !
 
 **If you are upgrading from WP ImageTagger :**
 
-The tagging made on images will be preserved. Follow these simple instructions:
+The tagging made on images will be preserved **IF** you follow these simple instructions:
 
 1. **BACKUP YOUR DATABASE, TAKING CARE TO INCLUDE THE wp_term_relationships_img TABLE** - in case something turns wrong during the upgrade.
 
