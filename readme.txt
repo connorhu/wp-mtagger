@@ -246,10 +246,13 @@ That's all for today - Enjoy !
 
 The tagging made for medias will be preserved. Follow these simple instructions :
 
-1 - Desactivate ImageTagger plugin from the extension administration page
-2 - Install and activate MediaTagger plugin
-3 - On your result page : replace the shortcode [mediatagger] by [mediatagger], keeping the same options if you use some
-4 - If you were using the ImageTagger widget : go to Appearance > Widgets ; reposition the MediaTagger widget in the sidebar, all the settings formerly made for the ImageTagger plugin will be automatically restored. 
+1. Desactivate ImageTagger plugin from the extension administration page
+
+2. Install and activate MediaTagger plugin
+
+3. On your result page : replace the shortcode [mediatagger] by [mediatagger], keeping the same options if you use some
+
+4. If you were using the ImageTagger widget : go to Appearance > Widgets ; reposition the MediaTagger widget in the sidebar, all the settings formerly made for the ImageTagger plugin will be automatically restored. 
 
 
 
