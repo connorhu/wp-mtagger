@@ -208,7 +208,7 @@ Willing to get a visual flavor of what's in the box ? You can see the *MediaTagg
    
 == Installation ==
 
-To install the **WP MediaTagger** plugin just follow this simple 10-step recipe (**if you are upgrading from WP ImageTagger, BACKUP YOUR DATABASE, TAKING CARE TO INCLUDE THE wp_term_relationships_img TABLE and refer to instructions at page bottom**) :
+To install the **WP MediaTagger** plugin just follow this simple 10-step recipe (** CAUTION : if upgrading from WP ImageTagger, backup your database, taking care to include the table wp_term_relationships_img and deactivate the ImageTagger plugin from the extension administration page (CRITICAL !). Refer to instructions at page bottom**) :
 
 1. Download the plugin and expand it to an empty directory of your local disk drive.
 2. Copy the local *wp-mediatagger* folder created by the unzipper onto your server plugins folder (*wp-content/plugins/*). Make sure you end up with all the PHP files, readme.txt and screenshots in *wp-content/plugins/wp-mediatagger* directory.
