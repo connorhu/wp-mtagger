@@ -183,7 +183,7 @@ If the GD graphic library is not available on your server (check it in the page 
 
 == Description ==
 
-**WP MediaTagger** is an extensively configurable plugin and superset of the former WPImageTagger plugin. It provides all the tools required to categorize your WordPress blog medias by associating it to any defined tag or category. Among many features, it comes packed with a tagcloud widget that will make the process straightforward for everyone and will permit a transparent integration. Initially developped to tag medias under the WP ImageTagger denomination, WP MediaTagger now covers a much wider scope and will tag as well most of the medias widely used on the web.
+**WP MediaTagger** is an extensively configurable plugin and superset of the former WP ImageTagger plugin. It provides all the tools required to categorize your WordPress blog medias by associating it to any defined tag or category. Among many features, it comes packed with a tagcloud widget that will make the process straightforward for everyone and will permit a transparent integration. Initially developped to tag medias under the WP ImageTagger denomination, WP MediaTagger now covers a much wider scope and will tag as well most of the medias widely used on the web.
 
 In brief, this plugin extends the concept of *post based taxonomy* natively supported by WordPress toward an *media based taxonomy*.
 
