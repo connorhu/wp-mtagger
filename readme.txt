@@ -23,7 +23,7 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 
 = 3.0.1 =
 
-- Fix : there was a risk of data loss with version 3.0 when upgrading from ImageTagger, if not deactivating the ImageTagger plugin before activating MediaTagger. Tagging stored in wp_term_relationships_img was reset under certain conditions. This is fixed with version 3.0.1, no more risk of data loss. Anyhow it is still mandatory to deactivate ImageTagger before upgrading, otherwise a fatal error is caused by function names conflict between the 2 plugins.
+- Fix : there was a risk of data loss with version 3.0 when upgrading from ImageTagger, if not deactivating the ImageTagger plugin before activating MediaTagger. Tagging stored in the *wp_term_relationships_img* table was reset under certain conditions. This is fixed with version 3.0.1, no more risk of data loss. Anyhow it is still mandatory to deactivate ImageTagger before upgrading, otherwise a fatal error is caused by function names conflict between the 2 plugins.
 
 = 3.0 (first release under "WP MediaTagger" plugin denomination) =
 
