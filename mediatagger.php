@@ -4,8 +4,8 @@ Plugin Name: MediaTagger
 Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: This extensively configurable plugin comes packed with a bunch of features enabling media tagging, including search and media taxonomy.
 Author: www.photos-dauphine.com
-Version: 3.0
-Stable tag: 3.0
+Version: 3.0.1
+Stable tag: 3.0.1
 Author URI: http://www.photos-dauphine.com/
 */
 
@@ -713,17 +713,5 @@ function imgt_set_plugin_meta($links, $file) {
 	 
 add_filter( 'plugin_row_meta', 'imgt_set_plugin_meta', 10, 2 );
 
-//
-// check conflict
-//
-/********
-function plugin_activation_check(){
-        if (function_exists(imgt_multisort_insert)) {
-                deactivate_plugins(basename(__FILE__)); // Deactivate ourself
-                wp_die("Plugin conflict.");
-        }
-}
-register_activation_hook(__FILE__, 'plugin_activation_check'); 
-*********/
 
 ?>

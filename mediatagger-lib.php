@@ -7,6 +7,19 @@ define(TERM_REL_IMG, $wpdb->term_relationships . '_img');
 //define(TERM_REL_IMG, $wpdb->term_relationships . '_img_test');	// for test purpose : uncomment this line and comment line above
 
 //
+//	Formats supported by the plugin : expand if needed, and modify function imgt_get_img_info() (around line 700) accordingly
+//
+global $supported_formats;
+$supported_formats = array("jpeg"=>"image/jpeg", 
+					"gif"=>"image/gif",
+					"png"=>"image/png",
+					"txt"=>"text/plain",
+					"rtf"=>"application/rtf",
+					"pdf"=>"application/pdf",
+					"mp3"=>"audio/mpeg");
+
+
+//
 //	Default WPIT option values
 //
 define(WPIT_ADMIN_MIN_PHP_VERSION, 40000);
@@ -48,13 +61,6 @@ define(WPIT_INIT_GALLERY_IMAGE_NUM_PER_PAGE, 50);
 define(WPIT_INIT_LIST_IMAGE_NUM_PER_PAGE, 10);
 define(WPIT_INIT_LIST_TITLE_NUM_PER_PAGE, 30);
 
-$supported_formats = array("jpeg"=>"image/jpeg", 
-					"gif"=>"image/gif",
-					"png"=>"image/png",
-					"txt"=>"text/plain",
-					"rtf"=>"application/rtf",
-					"pdf"=>"application/pdf",
-					"mp3"=>"audio/mpeg");
 
 
 // Initiate taxonomy structure
@@ -68,7 +74,9 @@ imgt_taxonomy_update();
 //
 function print_ro($a_obj){echo "<pre>";print_r($a_obj);echo "</pre>";}
 
-function phdbg($a){if ($_SERVER['REMOTE_ADDR'] == "82.233.108.8"){print_ro($a);}}
+function phdbg($a){if ($_SERVER['REMOTE_ADDR'] == PHD_CLIENT_IP){print_ro($a);}}
+
+function phdbglog($a){if ($_SERVER['REMOTE_ADDR'] != PHD_CLIENT_IP) return; $logfile = dirname(__FILE__) . "/debug.log"; $data = date("H:i:s") . " | " . $a . "\n"; $fp =  fopen($logfile, "a"); fwrite($fp, $data); fclose($fp);}
 
 
 ////////////////////////////////////////////////////////////////
@@ -968,6 +976,7 @@ function imgt_taxonomy_update(){
 	
 	// first : fix any image taxonomy discrepancy, like orphean image can be (image id referenced in image taxonomy but not in posts table anymore as single entry
 	imgt_get_images('count_images', $count, $reason);
+	
 	if ( $count->total != $count->tagged + $count->untagged) {
 		// echo "Image taxonomy needs to be fixed : " . $count->total . ' != ' .  $count->tagged . ' + ' . $count->untagged; 
 		// Search orphean image ids in the image taxonomy ; compare all image IDs to the tagged image IDs
@@ -978,7 +987,6 @@ function imgt_taxonomy_update(){
 		//print_ro($img_id_tagged);
 		$img_orphean_id = array_diff($img_id_tagged, $img_id_all);
 
-/*
 		if (!empty($img_orphean_id)) {
 			echo "MediaTagger plugin detected media(s) referenced in the media taxonomy but not anymore in the posts table - Probably deleted" . ".<br/>";
 			echo "The entries for media(s)" . " " . implode(', ', $img_orphean_id) . " " . "are removed from the media taxonomy table" . ".<br/>";
@@ -989,7 +997,6 @@ function imgt_taxonomy_update(){
 			echo $sql_query;
 			run_mysql_query($sql_query);
 		}
-*/
 	}
 
 		
@@ -1171,7 +1178,7 @@ function imgt_get_images($what, &$count, &$reason) {
 	$count->tagged = 0;
 	$count->untagged = 0;
 	$reason = 0;
-
+	
 	//$reason = 1; return array();		// UNCOMMENT THIS LINE TO SIMULATE BLOG WITHOUT IMAGE
 	//$reason = 2; return array();		// UNCOMMENT THIS LINE TO SIMULATE BLOG WITH ALL IMAGES TAGGED
 	
@@ -1216,7 +1223,7 @@ function imgt_get_images($what, &$count, &$reason) {
 	$untagged_img_list = array_diff($imgt_imgs, $imgt_imgs_tagged);
 	if (empty($untagged_img_list)) $reason = 2;
 	$count->untagged = sizeof($untagged_img_list);
-	
+		
 	switch ($what) {
 		case 'all_images' : return $imgt_imgs; break;
 		case 'tagged_images' : return $imgt_imgs_tagged; break;

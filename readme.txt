@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 3.0
+Stable tag: 3.0.1
 
 
 == Changelog ==
@@ -20,6 +20,10 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Group wpit options in one string to streamline options table usage (no usability impact)
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
 
+
+= 3.0.1 =
+
+- Fix : there was a risk of data loss with version 3.0 when upgrading from ImageTagger, if not deactivating the ImageTagger plugin before activating MediaTagger. Tagging stored in wp_term_relationships_img was reset under certain conditions. This is fixed with version 3.0.1, no more risk of data loss. Anyhow it is still mandatory to deactivate ImageTagger before upgrading, otherwise a fatal error is caused by function names conflict between the 2 plugins.
 
 = 3.0 (first release under "WP MediaTagger" plugin denomination) =
 
