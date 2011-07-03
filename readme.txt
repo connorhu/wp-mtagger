@@ -21,6 +21,10 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
 
 
+= 3.0.2 (under development) =
+
+- Feature : when the media is not an image, the filename is displayed below the icon in gallery mode. 
+
 = 3.0.1 =
 
 - Fix : there was a risk of data loss with version 3.0 when upgrading from ImageTagger, if not deactivating the ImageTagger plugin before activating MediaTagger. Tagging stored in the *wp_term_relationships_img* table was reset under certain conditions. This is fixed with version 3.0.1, no more risk of data loss. Anyhow it is still mandatory to deactivate ImageTagger before upgrading, otherwise a fatal error is caused by function names conflict between the 2 plugins.
