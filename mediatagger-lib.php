@@ -709,7 +709,7 @@ function imgt_get_img_info($obj_id) {
 	$img_info->title = get_the_title($obj_id);
 	$img_info->mime = mime_content_type(get_attached_file($obj_id));
 	$img_info->url = wp_get_attachment_url($obj_id);
-	
+
 	switch($img_info->mime) {
 		case "image/jpeg":
 		case "image/gif":
