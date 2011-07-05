@@ -4,7 +4,7 @@ Plugin Name: MediaTagger
 Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: This extensively configurable plugin comes packed with a bunch of features enabling media tagging, including search and media taxonomy.
 Author: www.photos-dauphine.com
-Version: 3.0.1
+Version: 3.0.2
 Stable tag: 3.0.1
 Author URI: http://www.photos-dauphine.com/
 */
@@ -460,7 +460,7 @@ if ($is_result_mode_switchable) {
 	if ($result_mode != 1) $strout .= '<a href="' . $result_page_url . '" onClick="post_submit(\'link_triggered\',\'21\');return false" title="' . __('Display the results as an image gallery', 'mediatagger') . '">';
 	$strout .= __('Gallery', 'mediatagger');
 	if ($result_mode != 1) $strout .= '</a>';
-	$strout .= ' &nbsp;'; 
+	$strout .= ' &nbsp;';
 	if ($result_mode != 2) $strout .= '<a href="' . $result_page_url  .'" onClick="post_submit(\'link_triggered\',\'22\');return false" title="' . __('Display the results as an itemized image list', 'mediatagger') . '">';
 	$strout .= __('Itemized', 'mediatagger');
 	if ($result_mode != 2) $strout .= '</a>';
@@ -501,44 +501,51 @@ if ($is_result_mode_switchable) {
 			$img_w = $img_info->w;
 			$img_h = $img_info->h;
 		}
-			
-		$img_tooltip = $img_obj->post_title . ' ('. $img_info->post_title . ')';
+
+		$is_media_attached_to_post = strlen($img_info->post_URI) > 0;	// check media is attached to post
+		$link_media_to_post = $link_to_post && $is_media_attached_to_post;	// link to post only if 1/required by setup 2/media is attached
+		$is_image = false;
+		if (strpos($img_info->mime, 'image') !== false)	// JPEG, GIF or PNG
+			$is_image = true;
+		
+		$unattached_msg = __('not attached to any post', 'mediatagger');	
+		$img_tooltip = $img_obj->post_title . ' ('. ($is_media_attached_to_post ? $img_info->post_title : $unattached_msg) . ')';
+		
 				switch ($result_mode) {
 					case 1:	// gallery
-						if ($wpit_result_display_optimize_xfer) {		// resize image before transfer for faster display
-							$strout .= '<a href="' . ($result_mode==1 && $link_to_post ? $img_info->post_URI : $img_info->url) .
-								'" title="' . $img_tooltip . '"><img src="' . $thumb_url . '?s=' . $img_info->image . '&w=' . $img_w . '&h=' . $img_h . 
-								'" width="' . $img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '" ' . ($result_mode==1 ? 'style="border:' . 
-								$img_border_width . 'px solid #' . $img_border_color . '"' : '') . '></a>';
-						} else {		// resize image in browser
-							$strout .= '<a href="' . ($result_mode==1 && $link_to_post ? $img_info->post_URI : $img_info->url) .
-								'" title="' . $img_tooltip . '"><img src="' . $img_info->image . '" width="' . 
-								$img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '" ' . ($result_mode==1 ? 'style="border:' . $img_border_width . 'px solid #' .
-								$img_border_color . '"' : '') . '></a>';
+						if ($is_image) {	
+							$strout .= '<a href="' . ($link_media_to_post ? $img_info->post_URI : $img_info->url) . '" title="' . $img_tooltip . 
+								'"><img src="' . ($wpit_result_display_optimize_xfer ? 
+									$thumb_url . '?s=' . $img_info->image . '&w=' . $img_w . '&h=' . $img_h :
+									$img_info->image) . 
+								'" width="' . $img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '" style="border:' . $img_border_width . 
+								'px solid #' . $img_border_color . '"></a>';
+						} else {	// attachment is not an image : TXT, PDF, MP3, etc.
+							$strout .= '<span style="float:left"><a href="'. ($link_media_to_post ? $img_info->post_URI : $img_info->url) .
+								 '">' . '<img src="' . $img_info->image . '" width="' . $img_w*.5 .'" >' . '<br/><span style="font-size:0.6em;padding:0 5px">' . 
+								 basename($img_info->url) . '</span></a></span>';	
 						}
 						break;
 					case 2:	// image list
-						if ($wpit_result_display_optimize_xfer) {		// resize image before transfer for faster display
-							$strout .= '<p style="padding: 10px 0 0 0;margin:0">' . $img_obj->post_title . 
-								' (<a href="'. $img_info->post_URI . '" title="'  . __('Go to page', 'mediatagger') . '">' . $img_info->post_title. '</a>)<br/>' .
-								'<a href="' . $img_info->url . '" title="' . $img_tooltip . '"><img src="' . $thumb_url . '?s=' . $img_info->image . '&w=' . $img_w . '&h=' . 
-								$img_h . '" width="' . $img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '"></a></p>'; 
-						} else {
-							$strout .= '<p style="padding: 10px 0 0 0;margin:0">' . $img_obj->post_title . 
-								' (<a href="'. $img_info->post_URI . '" title="'  . __('Go to page', 'mediatagger') . '">' . $img_info->post_title. '</a>)<br/>' .
-								'<a href="' . $img_info->url . '" title="' . $img_tooltip . '"><img src="' . $img_info->image . '" width="' . 
-								$img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '"></a></p>'; 
-						}
+						$strout .= '<p style="padding: 10px 0 0 0;margin:0">' . $img_obj->post_title . 
+							' (' . ($is_media_attached_to_post ? '<a href="'. $img_info->post_URI . '" title="'  . __('Go to page', 'mediatagger') . '">' .
+							 $img_info->post_title. '</a>' : $unattached_msg) . ')<br/>' .
+							'<a href="' . $img_info->url . '" title="' . $img_tooltip . '"><img src="' . ($wpit_result_display_optimize_xfer ?
+								$thumb_url . '?s=' . $img_info->image . '&w=' . $img_w . '&h=' . $img_h :
+								$img_info->image).
+							'" width="' . $img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '"></a></p>'; 
 						break;
 					case 3:	// title list
-						$strout .= '<p style="padding: 2px 0 0 0;margin:0"><a href="'. $img_info->post_URI . '" title="'  . __('Go to page', 'mediatagger') . '">' . 
+						$strout .= '<p style="padding: 2px 0 0 0;margin:0">' . ($is_media_attached_to_post ? '<a href="'. $img_info->post_URI . '" title="'  .
+						__('Go to page', 'mediatagger') . '">' : ucfirst($unattached_msg)) .
 						$img_info->post_title. '</a> : ' . '<a href="' . $img_info->url . '" title="' . __('Access to media', 'mediatagger') . '">' . 
 						$img_obj->post_title . '</a></p>';
 						break;
-				}	// end switch			
+				}	// end switch
 			}	// end for
 		}
 	}
+		
 	if ($num_img_start > 0 || $num_img_stop < $num_img_found) 
 		$display_pagination = 1;
 		
@@ -546,7 +553,7 @@ if ($is_result_mode_switchable) {
 ///////////////////////////////////////////////////////// Display pagination selector  ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if ($display_pagination) { 
-		$strout .= '<p style="font-size:0.9em;padding:4px;margin:15px 0 0 0;background-color:#' . $wpit_admin_background_color . '">&nbsp;<em>Page ' . (int)(1+$num_img_start/$num_img_per_page) . ' (';
+		$strout .= '<p style="clear:both;font-size:0.9em;padding:4px;margin:15px 0 0 0;background-color:#' . $wpit_admin_background_color . '">&nbsp;<em>Page ' . (int)(1+$num_img_start/$num_img_per_page) . ' (';
 		$strout .= sprintf(_n('image %d to %d', 'images %d to %d',  $num_img_found, 'mediatagger'), (int)($num_img_start+1), $num_img_stop) . ') &nbsp;&nbsp;</em>';
 		if ($num_img_start > 0) $strout .= '<a href="' . $result_page_url . '" onClick="post_submit(\'link_triggered\',\'30\');return false" title="' . __("Click to display previous page",'mediatagger') . '">';
 		$strout .= '&laquo; ' . __('previous', 'mediatagger') . ($num_img_start > 0 ? '</a>' : '') . '&nbsp;';
@@ -555,7 +562,7 @@ if ($is_result_mode_switchable) {
 	}	// if ($display_pagination)
 	if ($search_mode >= 2) {	// form
 		if ($display_pagination || !$num_img_found || ($num_img_found && !$display_pagination) )
-			$strout .= '<p style="margin:0;padding:5px 0 0 0">&nbsp;</p>';
+			$strout .= '<p style="margin:0;padding:5px 0 0 0;clear:both">&nbsp;</p>';
 		
 		$strout .= '<div style="font-size:' . $search_form_font . 'pt">';
 		$strout .= print_tag_form($tax_id_list);
@@ -572,6 +579,13 @@ if ($is_result_mode_switchable) {
 			__('Offer a media search engine to your blog with', 'mediatagger') . ' WP MediaTagger ' . $WPIT_SELF_VERSION_STABLE . '"><em>MediaTagger</em></a></div>';
 	
 	$strout .= '</form>';
+	
+	/*
+	echo get_attached_file('74') . "<br/>";
+	echo dirname(__FILE__) . "/toponomie.jpg" . "<br/>";
+	echo system("/usr/bin/convert " . get_attached_file('74') . "[0] -density 320 -resample 72 " . dirname(__FILE__) . "/toponomie.jpg");
+	echo "<br/>";
+	*/
 
 	return $strout;
 }

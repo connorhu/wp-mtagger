@@ -6,6 +6,26 @@ if (admin_get_php_version() < WPIT_ADMIN_MIN_PHP_VERSION) { ?>
 return;
 }
 
+
+//////////////////////////////////////////////////
+//
+//	Validate pdf to jpg conversion capability
+//
+
+$pdf_test_source = dirname(__FILE__) . "/pdf_singlepage_test_source.pdf" ;
+$pdf_test_result = dirname($pdf_test_source) . "/pdf_singlepage_test_result.jpg";
+exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
+
+$pdf_test_source = dirname(__FILE__) . "/pdf_multipage_test_source.pdf" ;
+$pdf_test_result = dirname($pdf_test_source) . "/pdf_multipage_test_result.jpg";
+exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
+
+//
+//	End pdf validation
+//
+//////////////////////////////////////////////////
+
+
 global $g_imgt_tag_taxonomy;
 global $WPIT_SELF_VERSION;
 global $WPIT_GD_VERSION;
