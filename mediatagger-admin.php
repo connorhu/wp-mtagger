@@ -12,29 +12,33 @@ return;
 //	Validate pdf to jpg conversion capability
 //
 
-echo '<br/><hr/>';
 $convert_util = "/usr/bin/convert";
+echo '<br/><hr/>';
 
-if (file_exists($convert_util)) {
-	echo $convert_util . " detected on the server. <br/>";
-	if (is_executable($convert_util)) {
-		echo $convert_util . " has executable rights.<br/>RUNNING BATCH... ";
-		
-		$pdf_test_source = dirname(__FILE__) . "/pdf_singlepage_test_source.pdf" ;
-		$pdf_test_result = dirname($pdf_test_source) . "/pdf_singlepage_test_result.jpg";
-		exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
-		
-		$pdf_test_source = dirname(__FILE__) . "/pdf_multipage_test_source.pdf" ;
-		$pdf_test_result = dirname($pdf_test_source) . "/pdf_multipage_test_result.jpg";
-		exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
-		
-		echo "DONE. <br/>";
-	}
-	else
-		echo $convert_util . " has NOT executable rights. <br/>";
-}
-else
-	echo $convert_util . " NOT detected on the server. <br/>";	
+if (exec_enabled()) {
+	echo "exec() enabled on the server<br/>";
+	
+	if (file_exists($convert_util)) {
+		echo $convert_util . " detected on the server <br/>";
+		if (is_executable($convert_util)) {
+			echo $convert_util . " has executable rights<br/>RUNNING BATCH... ";
+			
+			$pdf_test_source = dirname(__FILE__) . "/pdf_singlepage_test_source.pdf" ;
+			$pdf_test_result = dirname($pdf_test_source) . "/pdf_singlepage_test_result.jpg";
+			exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
+			
+			$pdf_test_source = dirname(__FILE__) . "/pdf_multipage_test_source.pdf" ;
+			$pdf_test_result = dirname($pdf_test_source) . "/pdf_multipage_test_result.jpg";
+			exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
+			
+			echo "DONE. <br/>";
+		} else
+			echo $convert_util . " has NOT executable rights<br/>";
+	} else
+		echo $convert_util . " NOT detected on the server<br/>";
+} else
+	echo "exec() NOT enabled on the server<br/>";
+	
 
 echo '<hr/>';
 

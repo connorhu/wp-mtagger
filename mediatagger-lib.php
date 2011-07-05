@@ -78,6 +78,8 @@ function phdbg($a){if ($_SERVER['REMOTE_ADDR'] == PHD_CLIENT_IP){print_ro($a);}}
 
 function phdbglog($a){if ($_SERVER['REMOTE_ADDR'] != PHD_CLIENT_IP) return; $logfile = dirname(__FILE__) . "/debug.log"; $data = date("H:i:s") . " | " . $a . "\n"; $fp =  fopen($logfile, "a"); fwrite($fp, $data); fclose($fp);}
 
+function exec_enabled() {$disabled = explode(', ', ini_get('disable_functions')); return !in_array('exec', $disabled);}
+
 
 ////////////////////////////////////////////////////////////////
 //
@@ -659,14 +661,6 @@ if(!function_exists('mime_content_type')) {
     }
 }
 
-////////////////////////////////////////////////////////////////
-//
-// Check that exec is enabled on the server 
-//
-function exec_enabled() {
-	$disabled = explode(', ', ini_get('disable_functions'));
-	return !in_array('exec', $disabled);
-}
 
 ////////////////////////////////////////////////////////////////
 //
