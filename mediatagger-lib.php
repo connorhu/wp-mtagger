@@ -760,7 +760,7 @@ function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
 		echo "&nbsp;&nbsp; thumbnail file detected <br/>";
 	} else if (exec_enabled() && is_executable($convert_util)){	// convert to JPG
 		echo "&nbsp;&nbsp; trying to create thumbnail file... <br/>";
-		$exec_cmd = $convert_util . " " . $pdf_file . "[0] -density 320 -resample 72" . $thumbnail_filename;
+		$exec_cmd = $convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename;
 		echo "&nbsp;&nbsp; exec command : $exec_cmd <br/>";
 		$out = array();
 		echo exec($exec_cmd, $out, $reval);
