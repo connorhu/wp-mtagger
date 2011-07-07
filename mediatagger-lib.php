@@ -1729,5 +1729,4 @@ function imgt_database_audit(&$fix_revisions_liststr, &$fix_attachments_liststr,
 
 }
 
-
 ?>

@@ -891,3 +891,4 @@ else if ($_POST['audit'] || $_POST['fix_post_revisions'] || $_POST['fix_post_att
 <p style="padding:0;margin-top:-5px;font-size:0.8em"><em><?php echo ' <a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="WordPress MediaTagger Plugin Home">WP MediaTagger</a> ' . $WPIT_SELF_VERSION . ' | ' ; echo 'PHP ' . phpversion() .  ' | MySQL ' . mysql_get_server_info() . ' | GD Lib ' . ( $gd_version ? $gd_version : __('not available','mediatagger') ) ;?></em></p>
 
 </div>
+
