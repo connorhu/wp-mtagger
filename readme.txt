@@ -24,7 +24,9 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 
 = 3.0.2 (under development) =
 
-- Feature : when the media is not an image, the filename is displayed below the icon in gallery mode. 
+- New feature : when the media is not an image, the filename is displayed below the icon in gallery mode. 
+- New feature : the column layout of the tags form can now be forced, keeping the group names on the first line. Insert a blank line before the line defining the tag group. It will be interpreted as a column break when displaying the tag form. This overrides the rule defined by the parameters "number of tags per column" for the tag editor and search form ; these 2 parameters are greyed out in the administration panel and not used by the plugin.
+
 
 = 3.0.1 =
 

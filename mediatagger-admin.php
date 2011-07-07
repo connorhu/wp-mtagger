@@ -6,48 +6,6 @@ if (admin_get_php_version() < WPIT_ADMIN_MIN_PHP_VERSION) { ?>
 return;
 }
 
-
-//////////////////////////////////////////////////
-//
-//	Validate pdf to jpg conversion capability
-//
-
-$convert_util = "/usr/bin/convert";
-echo '<br/><hr/>';
-
-if (exec_enabled()) {
-	echo "exec() enabled on the server<br/>";
-	
-	if (file_exists($convert_util)) {
-		echo $convert_util . " detected on the server <br/>";
-		if (is_executable($convert_util)) {
-			echo $convert_util . " has executable rights<br/>RUNNING BATCH... ";
-			
-			$pdf_test_source = dirname(__FILE__) . "/pdf_singlepage_test_source.pdf" ;
-			$pdf_test_result = dirname($pdf_test_source) . "/pdf_singlepage_test_result.jpg";
-			exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
-			
-			$pdf_test_source = dirname(__FILE__) . "/pdf_multipage_test_source.pdf" ;
-			$pdf_test_result = dirname($pdf_test_source) . "/pdf_multipage_test_result.jpg";
-			exec("/usr/bin/convert " . $pdf_test_source . "[0] -density 320 -resample 72 " . $pdf_test_result);
-			
-			echo "DONE. <br/>";
-		} else
-			echo $convert_util . " has NOT executable rights<br/>";
-	} else
-		echo $convert_util . " NOT detected on the server<br/>";
-} else
-	echo "exec() NOT enabled on the server<br/>";
-	
-
-echo '<hr/>';
-
-//
-//	End pdf validation
-//
-//////////////////////////////////////////////////
-
-
 global $g_imgt_tag_taxonomy;
 global $WPIT_SELF_VERSION;
 global $WPIT_GD_VERSION;
@@ -290,6 +248,7 @@ if (strlen($_POST['update_tax']) > 0) {		// case : update done on all posts with
 
 // Rebuild tag list
 imgt_taxonomy_update();
+
 //print_ro($g_imgt_tag_taxonomy);
 //$g_imgt_tag_taxonomy = array();		// UNCOMMENT TO SIMULATE NO TAGs
 if (!admin_check_taxonomy_not_empty())		// in case no tag is detected in the blog :  exit right now
@@ -617,7 +576,7 @@ echo $h_on ; _e("File formats for tagging", 'mediatagger' ); echo $h_off; ?></p>
 
 <div style="float:left"><p class="label"><?php imgt_get_error_highlight($invalid_wpit_admin_tags_groups, $h_on, $h_off);
 echo $h_on ; _e("Tags groups", 'mediatagger'); echo $h_off; ?>
-<p class="legend" style="width:350px"><?php _e('Optional : you can regroup the above tags by groups so that those tags are displayed by groups. This applies to the tagging panel form as well as to the search form. If you do not need to categorize your tags, keep this field empty. Otherwise, use the following CSV syntax, one group definition per line : ', 'mediatagger')?><br /><span style="font-style:normal">&nbsp;&nbsp;&nbsp;&nbsp;<?php _e('my_group1_name', 'mediatagger')?>=tag1,tag2,tag5,tag7, ... ,tag n <br />&nbsp;&nbsp;&nbsp;&nbsp;<?php _e('my_group2_name', 'mediatagger')?>=tag3,tag4,tag6, ... , tag m<br/>&nbsp;&nbsp;&nbsp;&nbsp;...</span><br/><?php _e('Spaces do not matter - The tags not listed in these groups will be listed at the end in the default category. Optionnally, you can name this default category by adding as last line', 'mediatagger') ?> :<br/><span style="font-style:normal">&nbsp;&nbsp;&nbsp;&nbsp;<?php _e('my_default_group_name', 'mediatagger')?>=</span> <?php _e('(do not add anything after "=")', 'mediatagger')?></p></div><div><textarea name="wpit_admin_tags_groups" cols="70" rows="9"><?php echo stripslashes($wpit_admin_tags_groups); ?></textarea></div>
+<p class="legend" style="width:350px"><?php _e('Optional : you can regroup the above tags by groups so that those tags are displayed by groups. This applies to the tagging panel form as well as to the search form. If you do not need to categorize your tags, keep this field empty. Otherwise, use the following CSV syntax, one group definition per line : ', 'mediatagger')?><br /><span style="font-style:normal">&nbsp;&nbsp;&nbsp;&nbsp;<?php _e('my_group1_name', 'mediatagger')?>=tag1,tag2,tag5,tag7, ... ,tag n <br />&nbsp;&nbsp;&nbsp;&nbsp;<?php _e('my_group2_name', 'mediatagger')?>=tag3,tag4,tag6, ... , tag m<br/>&nbsp;&nbsp;&nbsp;&nbsp;...</span><br/><?php _e('Spaces do not matter - The tags not listed in these groups will be listed at the end in the default category. Optionnally, you can name this default category by adding as last line', 'mediatagger') ?> :<br/><span style="font-style:normal">&nbsp;&nbsp;&nbsp;&nbsp;<?php _e('my_default_group_name', 'mediatagger')?>=</span> <?php _e('(do not add anything after "=")', 'mediatagger')?><br/><?php _e('By default the tags are disposed by column automatically ; you can override this rule by leaving a blank line before the group you want to start to the next column.', 'mediatagger') ?></p></div><div><textarea name="wpit_admin_tags_groups" cols="70" rows="11"><?php echo stripslashes($wpit_admin_tags_groups); ?></textarea></div>
 
 <div style="clear:both"><p class="label"><?php imgt_get_error_highlight($invalid_wpit_admin_background_color, $h_on, $h_off);
 echo $h_on ; _e("Fields background color", 'mediatagger'); echo $h_off; ?></p>
@@ -657,7 +616,7 @@ echo $h_on ; _e("Tagging excluded tags", 'mediatagger'); echo $h_off; ?></p>
  
 <p class="label"><?php imgt_get_error_highlight($invalid_wpit_admin_num_tags_per_col, $h_on, $h_off);
 echo $h_on ; _e("Number of tags displayed per column", 'mediatagger'); echo $h_off; ?></p>
-<input type="text" name="wpit_admin_num_tags_per_col" value="<?php echo $wpit_admin_num_tags_per_col; ?>" size="4">
+<input type="text" name="wpit_admin_num_tags_per_col" value="<?php echo $wpit_admin_num_tags_per_col; ?>" size="4" <?php echo (imgt_detect_form_column_breaks() ? 'readonly' : ''); ?> >
 <p class="legend"><?php _e('Set this number to have a convenient columnar display of your tags in the Tag Editor above, properly spread over the above available horizontal space', 'mediatagger')?></p>
 
 <p class="label"><?php imgt_get_error_highlight($invalid_wpit_admin_img_width_height, $h_on, $h_off);
@@ -700,7 +659,7 @@ echo $h_on ; _e("Search excluded tags", 'mediatagger'); echo $h_off; ?></p>
 
 <p class="label"><?php imgt_get_error_highlight($invalid_wpit_search_num_tags_per_col, $h_on, $h_off);
 echo $h_on ; _e("Number of tags displayed per column in form mode", 'mediatagger'); echo $h_off; ?></p>
-<input type="text" name="wpit_search_num_tags_per_col" value="<?php echo $wpit_search_num_tags_per_col; ?>" size="4">
+<input type="text" name="wpit_search_num_tags_per_col" value="<?php echo $wpit_search_num_tags_per_col; ?>" size="4" <?php echo (imgt_detect_form_column_breaks() ? 'readonly' : ''); ?> '>'
 <p class="legend"><?php _e('Set this number to have a convenient columnar display of your tags in the search section, properly spread over the available horizontal space', 'mediatagger')?></p>
 
 <p class="label"><?php imgt_get_error_highlight($invalid_wpit_search_form_font, $h_on, $h_off);
@@ -776,7 +735,6 @@ echo $h_on ; _e("Tag cloud highlighting font color in hex format", 'mediatagger'
 <?php _e("When activating this option, check on your search page that the result gallery or image list is displayed correctly", 'mediatagger') ?>.<br/>
 <?php _e("If not, disable this option as proposed by default", 'mediatagger') ?>.<br/>
 <?php _e("This option is selectable only if the GD library is detected on the server (check in the footnote below)", 'mediatagger') ?>.</p><br/>
-
 
 <strong><?php _e("Gallery output format", 'mediatagger' ); ?></strong><br/>
 

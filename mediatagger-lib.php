@@ -297,7 +297,7 @@ function admin_get_option_safe($option_name, $default_value) {
 function imgt_get_valid_post_data(&$option_value, $option_name, $valid_condition_str, &$is_invalid, &$errmsg, $err_string){
 	$eval_exec_ok = 0;
 	$tmp_option_value = $_POST[$option_name];
-		
+	
 	$valid_condition_str = str_replace('VALUE', $tmp_option_value, $valid_condition_str);
 	//echo '"' . $valid_condition_str . '" . <br/>';
 	$eval_exec_ok = @eval("\$is_invalid = ! ($valid_condition_str) ; return 1 ;");
@@ -347,6 +347,24 @@ function imgt_get_error_highlight($invalid_param, &$h_on, &$h_off){
 }
 
 
+
+////////////////////////////////////////////////////////////////
+//
+// 	Detect if tag form columns are displayed by column break or
+//	by modulo
+//
+function imgt_detect_form_column_breaks(){
+	global $g_imgt_tag_taxonomy;
+	$is_break_set = 0;
+	
+	foreach($g_imgt_tag_taxonomy as $key=>$item){
+		if (isset($item->group_break))
+			$is_break_set = 1;	
+	}
+	return $is_break_set;
+}
+
+
 ////////////////////////////////////////////////////////////////
 //
 // 	Build tag groups based on admin panel grouping definition
@@ -363,7 +381,13 @@ function imgt_build_tag_groups($wpit_admin_tags_groups, $wpit_admin_tags_source)
 	
 	$groups = explode(chr(13), $groups_str);	// split by lines
 	
+	//$column_break = 0;
 	foreach($groups as $key=>$line){
+		// If line is empty, interpret it as a column break
+		if (!strlen(trim($line))) {
+			$column_break = 1;
+			continue;
+		}
 		// For each line, split group name from group tags for each group definition
 		$grpdef = explode('=', $line);
 		
@@ -374,6 +398,10 @@ function imgt_build_tag_groups($wpit_admin_tags_groups, $wpit_admin_tags_source)
 				return 20;
 			else {							// this is the default group name declaration
 				$default_group_name = trim($grpdef[0]);
+				if ($column_break) {
+					$default_column_break = 1;
+					$column_break = 0;
+				}
 				break;
 			}
 		} else if (!check_string_is_taglist($grpdef[1])) {	// list holds at least on item which is not a tag
@@ -386,10 +414,14 @@ function imgt_build_tag_groups($wpit_admin_tags_groups, $wpit_admin_tags_source)
 		$group_item = new StdClass;
 		$group_item->group_name = trim($grpdef[0]);
 		$group_item->group_tags = $grpitems;
+		if ($column_break) {
+			$group_item->group_break = 1;
+			$column_break = 0;
+		}
 		$used_tags = array_merge($used_tags, $grpitems);
 		$tags_groups[] = $group_item;
 	}
-	
+			
 	// add tags not listed in any group
 	$used_tags = array_unique($used_tags);
 	$grpitems = array();
@@ -401,14 +433,19 @@ function imgt_build_tag_groups($wpit_admin_tags_groups, $wpit_admin_tags_source)
 		$group_item = new StdClass;
 		$group_item->group_name = (isset($default_group_name) ? $default_group_name : __('Others', 'mediatagger'));
 		$group_item->group_tags = $grpitems;
+		if ($default_column_break)
+			$group_item->group_break = 1;
 		$tags_groups[] = $group_item;
 	}
 	
+	
 	// reorder taxonomy by tags, and associate appropriate category
 	foreach($tags_groups as $tags_group) {
-		foreach($tags_group->group_tags as $tag_name) {
+		foreach($tags_group->group_tags as $key=>$tag_name) {
 			$tag_desc = imgt_get_tag_descriptors('name=' . $tag_name);
 			$tag_desc->category = $tags_group->group_name;
+			if (!$key & $tags_group->group_break)
+				$tag_desc->group_break = 1; 
 			$imgt_tag_taxonomy[] = $tag_desc;
 		}
 	}
@@ -444,6 +481,10 @@ function print_tag_form($checked_tags, $admin_page = 0) {
 	$wpit_admin_background_color = admin_get_option_safe('wpit_admin_background_color', WPIT_ADMIN_INIT_BACKGROUND_COLOR);
 	if ($wpit_admin_tags_source == 2 || strlen($wpit_admin_tags_groups)>0)
 		$multiple_groups = 1;
+	$manual_col_brk = imgt_detect_form_column_breaks();
+		
+//phdbg($wpit_admin_tags_groups);
+//phdbg($g_imgt_tag_taxonomy);
 
 	$group = '';
 	$new_group = 0;
@@ -462,7 +503,8 @@ function print_tag_form($checked_tags, $admin_page = 0) {
 			} else if (!(($tag_displayed_count+2) % $num_tags_per_col)) { 	// avoid to have group name at column bottom with second element on next col
 				$tag_displayed_count+=2;
 			}
-			if (!($tag_displayed_count % $num_tags_per_col)){	// start new col on modulo
+			if (($manual_col_brk && (isset($g_imgt_tag_taxonomy_item->group_break) || !$tag_displayed_count)) || 
+					(!$manual_col_brk && !($tag_displayed_count % $num_tags_per_col))){	// start new col on modulo
 				if ($tag_displayed_count) $strout .=  '</div >';
 				$strout .= '<div style="float:left">';
 			}
@@ -473,7 +515,7 @@ function print_tag_form($checked_tags, $admin_page = 0) {
 			$tag_displayed_count++;
 		}
 		
-		if (!($tag_displayed_count % $num_tags_per_col)){	// start new col on modulo
+		if (!$manual_col_brk && !($tag_displayed_count % $num_tags_per_col)){	// start new col on modulo
 			$not_last_group_tag = 0;
 			$is_last_tag = (end($g_imgt_tag_taxonomy) == $g_imgt_tag_taxonomy_item ? 1 : 0);	// last tag of the taxonomy
 			if (!$is_last_tag) {
@@ -486,7 +528,7 @@ function print_tag_form($checked_tags, $admin_page = 0) {
 			} else
 				$tag_displayed_count--;		// avoid to have a tag belonging to a group alone at the top of the next column
 		}
-		
+				
 		if (is_tag_name_excluded($tags_excluded, $g_imgt_tag_taxonomy_item->name)) continue;
 		
 		if  ($admin_page) {
@@ -688,6 +730,42 @@ function get_mime_type_generic($file) {
 
 ////////////////////////////////////////////////////////////////
 //
+// Return thumbnail from pdf file
+//
+function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
+	
+	$convert_util = "/usr/bin/convert";
+	
+//	Validate pdf to jpg conversion capability
+	if (0) {
+		echo '<br/><hr/>';
+		imgt_get_pdf_thumbnail(dirname(__FILE__) . "/pdf_multipage_test.pdf", "/wp-content/plugins/wp-mediatagger/pdf_multipage_test.pdf");
+		imgt_get_pdf_thumbnail(get_attached_file(74), wp_get_attachment_url(74));
+		echo '<hr/>';
+	}
+//	End pdf validation
+
+	$thumbnail_filename = dirname($pdf_file) . '/'. current(explode('.', basename($pdf_file))) . '.jpg';
+	$thumbnail_url = dirname($pdf_url) . '/'. current(explode('.', basename($pdf_url))) . '.jpg';
+	
+	if (file_exists($thumbnail_filename)) {
+		//echo "Thumbnail file detected : ";
+	} else if (exec_enabled() && is_executable($convert_util)){	// convert to JPG
+		exec($convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename);
+		//echo "Thumbnail file created : ";
+	} else {	// take default thumbnail
+		//echo "Default thumbnail : ";
+		$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/icon_pdf.jpg';
+	}
+	
+	//echo "$thumbnail_url <br/>";
+	return $thumbnail_url;
+	
+}
+
+
+////////////////////////////////////////////////////////////////
+//
 // retrieve information relative to image :  title, relative path to image, 
 //	W and H, post title, post URI
 //
@@ -711,7 +789,8 @@ function imgt_get_img_info($obj_id) {
 			$img_info->image = 	$img_info->url;
 			break;
 		case "application/pdf":
-			$img_info->image = $plugin_icon_path . "icon_pdf.jpg";
+			//$img_info->image = $plugin_icon_path . "icon_pdf.jpg";
+			$img_info->image = imgt_get_pdf_thumbnail(get_attached_file($obj_id), wp_get_attachment_url($obj_id));
 			break;
 		case "audio/mpeg":
 			$img_info->image = $plugin_icon_path . "icon_mp3.jpg";
