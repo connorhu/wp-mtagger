@@ -733,8 +733,12 @@ function get_mime_type_generic($file) {
 // Return thumbnail from pdf file
 //
 function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
-	
 	$convert_util = "/usr/bin/convert";
+	
+	echo "Entering imgt_get_pdf_thumbnail() : <br/>";
+	echo "&nbsp;&nbsp; pdf_file : '$pdf_file' <br/>";
+	echo "&nbsp;&nbsp; pdf_url : '$pdf_url' <br/>";
+	
 	
 //	Validate pdf to jpg conversion capability
 	if (0) {
@@ -747,18 +751,22 @@ function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
 
 	$thumbnail_filename = dirname($pdf_file) . '/'. current(explode('.', basename($pdf_file))) . '.jpg';
 	$thumbnail_url = dirname($pdf_url) . '/'. current(explode('.', basename($pdf_url))) . '.jpg';
+
+	echo "&nbsp;&nbsp; thumbnail target file : '$thumbnail_filename' <br/>";
+	echo "&nbsp;&nbsp; thumbnail target url : '$thumbnail_url' <br/>";
+
 	
 	if (file_exists($thumbnail_filename)) {
-		//echo "Thumbnail file detected : ";
+		echo "&nbsp;&nbsp; thumbnail file detected <br/>";
 	} else if (exec_enabled() && is_executable($convert_util)){	// convert to JPG
 		exec($convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename);
-		//echo "Thumbnail file created : ";
+		echo "&nbsp;&nbsp; thumbnail file created <br/>";
 	} else {	// take default thumbnail
-		//echo "Default thumbnail : ";
+		echo "&nbsp;&nbsp; thumbnail default thumbnail <br/>";
 		$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/icon_pdf.jpg';
 	}
 	
-	//echo "$thumbnail_url <br/>";
+	echo "&nbsp;&nbsp; thumbnail final url : '$thumbnail_url' <br/>&nbsp;<br/>";
 	return $thumbnail_url;
 	
 }

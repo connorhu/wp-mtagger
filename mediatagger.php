@@ -4,7 +4,7 @@ Plugin Name: MediaTagger
 Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: This extensively configurable plugin comes packed with a bunch of features enabling media tagging, including search and media taxonomy.
 Author: www.photos-dauphine.com
-Version: 3.0.2_dev2
+Version: 3.0.2_dev3
 Stable tag: 3.0.1
 Author URI: http://www.photos-dauphine.com/
 */
@@ -358,6 +358,18 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 ';
 	$strout .= '}
 ';
+	$strout .= 'function tagsearchblur(element) {
+';
+	$strout .= 'if(element.value == \'\') {element.value = \'' . __('Search tag starting with...', 'mediatagger') . '\';}
+';
+	$strout .= '}
+';
+	$strout .= 'function tagsearchfocus(element) {
+';
+	$strout .= 'if(element.value == \'' . __('Search tag starting with...', 'mediatagger') . '\') {element.value = \'' . '' . '\';}
+';
+	$strout .= '}
+';
 	$strout .= '-->
 ';
 	$strout .= '</script>
@@ -370,6 +382,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	$strout .= '<input type="hidden" name="num_img_start" value="' . $num_img_start . '">';
 	$strout .= '<input type="hidden" name="link_triggered" value="">';
 	if ($called_from_widget) $strout .= '<input type="hidden" name="coming_from_widget" value="1">';
+	
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////// Display search mode selector  ////////////////////////////////////////////////////////
@@ -391,7 +404,11 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 		$strout .= '</div></div>';
 	}
 
-	$strout .= '<p style="clear:both;padding:' . ($is_search_mode_switchable ? '15' : '0') . 'px 0 0 0;margin:0">';
+	// Free search field
+	if (!$called_from_widget)
+		$strout .=  '<p style="clear:both;margin:0;padding:20px 0 0 10px"><input type="text" style="font-style: italic;" name="wpit_free_search" size="24" onblur="tagsearchblur(this);" onfocus="tagsearchfocus(this);" value="' .  __('Search tag starting with...', 'mediatagger') . '"></p>';
+	
+	$strout .= '<p style="clear:both;padding:' . ($is_search_mode_switchable ? '15' : '0') . 'px 0 0 0;margin:0">';	
 
 	if ($search_mode > 0 && $search_mode <= 2) { // Display tag cloud
 		$checked_tags = (isset($tax_id_list) ? $tax_id_list : array());
