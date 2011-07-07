@@ -759,8 +759,20 @@ function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
 	if (file_exists($thumbnail_filename)) {
 		echo "&nbsp;&nbsp; thumbnail file detected <br/>";
 	} else if (exec_enabled() && is_executable($convert_util)){	// convert to JPG
-		exec($convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename);
-		echo "&nbsp;&nbsp; thumbnail file created <br/>";
+		echo "&nbsp;&nbsp; trying to create thumbnail file... <br/>";
+		$exec_cmd = $convert_util . " " . $pdf_file . "[0] -density 320 -resample 72" . $thumbnail_filename;
+		echo "&nbsp;&nbsp; exec command : $exec_cmd <br/>";
+		$out = array();
+		echo exec($exec_cmd, $out, $reval);
+		//exec($convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename, $out, $retval);
+		echo "&nbsp;&nbsp; return status : '$retval' <br/>";
+		print_ro($out);
+		if (file_exists($thumbnail_filename))
+			echo "&nbsp;&nbsp; file creation success <br/>";
+		else {
+			echo "&nbsp;&nbsp; file creation FAILED ; using default icon <br/>";
+			$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/icon_pdf.jpg';
+		}
 	} else {	// take default thumbnail
 		echo "&nbsp;&nbsp; default thumbnail <br/>";
 		$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/icon_pdf.jpg';
