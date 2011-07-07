@@ -1,4 +1,3 @@
-- pdf : understood, I will look for method to obtain an image of the first page
 - free field : understood
 - thumbnails width control : I will have a look, it will probably be controlled by an extra parameter, specifying that the maximum applies either to W, to H or to the max of the 2 (as done today) - no way to override by yourself without changing the code
 - png displayed as TXT : I visited your sandbox site today and did not understood why that. I have PNG file on my server and did not face such a behaviour. I really cannot figure out why that. Is your PNG file extension really ".png" ? (it seems to be as I could see on your site, but pls document any specificity here). To make sure I uploaded your file on my site and look :
@@ -7,6 +6,3 @@
 
 The png thumbnail (bottom right) is hard to read due to the strong undersampling (original image is BIG), but the image is well identified as PNG.
 Ultimately I will provide you a release logging some information to better understand
-
-- tag group name position : ... or maybe a solution is to forget about the automatic rule, and let the user tell exactly which layout would he prefer (as you just made below). Forget about the automatic rule, it was already a nightmare to make the algorithm robust, just to avoid orphean tags to the top, or group name alone to the bottom.
-It sounds like a selection to allow or disallow using the automatic rule would work. Then you'd want to include some sort of symbol to use in the Group definitions window to indicate that whatever follows begins in a new column. As an analogy, if I were in Microsoft Word, I'd use the command, Insert New Column. 
