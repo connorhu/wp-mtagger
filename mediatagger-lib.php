@@ -762,7 +762,7 @@ function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
 		exec($convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename);
 		echo "&nbsp;&nbsp; thumbnail file created <br/>";
 	} else {	// take default thumbnail
-		echo "&nbsp;&nbsp; thumbnail default thumbnail <br/>";
+		echo "&nbsp;&nbsp; default thumbnail <br/>";
 		$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/icon_pdf.jpg';
 	}
 	
