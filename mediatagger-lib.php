@@ -40,7 +40,7 @@ define(WPIT_ADMIN_INIT_TAGS_EXCLUDED, '');
 define(WPIT_SEARCH_INIT_NUM_TAGS_PER_COL, 30);
 define(WPIT_SEARCH_INIT_FORM_FONT, 10);					// font size for the tag search form (pt)
 define(WPIT_SEARCH_INIT_TAGS_EXCLUDED, '');
-define(WPIT_SEARCH_INIT_DEFAULT_DISPLAY_MODE, 2);		// 1: tagcloud    2: tagcloud + form   3: form
+define(WPIT_SEARCH_INIT_DEFAULT_DISPLAY_MODE, 5);		// bitwise - 0: tagcloud    1: form   2: form
 define(WPIT_SEARCH_INIT_DISPLAY_SWITCHABLE, 1);
 define(WPIT_RESULT_INIT_IMG_LIST_W_H, 250);
 define(WPIT_RESULT_INIT_IMG_GALLERY_W_H, 100);
@@ -85,7 +85,7 @@ function exec_enabled() {$disabled = explode(', ', ini_get('disable_functions'))
 //
 //	Strip accents
 //
-function strip_accents($string){return strtr(utf8_decode($string),'‡·‚„‰ÁËÈÍÎÏÌÓÔÒÚÛÙıˆ˘˙˚¸˝ˇ¿¡¬√ƒ«»… ÀÃÕŒœ—“”‘’÷Ÿ⁄€‹›','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');}
+function strip_accents($string, $is_utf8=0){return strtr(($is_utf8 ? utf8_decode($string) : $string),'‡·‚„‰ÁËÈÍÎÏÌÓÔÒÚÛÙıˆ˘˙˚¸˝ˇ¿¡¬√ƒ«»… ÀÃÕŒœ—“”‘’÷Ÿ⁄€‹›','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');}
 
 
 ////////////////////////////////////////////////////////////////
@@ -93,6 +93,26 @@ function strip_accents($string){return strtr(utf8_decode($string),'‡·‚„‰ÁËÈÍÎÏÌÓ
 //	Detect if first letter is a vowel
 //
 function is_first_vowel($string){ $vowels = array('A','E','I','O','U','Y'); return (in_array(substr(ucfirst($string), 0, 1), $vowels) ? 1 : 0);}
+
+
+////////////////////////////////////////////////////////////////
+//
+//	Return specific mode activation status given overall display mode :
+//		cloud : 1
+//		form : 2
+//		field : 4
+//
+function wpmt_is_search_mode($check_mode, $mode_value) {	
+	$n = ($check_mode == "cloud" ? 0 : ($check_mode == "form" ? 1 : 2));	// 2 : expected to be "field"
+	return $mode_value & (1 << $n);	
+}
+
+function wpmt_toggle_search_mode($toggle_mode, &$mode_value) {	
+	$n = ($toggle_mode == "cloud" ? 0 : ($toggle_mode == "form" ? 1 : 2));	
+	//phdbg($mode_value);
+	$mode_value ^= (1 << $n);
+	//phdbg($mode_value);	
+}
 
 ////////////////////////////////////////////////////////////////
 //
@@ -331,6 +351,23 @@ function imgt_get_valid_post_media_formats(&$option_value, $option_name, &$is_in
 	}
 		
 }
+
+////////////////////////////////////////////////////////////////
+//
+// 	Validate default search mode
+//
+function imgt_get_valid_search_default_display_mode(&$option_value, $option_name, &$is_invalid, &$errmsg, $err_string){
+	$tmp_option_value = $_POST[$option_name];
+	
+	if (!count($tmp_option_value)) {
+		$errmsg[] = '- ' . $err_string;
+		$is_invalid = 1;	// force in case eval could not evaluate
+		return;
+	}
+	
+	$option_value = (in_array("cloud", $tmp_option_value) ? 1 : 0 ) + (in_array("form", $tmp_option_value) ? 2 : 0 ) + (in_array("field", $tmp_option_value) ? 4 : 0 );
+
+}	
 
 
 ////////////////////////////////////////////////////////////////
@@ -604,33 +641,39 @@ function admin_check_taxonomy_not_empty(){
 //		will give
 //	/wp-content/plugins/imageTagger/imageTagger.php
 //
-function get_relative_path($path) {	
+function get_url_from_path($path) {	
 	// Next lines typically returns '/wp_content'
-	$wp_upload_dir = wp_upload_dir();
-	$upload_base_dir = array_pop(explode(get_option('siteurl'),$wp_upload_dir['baseurl']));
+	//$wp_upload_dir = wp_upload_dir();
+	//$upload_base_dir = array_pop(explode(get_option('siteurl'),$wp_upload_dir['baseurl']));
 	//$upload_base_dir = $wp_upload_dir['baseurl'];
 	
+	$content_base = end(explode(home_url(), content_url()));
+	$path_suffix = end(explode($content_base, $path));
+	$file_url =  home_url() . $content_base . $path_suffix;
+
+	
 	if ( 0 ) {
-		echo ">> wp_upload_dir() : "; print_ro(wp_upload_dir());
-		echo ">> upload_url_path : " . $wp_upload_dir['baseurl'] . "<br/>";
-		echo ">> upload_base_dir : " . $upload_base_dir . "<br/>";
-		echo ">> path = " . $path . "<br/>";
-		echo ">> strstr(path, upload_base_dir) = " . strstr($path, $upload_base_dir) . "<br/>";
+		echo ">> home_url() = " . home_url() . "<br/>";
+		echo ">> content_url() = " . content_url() . "<br/>";
+		echo ">> content_base = " . $content_base . "<br/>";	
+		echo ">> path_suffix = " . $path_suffix . "<br/>";	
+		echo ">> file_url = " . $file_url . "<br/>";			
 	}
 	
-	return strstr($path, $upload_base_dir);
+	return $file_url;
 }
 
 
 ////////////////////////////////////////////////////////////////
 //
 // Get Mime Type function - in case not installed on server
-//
+// Note : the native mime_content_type() functions returns text/plain for
+// png (bug : file too big, probably) 
 
-if(!function_exists('mime_content_type')) {
+if(1 || !function_exists('mime_content_type')) {
 
-    function mime_content_type($filename) {
-
+    function my_mime_content_type($filename) {
+		
         $mime_types = array(
 
             'txt' => 'text/plain',
@@ -730,55 +773,173 @@ function get_mime_type_generic($file) {
 
 ////////////////////////////////////////////////////////////////
 //
+// Retrieve canonical path of a system util
+//
+function imgt_build_pdf_convert_command($fin='', $fout='') {
+
+	$exec_result = exec("type convert");
+	//Expected : $convert_util = "/usr/bin/convert";
+	$convert_util = end(explode(' ',$exec_result));
+	//echo "Convert path : $convert_util <br/>";
+	if (!strlen(trim($convert_util)))
+		return false;
+		
+	if ($fin != "")
+		$exec_cmd = "exec 2>&1; " . $convert_util . " -debug exception " . $fin . "[0] -density 216 -resample 72 " . $fout;
+	else
+		$exec_cmd = $convert_util;
+	
+	return $exec_cmd;
+}
+
+
+////////////////////////////////////////////////////////////////
+//
+// Check if the pdf to jpg conversion is enabled on the server
+//
+function imgt_check_pdf_converter($force_check, $verbose) {
+	//
+	//	pdf.png exist => OK
+	//  pdf.png.fail exist => NOK
+	// 	none of the 2 || force_check => check conversion 
+	
+	
+	/*echo "<pre>";
+	//echo "TEST<br/>";
+	system("ls -l /usr/lib64");
+	system("rpm -qa");
+	system("find / -name *jasper*");
+	echo "</pre>";*/	
+		
+	$pdf_source = dirname(__FILE__) . '/images/test/test.pdf';
+	$png_out = dirname($pdf_source) . '/pdf.png';
+	$png_fail_out = dirname($pdf_source) . '/pdf.png.fail';
+	$png_url = get_url_from_path($png_out);
+
+	if ($verbose) {
+		echo "pdf_source : " . $pdf_source . "<br/>";
+		echo "png_out : " . $png_out . "<br/>";
+		echo "png_fail_out : " . $png_fail_out . "<br/>";
+		echo "png_url : " . $png_url . "<br/>";
+	}
+	
+	if (file_exists($png_out)){
+		if ($force_check) {
+			if ($verbose) echo "Output file already exists ; deleting before re-evaluating :  ";
+			unlink($png_out);
+			if (!file_exists($png_out)) 
+				if ($verbose) echo "file delete succeeded <br/>";
+			else
+				if ($verbose) echo "WARNING : file could not be deleted <br/>";
+		}
+		else {
+			if ($verbose) {
+				echo "Output file already exists : $png_url <br/>";
+				echo '<img src="' . $png_url . '"><br/>';
+				echo "Interpreted as capability of the server to convert from pdf to png  <br/>";
+			}
+			return 1;
+		}
+	}
+	
+	if (file_exists($png_fail_out)){
+		if ($force_check) {
+			if ($verbose) echo "Failure conversion indicator file exists ; deleting before re-evaluating :  ";
+			unlink($png_fail_out);
+			if (!file_exists($png_fail_out)) 
+				if ($verbose) echo "file delete succeeded <br/>";
+			else
+				if ($verbose) echo "WARNING : file could not be deleted <br/>";
+		}
+		else {
+			if ($verbose) {
+				echo "Output file already exists : $png_fail_out <br/>";
+				echo "Interpreted as INABILITY of the server to convert from pdf to jpg  <br/>";
+			}
+			return 0;
+		}
+	}
+
+	if (!($convert_util = imgt_build_pdf_convert_command())){
+		if ($verbose) echo "Convert utility not found <br/>";
+		return 0;
+	};
+		
+	//Expected : $convert_util = "/usr/bin/convert";
+	if ($verbose) echo "Convert path : $convert_util <br/>";
+	
+	//echo "&nbsp;&nbsp; exec(pwd) : " . exec('pwd') . "<br/>";
+    exec("exec 2>&1; $convert_util -version", $tab); 
+	if ($verbose) print_ro($tab);
+ 	unset($tab);
+   	exec("exec 2>&1; $convert_util -list format", $tab);
+	if ($verbose) print_ro($tab);
+ 	unset($tab);
+
+	$exec_cmd = imgt_build_pdf_convert_command($pdf_source, $png_out);
+	if ($verbose) echo "<br/>Executing command : <b>'$exec_cmd'</b> <br/>&nbsp;<br/>";
+	
+	exec($exec_cmd, $tab);		
+	if ($verbose && count($tab)) print_ro($tab);
+	
+	if (file_exists($png_out)) {
+		if ($verbose) {
+			echo "<b>conversion succeeded - PNG file created : $png_url </b><br/>";
+			echo '<img src="' . $png_url . '"><br/>';
+			echo ">>> pdf conversion enabled </br>";
+		}
+		return 1;	
+	} else {
+		// Create failure indication file
+		touch($png_fail_out);
+		if ($verbose) {
+			echo "<b>conversion FAILED - PNG not created</b><br/>&nbsp;<br/>";
+			echo ">>> pdf conversion NOT enabled ; conversion inability file created : $png_fail_out <br/>";
+		}
+		return 0;	
+	}
+		
+}
+
+
+////////////////////////////////////////////////////////////////
+//
 // Return thumbnail from pdf file
 //
-function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
-	$convert_util = "/usr/bin/convert";
+function imgt_get_pdf_thumbnail($pdf_file) {
+	//$convert_util = "/usr/bin/convert";	
+	$default_thumbnail_url = get_url_from_path(dirname(__FILE__) . '/images/icon_pdf.jpg');
+	//echo "default_thumbnail_url : $default_thumbnail_url <br/>";
 	
-	echo "Entering imgt_get_pdf_thumbnail() : <br/>";
-	echo "&nbsp;&nbsp; pdf_file : '$pdf_file' <br/>";
-	echo "&nbsp;&nbsp; pdf_url : '$pdf_url' <br/>";
-	
-	
-//	Validate pdf to jpg conversion capability
-	if (0) {
-		echo '<br/><hr/>';
-		imgt_get_pdf_thumbnail(dirname(__FILE__) . "/pdf_multipage_test.pdf", "/wp-content/plugins/wp-mediatagger/pdf_multipage_test.pdf");
-		imgt_get_pdf_thumbnail(get_attached_file(74), wp_get_attachment_url(74));
-		echo '<hr/>';
-	}
-//	End pdf validation
+	$thumbnail_filename = dirname($pdf_file) . '/'. current(explode('.', basename($pdf_file))) . '.png';
+	//$thumbnail_url = dirname($pdf_url) . '/'. current(explode('.', basename($pdf_url))) . '.jpg';
+	$thumbnail_url = get_url_from_path($thumbnail_filename);
 
-	$thumbnail_filename = dirname($pdf_file) . '/'. current(explode('.', basename($pdf_file))) . '.jpg';
-	$thumbnail_url = dirname($pdf_url) . '/'. current(explode('.', basename($pdf_url))) . '.jpg';
-
-	echo "&nbsp;&nbsp; thumbnail target file : '$thumbnail_filename' <br/>";
-	echo "&nbsp;&nbsp; thumbnail target url : '$thumbnail_url' <br/>";
-
+	//echo "&nbsp;&nbsp; thumbnail target file : '$thumbnail_filename' <br/>";
+	//echo "&nbsp;&nbsp; thumbnail target url : '$thumbnail_url' <br/>";
 	
 	if (file_exists($thumbnail_filename)) {
-		echo "&nbsp;&nbsp; thumbnail file detected <br/>";
-	} else if (exec_enabled() && is_executable($convert_util)){	// convert to JPG
-		echo "&nbsp;&nbsp; trying to create thumbnail file... <br/>";
-		$exec_cmd = $convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename;
-		echo "&nbsp;&nbsp; exec command : $exec_cmd <br/>";
-		$out = array();
-		echo exec($exec_cmd, $out, $reval);
-		//exec($convert_util . " " . $pdf_file . "[0] -density 320 -resample 72 " . $thumbnail_filename, $out, $retval);
-		echo "&nbsp;&nbsp; return status : '$retval' <br/>";
-		print_ro($out);
-		if (file_exists($thumbnail_filename))
-			echo "&nbsp;&nbsp; file creation success <br/>";
-		else {
-			echo "&nbsp;&nbsp; file creation FAILED ; using default icon <br/>";
-			$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/icon_pdf.jpg';
+		//echo "&nbsp;&nbsp; thumbnail file detected <br/>";
+	} else if (imgt_check_pdf_converter(0, 0)){	// convert to JPG
+		//echo "&nbsp;&nbsp; trying to create thumbnail file... <br/>";
+		//$exec_cmd = $convert_util . " " . $pdf_file . "[0] -density 216 -resample 72 " . $thumbnail_filename;
+		$exec_cmd = imgt_build_pdf_convert_command($pdf_file, $thumbnail_filename);
+		//echo "&nbsp;&nbsp; system command : $exec_cmd <br/>";
+		exec($exec_cmd, $reval);
+		if (file_exists($thumbnail_filename)) {
+			//echo "&nbsp;&nbsp; file creation success <br/>";
+		} else {
+			//echo "&nbsp;&nbsp; file creation FAILED ; using default icon <br/>";
+			//$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/images/icon_pdf.jpg';
+			$thumbnail_url = $default_thumbnail_url;
 		}
 	} else {	// take default thumbnail
-		echo "&nbsp;&nbsp; default thumbnail <br/>";
-		$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/icon_pdf.jpg';
+		//echo "&nbsp;&nbsp; default thumbnail <br/>";
+		//$thumbnail_url = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/images/icon_pdf.jpg';
+		$thumbnail_url = $default_thumbnail_url;
 	}
 	
-	echo "&nbsp;&nbsp; thumbnail final url : '$thumbnail_url' <br/>&nbsp;<br/>";
+	//echo "&nbsp;&nbsp; thumbnail final url : '$thumbnail_url' <br/>&nbsp;<br/>";
 	return $thumbnail_url;
 	
 }
@@ -792,14 +953,15 @@ function imgt_get_pdf_thumbnail($pdf_file, $pdf_url) {
 function imgt_get_img_info($obj_id) {
 	global $wpdb;
 	$img_info = new StdClass;
-	$plugin_icon_path = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/icons/';
+	$plugin_icon_path = get_bloginfo('url') .'/wp-content/plugins/' . basename(dirname(__FILE__)) . '/images/';
 	//$base_upload_dir = array_pop(explode($_SERVER['DOCUMENT_ROOT'], get_option( 'upload_path' )));
 	//echo ">> _SERVER['DOCUMENT_ROOT'] : " . $_SERVER['DOCUMENT_ROOT'] . "<br/>";
 	//echo ">> base_upload_dir : " . $base_upload_dir . "<br/>";
 	//echo ">> get_option( 'upload_path' ) : " . get_option( 'upload_path' ) . "<br/>";
 		
 	$img_info->title = get_the_title($obj_id);
-	$img_info->mime = mime_content_type(get_attached_file($obj_id));
+	$img_info->mime = my_mime_content_type(get_attached_file($obj_id));
+	//echo "MIME : $img_info->mime <br/>";
 	$img_info->url = wp_get_attachment_url($obj_id);
 
 	switch($img_info->mime) {
@@ -810,7 +972,8 @@ function imgt_get_img_info($obj_id) {
 			break;
 		case "application/pdf":
 			//$img_info->image = $plugin_icon_path . "icon_pdf.jpg";
-			$img_info->image = imgt_get_pdf_thumbnail(get_attached_file($obj_id), wp_get_attachment_url($obj_id));
+			//$img_info->image = imgt_get_pdf_thumbnail(get_attached_file($obj_id), wp_get_attachment_url($obj_id));
+			$img_info->image = imgt_get_pdf_thumbnail(get_attached_file($obj_id));
 			break;
 		case "audio/mpeg":
 			$img_info->image = $plugin_icon_path . "icon_mp3.jpg";
@@ -899,7 +1062,7 @@ function imgt_cmp_objects_count($a, $b){
 function imgt_cmp_objects_lexicography($a, $b){
 	//echo $a->name . " " . strtr($a->name, 'È', 'e') . "<br/>";
 	//echo substr($a->name, 8, 1) . " " . ord(substr($a->name, 8, 1)) . "<br/>";
-	$cmp = strcasecmp(strip_accents($a->name), strip_accents($b->name));
+	$cmp = strcasecmp(strip_accents($a->name, 1), strip_accents($b->name, 1));
 	return ($cmp == 0 ? 0 : ($cmp > 0 ? 1 : -1));
 }
 
@@ -1171,47 +1334,65 @@ function imgt_get_image_tags($img_id){
 
 ////////////////////////////////////////////////////////////////////////////////////
 //
-// Return array of img IDs corresponding to a list of taxonomy_term_id 
-// like array(2,4,13)
+// Return array of img IDs corresponding to either :
+//		- list of taxonomy_term_id like array(2,4,13)
+//		- attachment name matching a search string
 //
-function imgt_get_image_ID($a_tax_id){
+function imgt_get_image_ID($search_pattern){
 	global $wpdb;
 	$a_name_str = "";
 	
-	if (empty($a_tax_id))
+	if (empty($search_pattern))
 		return array();
 	
-	foreach($a_tax_id as $n=>$tax_id) {
-		$sql_query = 'SELECT DISTINCT object_id '.
-					 'FROM ' . TERM_REL_IMG . ' AS img ' .
-					 'WHERE img.term_taxonomy_id=' . $tax_id . ' ' .
-					 'ORDER by object_id';			
+	if (is_array($search_pattern)) {	// search_pattern is an array of tag IDs
+		foreach($search_pattern as $n=>$tax_id) {
+			$sql_query = 'SELECT DISTINCT object_id '.
+						 'FROM ' . TERM_REL_IMG . ' AS img ' .
+						 'WHERE img.term_taxonomy_id=' . $tax_id . ' ' .
+						 'ORDER by object_id';			
+			$imgt_img_id_sqls = run_mysql_query($sql_query);
+			
+			//phdbg($imgt_img_id_sqls);
+			
+			if (empty($imgt_img_id_sqls))	// no chance to find any intersection in case of multisearch ; and for simple search, we know there are no matches ...
+				return array();
+					
+			$imgt_img_id = array();
+			foreach($imgt_img_id_sqls as $imgt_img_id_sql){
+				$imgt_img_id[] = $imgt_img_id_sql->object_id;
+			}
+			
+			// Search images ID common to all selected tags
+			if (empty($multisort_imgt_img_id)) {
+				$multisort_imgt_img_id = $imgt_img_id;
+			} else {
+				$multisort_imgt_img_id = array_intersect($multisort_imgt_img_id, $imgt_img_id);
+			}
+			if (empty($multisort_imgt_img_id))	// at first empty intersection, return empty ...
+				return array();
+		}
+	} else {	// search pattern is a string, to be searched as part of attachment names
+		//phdbg("searching keyword <br/>");
+		$sql_query = 'SELECT ID '.
+					 'FROM ' . $wpdb->posts . ' AS pos ' .
+					 'WHERE pos.post_title LIKE "%' . strip_accents($search_pattern, 1) . '%" AND pos.post_type="attachment"';
 		$imgt_img_id_sqls = run_mysql_query($sql_query);
-		
-		if (empty($imgt_img_id_sqls))	// no chance to find any intersection in case of multisearch ; and for simple search, we know there are no matches ...
-			return array();
-				
-		$imgt_img_id = array();
+		$multisort_imgt_img_id = array();
 		foreach($imgt_img_id_sqls as $imgt_img_id_sql){
-			$imgt_img_id[] = $imgt_img_id_sql->object_id;
+			$multisort_imgt_img_id[] = $imgt_img_id_sql->ID;
 		}
-		
-		// Search images ID common to all selected tags
-		if (empty($multisort_imgt_img_id)) {
-			$multisort_imgt_img_id = $imgt_img_id;
-		} else {
-			$multisort_imgt_img_id = array_intersect($multisort_imgt_img_id, $imgt_img_id);
-		}
-		if (empty($multisort_imgt_img_id))	// at first empty intersection, return empty ...
-			return array();
 	}
 	
+	// Get all informations related to found medias
 	foreach($multisort_imgt_img_id as $img_id) {
 		$multisort_img_list[] = get_post($img_id);
 	}
 	
 	return $multisort_img_list;
+
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////////
 //
@@ -1252,7 +1433,7 @@ function get_supported_formats_checkbox_string($selected_formats) {
 	
 	foreach ($supported_formats as $ext=>$mime) {
 		$file_format_strout .= '<input type="checkbox" value=' . $ext . " name=wpit_admin_media_formats[]" . 
-			(in_array($ext, $selected_formats) ? " checked" : "") . '> ' .  $ext . " &nbsp;\n";
+			(in_array($ext, $selected_formats) ? " checked" : "") . '> ' .  ($ext=="pdf"? '<a href="" onClick="options_submit(\'checkpdf\',\'1\');return false;" title="' . (imgt_check_pdf_converter(0, 0) ? "PDF thumbnail creation enabled on this server" : "PDF thumbnail creation NOT enabled on this server" ) . " - Click to force a re-evaluation" . '">' : '') .  $ext . ($ext=="pdf"? '</a>' : '') . " &nbsp;\n";
 	}
 	return $file_format_strout;
 }

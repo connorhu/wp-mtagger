@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP MediaTagger\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-07 20:40+0100\n"
+"POT-Creation-Date: 2011-07-18 12:52+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: phd <http://www.photos-dauphine.com/ecrire>\n"
@@ -98,97 +98,103 @@ msgstr "La liste de noms de tags exclus doit comprendre des noms de tags existan
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:139
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:135
+msgid "At least one default display mode needs to be selected (Search format)"
+msgstr "Au moins un format d'affichage de recherche doit être sélectionné (Format de recherche)"
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:140
 msgid "The maximum image pixel width or height must be an integer greater than 10 (Image list output format)"
 msgstr "La taille normalisée d'image doit être un entier positif supérieur à 10 (Format résultat - Liste d'images)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:142
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:143
 msgid "The maximum image pixel width or height must be an integer greater than 10 (Gallery output format)"
 msgstr "La largeur ou hauteur d'image maximale doint être un entier supérieur à 10 (Format résultat - Galerie)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:151
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:152
 msgid "The number of tags displayed in the tag cloud must be an integer greater than 0 ; if 0 all the tags are displayed (Search format)"
 msgstr "Le nombre de tags dans le nuage de tags doit être un entier positif ; pour afficher tous les tags mettre 0 (Format de recherche)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:156
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:157
 msgid "Tag cloud minimum font size must be a positive integer (Search format)"
 msgstr "La taille de fonte minimum du nuage de tags doit être un entier positif (Format de recherche)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:159
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:160
 msgid "Tag cloud maximum font size must be a positive integer (Search format)"
 msgstr "La taille de fonte maximum du nuage de tags doit être un entier positif (Format de recherche)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:162
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:163
 msgid "The minimum tagcloud color must be a valid hexadecimal color code as 3ff or a1b160, or -1 for not using dynamic colors (Search format)"
 msgstr "La couleur minimale du nuage de tags doit être codée sous un format hexadécimal valide, de type 3ff ou 1b160, ou -1 pour désactiver la coloration graduelle (Format de recherche)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:165
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:166
 msgid "The maximum tagcloud color must be a valid hexadecimal color code as 3ff or a1b160, or -1 for not using dynamic colors (Search format)"
 msgstr "La couleur maximale du nuage de tags doit être codée sous un format hexadécimal valide, de type 3ff ou 1b160, ou -1 pour désactiver la coloration graduelle (Format de recherche)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:169
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:170
 msgid "Maximum tag cloud color forced to -1 to disable dynamic tag cloud colors (minimum tag cloud color was manually set to -1)"
 msgstr "La couleur maximale du nuage de tags a été forcée à -1 pour désactiver la coloration graduelle du nuage de tags (la valeur minimale a manuellement été passée à -1)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:174
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:175
 msgid "Minimum tag cloud color forced to -1 to disable dynamic tag cloud colors (maximum tag cloud color was manually set to -1)"
 msgstr "La couleur minimale du nuage de tags a été forcée à -1 pour désactiver la coloration graduelle du nuage de tags (la valeur maximale a manuellement été passée à -1)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:179
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:180
 msgid "The tag cloud highlighting font color must be a valid hexadecimal color code as 3ff or a1b160, or -1 for no higlighting effect (Search format)"
 msgstr "La couleurde mise en valeur du nuage de tags doit être codée sous un format hexadécimal valide, de type 3ff ou 1b160, ou -1 pour désactiver la mise en valeur (Format de recherche)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:182
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:183
 msgid "The image frame pixel width must be an integer greater than 0 (Gallery output format)"
 msgstr "L'épaisseur de bordure doit être un entier positif (Format résultat - Galerie)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:185
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:186
 msgid "The image frame color must be a valid hexadecimal color code as 3ff or a1b160 (Gallery output format)"
 msgstr "La couleur de bordure d'image doit être codée sous un format hexadécimal valide, de type 3ff ou 1b160 (Format résultat - Galerie)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:191
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:192
 msgid "The number of images per page must be positive (Gallery output format)"
 msgstr "Le nombre d'images par page doit être entier positif (Format résultat - Galerie)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:194
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:195
 msgid "The number of images per page must be positive (Image list output format)"
 msgstr "Le nombre d'images par page doit être strictement positif (Format résultat - Liste d'images)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:197
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:198
 msgid "The number of image titles per page must be positive (Title list output format)"
 msgstr "Le nombre de titres d'images par page doit être strictement positif (Format résultat - Liste de titres)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:246
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:247
 msgid "post has been updated with the media taxonomy."
 msgid_plural "posts have been updated with the media taxonomy."
 msgstr[0] "post a été mis à jour à partir de la taxinomie media."
@@ -196,116 +202,116 @@ msgstr[1] "posts ont été mis à jour à partir de la taxinomie media."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:357
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:361
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:610
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:358
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:362
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:612
 msgid "Tag Editor"
 msgstr "Editeur de tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:357
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:359
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:358
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:360
 msgid "Media Explorer"
 msgstr "Explorateur de médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:357
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:358
 msgid "Total number of medias"
 msgstr "Nombre total de médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:357
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:358
 msgid "Number of medias tagged"
 msgstr "Nombre de médias taggés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:357
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:358
 msgid "Number of medias remaining untagged"
 msgstr "Nombre de médias restant à associer aux tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:359
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:361
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:360
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:362
 msgid "Switch to "
 msgstr "Passer en mode "
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:399
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:400
 msgid "File"
 msgstr "Fichier"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:399
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:400
 msgid "Description"
 msgstr "Description"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:399
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:489
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:400
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:490
 msgid "Orphean media, not linked to any post"
 msgstr "Média orphelin, lié à aucun post"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:399
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:400
 msgid "Media tags"
 msgstr "Tags média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:402
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:412
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:403
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:413
 msgid "None"
 msgstr "Aucun"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:409
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:410
 msgid "Tags post"
 msgstr "Tags post"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:428
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:429
 msgid "Set and Next"
 msgstr "Associer et traiter média suivant"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:428
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:429
 msgid "Set"
 msgstr "Associer"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:428
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:429
 msgid "Get"
 msgstr "Relire"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:428
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:429
 msgid "Clear"
 msgstr "Effacer"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:433
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:442
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:434
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:443
 msgid "Media"
 msgstr "Média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:434
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:435
 msgid "tagged with theme"
 msgid_plural "tagged with themes"
 msgstr[0] "associé au thème"
@@ -313,22 +319,22 @@ msgstr[1] "associé aux thèmes"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:434
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:437
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:435
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:438
 msgid "tags reset"
 msgstr ": thèmes associés réinitialisés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:436
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:444
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1403
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:437
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:445
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1604
 msgid "Post"
 msgstr "Post"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:437
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:438
 msgid " tagged with theme"
 msgid_plural " tagged with themes"
 msgstr[0] " associé au thème"
@@ -336,130 +342,130 @@ msgstr[1] " associé aux thèmes"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:442
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:444
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:443
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:445
 msgid "media tags read from database."
 msgstr "thèmes associés relus depuis la base de données."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:465
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:466
 msgid "No media matching this search."
 msgstr "Aucune média ne correspond à cette recherche."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "Displaying medias"
 msgstr "Afficher les médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "Display tagged medias"
 msgstr "Afficher les médas taggés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "tagged"
 msgstr "taggés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "Display untagged medias"
 msgstr "Afficher les médias non taggés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "untagged"
 msgstr "non taggés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "Display all medias"
 msgstr "Afficher tous les médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "all"
 msgstr "tous"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:472
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:473
 msgid "The search currently supports single keyword pattern - Search will be done on media title and hosting post or page title"
 msgstr "La recherche fonctionne dans cette version avec un mot-clef unique - La recherche est effectuée dans les titres de médias ou noms des posts ou pages contenant le média."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:476
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:477
 msgid "Medias"
 msgstr "Médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:476
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:477
 msgid "to"
 msgstr "à"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:476
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:477
 msgid "Previous"
 msgstr "Précédent"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:476
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:477
 msgid "Next"
 msgstr "Suivant"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:490
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:548
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:557
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:491
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:576
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:585
 msgid "Go to page"
 msgstr "Aller à la page"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:490
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:491
 msgid "Tag media"
 msgstr "Tags média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:528
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:530
 msgid "MediaTagger Options"
 msgstr "MediaTagger - Options"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:530
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:532
 msgid "Hide"
 msgstr "Masquer"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:530
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:532
 msgid "Show"
 msgstr "Afficher"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:530
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:532
 msgid "options setup panel"
 msgstr "le panneau de paramétrage d'options"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:549
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:551
 msgid "Invalid value restored to the last correct setting."
 msgid_plural "Invalid values restored to the last correct settings."
 msgstr[0] "Valeur d'option incorrecte et non prise en compte"
@@ -467,817 +473,817 @@ msgstr[1] "Valeurs d'options incorrectes et non prises en compte"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:552
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:554
 msgid "Options saved."
 msgstr "Options sauvegardées"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:563
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:565
 msgid "General"
 msgstr "Général"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:566
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:568
 msgid "File formats for tagging"
 msgstr "Formats de fichiers à prendre en compte pour la classification"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:568
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:570
 msgid "This defines the set of files available for tagging (admin) and searching (visitors)"
 msgstr "Les fichiers correspondant à ces formats seront listés pour la classification (admin) et la recherche (visiteurs)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:570
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:572
 msgid "Tagging source"
 msgstr "Tags définis à partir des"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:572
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1084
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:574
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1267
 msgid "Tags"
 msgstr "Tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:573
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1092
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:575
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1275
 msgid "Categories"
 msgstr "Catégories"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:574
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:576
 msgid "Tags and categories"
 msgstr "Tags et catégories"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:575
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:577
 msgid "You can tag medias either with your blog tags, with your categories, or with your tags and categories merged together"
 msgstr "Les médias peuvent être classifiés par mots-clefs correspondant aux tags de votre blog, aux catégories, ou à l'ensemble des tags et catégories."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:578
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:580
 msgid "Tags groups"
 msgstr "Groupements de tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:581
 msgid "Optional : you can regroup the above tags by groups so that those tags are displayed by groups. This applies to the tagging panel form as well as to the search form. If you do not need to categorize your tags, keep this field empty. Otherwise, use the following CSV syntax, one group definition per line : "
 msgstr "Optionnel : vous pouvez rassembler les tags par groupe que ces tags soient affichés selon les groupes définis. Ce réglage concerne le panneau de classification et le formulaire de recherche. Par défaut, laissez ce champ vide. Sinon, utilisez une syntaxe CSV avec une définition de groupe par ligne :"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:581
 msgid "my_group1_name"
 msgstr "mon_groupe_1"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:581
 msgid "my_group2_name"
 msgstr "mon_groupe_2"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:581
 msgid "Spaces do not matter - The tags not listed in these groups will be listed at the end in the default category. Optionnally, you can name this default category by adding as last line"
 msgstr "Les espaces n'influent pas - Les tags n'apparaissant dans aucun groupe sont regroupés à la fin dans une catégorie par défaut. Optionnellement, cette catégorie peut être nommée en ajoutant en dernière ligne"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:581
 msgid "my_default_group_name"
 msgstr "mon_groupe_par_défaut"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:581
 msgid "(do not add anything after \"=\")"
 msgstr "(ne rien mettre après  \"=\")"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:581
 msgid "By default the tags are disposed by column automatically ; you can override this rule by leaving a blank line before the group you want to start to the next column."
 msgstr "Par défaut les tags sont disposés en colonne automatiquement ; les colonnes peuvent être formattées manuellement en insérant une ligne vide avant le groupe à reporter à la colonne suivante."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:582
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:584
 msgid "Fields background color"
 msgstr "Couleur de fond des titres au format hexadécimal"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:584
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:586
 msgid "This color is used for the fields background in the tagging panel and search form"
 msgstr "Couleur de fond pour les champs titres"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:588
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:590
 msgid "Media taxonomy"
 msgstr "Taxinomie média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:590
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:592
 msgid "Override original post taxonomy with media taxonomy"
 msgstr "Déduire les tags des posts de l'union des tags médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:592
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:655
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:723
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:730
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:594
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:657
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:725
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:732
 msgid "Yes"
 msgstr "Oui"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:593
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:656
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:724
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:731
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:595
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:658
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:726
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:733
 msgid "No"
 msgstr "Non"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:594
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:596
 msgid "Carefully read this note"
 msgstr "Lire ces informations avec attention"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:595
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:597
 msgid "This option allows to let the media taxonomy defined with MediaTagger supersede the post taxonomy provided as standard by WordPress"
 msgstr "Cette option permet de paramétrer automatiquement les tags associés aux posts à partir des tags associés aux médias de ces posts par MediaTagger"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:596
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:598
 msgid "If you activate this feature : every time you tag a media from the MediaTagger editor"
 msgstr "Si vous activez cette fonctionnalité : chaque fois que vous taggez un média dans l'éditeur de tag MediaTagger"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:597
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:599
 msgid "the post containing this media will be associated to the tag list formed from a logical OR between all the tags set on the medias contained in the post"
 msgstr "le post contenant cette image sera associé à la liste de tags égale à l'union de tous les tags associés aux médias contenus dans le post"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:598
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:600
 msgid "Any former tag manually set on the post will be lost and supersed by this logical media taxonomy combination"
 msgstr "Les tags manuellement associés au post seront écrasés par cette combinaison de taxinomies médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:599
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:601
 msgid "For that reason you should backup your WordPress database before the first activation of this feature"
 msgstr "Pour cette raison, il est fortement conseillé de sauvegarder la base de données avant les premiers essais de cette fonctionnalité"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:602
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:604
 msgid "Preview the Media Taxonomy scheme"
 msgstr "Prévisualiser la taxinomie média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:603
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:605
 msgid "Preview"
 msgstr "Prévisualisation"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:604
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:606
 msgid "This preview function lets you evaluate what would the media taxonomy be compared to your current posts tagging"
 msgstr "Cette fonction permet d'évaluer les changements qui seraient apportés si on applique aux posts la taxinomie média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:605
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:607
 msgid "After clicking this link you will be directed to the preview page. From this page you will then have the choice to run an automatic retagging batch"
 msgstr "Le lien vous conduira sur la page de prévisualisation. A partir de là vous pourrez accepter de continuer grâce à un processus de re-tagging automatique"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:613
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:615
 msgid "Tagging excluded tags"
 msgstr "Tags exclus de la classification"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:615
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:617
 msgid "List of comma separated tag names defined in your blog and that will not appear in the Tag Editor above"
 msgstr "Liste de noms de tags définis dans le blog et qui seront exclus de l'éditeur de tags ci-dessus, à séparer par une virgule"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:618
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:620
 msgid "Number of tags displayed per column"
 msgstr "Nombre de tags affichés par colonne"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:620
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:622
 msgid "Set this number to have a convenient columnar display of your tags in the Tag Editor above, properly spread over the above available horizontal space"
 msgstr "Régler cette valeur de manière à avoir un affichage des tags par colonne équitablement réparti dans l'espace disponible ci-dessus."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:623
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:625
 msgid "Maximum image pixel width or height"
 msgstr "Largeur ou hauteur d'image maximale (px)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:625
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:627
 msgid "Used to scale the images displayed on the Tag Editor above. The largest of the (width, height) will be scaled to this number"
 msgstr "Utilisé pour redimensionner les images affichées ci-dessus dans l'éditeur de tags. Le max(H,L) sera mis à l'échelle avec ce chiffre"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:628
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:630
 msgid "Image frame pixel width"
 msgstr "Epaisseur de la bordure (px)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:630
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:632
 msgid "This parameter sets the image border width"
 msgstr "Règle la taille de bordure d'image"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:633
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:635
 msgid "Image frame color in hex format"
 msgstr "Couleur de la bordure au format hexadécimal"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:638
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:640
 msgid "Search format"
 msgstr "Format de recherche"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:641
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:643
 msgid "Search excluded tags"
 msgstr "Tags exclus de la recherche"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:643
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:645
 msgid "List of comma separated tag names defined in your blog and that will not appear in the list of searchable tags"
 msgstr "Liste de noms de tags définis dans le blog et qui seront exclus de la liste de tags affichés sur la page de recherche, à séparer par une virgule"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:645
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:648
 msgid "Default search display mode"
 msgstr "Mode d'affichage de la recherche par défaut"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:647
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:394
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:649
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:408
 msgid "Tag cloud"
 msgstr "Nuage de tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:648
-msgid "Search form"
-msgstr "Formulaire de recherche"
-
-#: C:\Documents
-#: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:649
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:402
-msgid "Combined"
-msgstr "Combiné"
-
-#: C:\Documents
-#: and Settings\bruno.bourgeois\My
 #: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:650
+msgid "Tag form"
+msgstr "Formulaire"
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:651
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:412
+msgid "Search field"
+msgstr "Champ de recherche"
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:652
 msgid "Tag cloud is more compact but does not allow the multi-criteria search provided by the check boxes form."
 msgstr "Le nuage de tags est plus compact, mais ne permet pas la recherche multicritères."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:651
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:653
 msgid "The combined mode permits to refine the initial search done with the cloud thanks to the form."
 msgstr "Le mode de recherche combiné permet d'affiner une recherche par le formulaire après une recherche initiale par le nuage de tags."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:653
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:655
 msgid "Visitors can switch between available search formats"
 msgstr "Mode d'affichage de recherche modifiable par les visiteurs"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:657
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:659
 msgid "If \"yes\" is selected, the result page allows the user to dynamically select the most appropriate search format"
 msgstr "Si \"oui\" est sélectionné, un lien sera présent pour basculer d'un mode d'affichage de recherche vers un autre"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:658
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:660
 msgid "Otherwise, format is fixed to default display style set above - Javascript must be enabled in the navigator to use this capability"
 msgstr "Sinon, le mode d'affichage est fixe et déterminé par le paramétrage ci-dessus - Le visiteur doit avoir accepté l'exécution de Javascript dans son navigateur"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:661
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:663
 msgid "Number of tags displayed per column in form mode"
 msgstr "Nombre de tags affichés par colonne en mode formulaire"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:663
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:665
 msgid "Set this number to have a convenient columnar display of your tags in the search section, properly spread over the available horizontal space"
 msgstr "Régler cette valeur de manière à avoir un affichage des tags par colonne équitablement réparti dans le formulaire de recherche"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:666
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:668
 msgid "Search form font size (pt)"
 msgstr "Taille de fonte du formulaire de recherche (pt)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:668
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:670
 msgid "Font size to be used for the search form made of check boxes and tags"
 msgstr "Taille de la fonte à utiliser pour le formulaire de recherche"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:671
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:673
 msgid "Number of tags displayed in the tag cloud"
 msgstr "Nombre de tags affichés dans le nuage de tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:673
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:675
 msgid "Number of tags selected among the highest ranked displayed in the tag cloud ; put 0 to get all the tags"
 msgstr "Nombre de tags à afficher parmi les occurences les plus fortes ; pour avoir tous les tags, mettre 0"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:675
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:677
 msgid "Tag cloud order"
 msgstr "Classement du nuage de  tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:677
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:679
 msgid "Alphabetical"
 msgstr "Alphabétique"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:678
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:680
 msgid "Rank"
 msgstr "Occurence"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:679
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:681
 msgid "Random"
 msgstr "Aléatoire"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:680
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:682
 msgid "Select the appropriate option to have the tags ordered aphabetically, by occurence or randomly, depending on your application"
 msgstr "Sélectionner l'option appropriée pour ordonner les tags alphabétiquement, par occurence ou aléatoirement"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:681
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:683
 msgid "Note that this ordering is applied after having selected the highest ranking tags according to the parameter just above"
 msgstr "Cet ordonnancement intervient après avoir sélectionné les n tags les plus utilisés, confirmément au paramètre ci-dessus"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:684
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:686
 msgid "Tag cloud minimum font size (pt)"
 msgstr "Taille de fonte minimum pour le nuage de tags (pt)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:686
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:688
 msgid "This parameter sets the font size for the least used tag"
 msgstr "Règle la taille de fonte correspondant au tag le moins utilisé"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:689
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:691
 msgid "Tag cloud maximum font size (pt)"
 msgstr "Taille de fonte maximum pour le nuage de tags (pt)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:691
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:693
 msgid "This parameter sets the font size for the most used tag"
 msgstr "Règle la taille de fonte correspondant au tag le plus utilisé"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:694
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:696
 msgid "Minimum tag cloud color in hex format"
 msgstr "Couleur de fonte minimale pour le nuage de tags (hex)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:696
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:698
 msgid "Tag cloud dynamic colors : this font color will be used for the tags with the lowest use. Set to -1 to not use dynamic colors"
 msgstr "Coloration graduelle du nuage de tags : cette couleur de fonte sera utilisée pour les tags les moins utilisés. Régler à -1 pour ne pas utiliser de couleurs graduelles"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:699
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:701
 msgid "Maximum tag cloud color in hex format"
 msgstr "Couleur de fonte maximale pour le nuage de tags (hex)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:701
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:703
 msgid "Tag cloud dynamic colors : this font color will be used for the tags with the highest use. Set to -1 to not use dynamic colors"
 msgstr "Coloration graduelle du nuage de tags : cette couleur de fonte sera utilisée pour les tags les plus utilisés. Régler à -1 pour ne pas utiliser de couleurs graduelles"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:704
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:706
 msgid "Tag cloud highlighting font color in hex format"
 msgstr "Couleur de fonte de mise en valeur pour le nuage de tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:706
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:708
 msgid "This font color is used to highlight the tags selected for a search ; used also for the tag cloud hover effect when dynamic colors are used for the tag cloud"
 msgstr "Couleur de fonte destinée à la mise en valeur du tag selectionné pour la recherche ; également pour la couleur de fonte hover pour le nuage de tags en couleurs graduelles"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:707
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:709
 msgid "Set to -1 if you don't want hover effect in your tag cloud with dynamic colors and if you don't want to highlight the selected tag"
 msgstr "Régler à -1 pour ne pas avoir d'effet de survol sur le nuage de tags avec couleurs graduelles et si vous ne souhaitez pas mettre en valeur le tag sélectionné"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:711
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:713
 msgid "Output format"
 msgstr "Format résultat"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:713
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:715
 msgid "Default result display mode"
 msgstr "Mode d'affichage des résultats par défaut"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:715
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:717
 msgid "Image gallery"
 msgstr "Galerie d'images"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:716
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:718
 msgid "Image list"
 msgstr "Liste d'images"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:717
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:719
 msgid "Title list"
 msgstr "Liste de titres"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:718
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:720
 msgid "Select gallery style for a condensed graphical output, title list for pure text."
 msgstr "Sélectionner le style galerie pour un affichage graphique compact, la liste de titre pour un résultat textuel."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:719
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:721
 msgid "Images will be scaled in both cases using maximum image pixel width or height specified below"
 msgstr "Les images seront redimensionnées dans tous les cas en fonction du paramètre largeur ou hauteur maximale d'image ci-dessous"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:721
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:723
 msgid "Visitors can switch between available output formats"
 msgstr "Mode d'affichage des résultats modifiable par les visiteurs"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:725
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:727
 msgid "If \"yes\" is selected, the result page allows the user to dynamically select the most appropriate output format"
 msgstr "Si \"oui\" est sélectionné, un lien sera présent pour basculer d'un mode d'affichage des résultats vers un autre"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:726
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:728
 msgid "Otherwise, format is fixed to default output style set above - Javascript must be enabled in the navigator to use this capability"
 msgstr "Sinon, le mode d'affichage résultat est fixe et déterminé par le paramétrage ci-dessus - Le visiteur doit avoir accepté l'exécution de Javascript dans son navigateur"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:728
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:730
 msgid "Optimize thumbnail transfer"
 msgstr "Optimiser le transfert d'images (galerie, liste d'images)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:732
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:734
 msgid "If \"Yes\" is selected, the GD graphic library will be used server side to resize the images to the exact dimension used for displaying in the client browser"
 msgstr "Si \"Oui\" est sélectionné, la librairie graphique GD est utilisée pour redimensionner les images côté serveur à la taille d'affichage utilisée dans le navigateur"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:733
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:735
 msgid "Otherwise, the images will be transferred in full format and directly resized in the browser"
 msgstr "Sinon les images sont transferrées en taille maxi et redimensionnées dans le navigateur"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:734
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:736
 msgid "For given server configurations, this optimization does not produce the expected result"
 msgstr "Dans certains cas, cette optimisation ne donne pas les résultats attendus"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:735
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:737
 msgid "When activating this option, check on your search page that the result gallery or image list is displayed correctly"
 msgstr "En cas d'activation de cette option, vérifier sur la page résultat que les galeries ou listes d'images sont correctement affichées"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:736
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:738
 msgid "If not, disable this option as proposed by default"
 msgstr "Sinon, désactiver cette option comme proposé par défaut."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:737
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:739
 msgid "This option is selectable only if the GD library is detected on the server (check in the footnote below)"
 msgstr "Cette option n'est accessible que lorsque la librairie GD est détectée sur le serveur (vérifier en bas de page le setup serveur)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:739
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:741
 msgid "Gallery output format"
 msgstr "Format résultat - Galerie"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:742
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:744
 msgid "Number of images per gallery page "
 msgstr "Nombre d'images par page galerie"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:744
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:746
 msgid "Number of images to be listed on the search result page in case the display format is set to \"Gallery\""
 msgstr "Nombre d'images à afficher par page de résultat en mode d'affichage \"galerie\""
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:746
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:748
 msgid "Link on the gallery thumbnails points to "
 msgstr "Les images présentées en mode galerie pointent vers"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:748
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:750
 msgid "Plain size image"
 msgstr "Image grand format"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:749
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:751
 msgid "Post containing the image"
 msgstr "Post contenant l'image"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:750
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:752
 msgid "Select \"Plain size image\" to link the gallery thumbnails to the full size image"
 msgstr "Sélectionner \"Image grand format\" pour que le lien des images vignettes de la galerie pointe vers l'image pleine taille."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:751
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:753
 msgid "Otherwise the thumbnails will be linked to the post where the image was posted"
 msgstr "Sinon les vignettes pointeront vers le post dans lequel les images apparaissent"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:754
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:778
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:756
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:780
 msgid "Maximum image pixel width or height "
 msgstr "Largeur ou hauteur d'image maximale (px)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:756
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:758
 msgid "Used to scale the images displayed in gallery display mode on the Image Tag Search Result Page. The largest of the (width, height) will be scaled to this number"
 msgstr "Utilisé pour redimensionner les images affichées sur la page résultat en mode galerie. Le max(H,L) sera mis à l'échelle avec ce chiffre"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:759
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:761
 msgid "Image frame pixel width "
 msgstr "Epaisseur de la bordure (px)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:761
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:763
 msgid "Image border width used for the gallery display style. If border is set to 0, images are displayed border to border"
 msgstr "Epaisseur de la bordure d'image en mode galerie. Si égal à 0, les images seront présentées bord à bord"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:761
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:766
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:763
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:768
 msgid "In case an image framing plugin or theme is activated, this setting will be likely superseded by the specific framing theme or plugin"
 msgstr "Si la bordure des images est gérée par un plugin ou thème spécifique, le réglage effectué par le plugin ou thème en question l'emportera probablement sur ce paramètre."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:764
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:766
 msgid "Image border color in hex format "
 msgstr "Couleur de la bordure en format hexadécimal"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:766
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:768
 msgid "Image border color used to frame each gallery image. This parameter is significant only if the image border set above is greater than 0"
 msgstr "Couleur de bordure d'image en mode galerie. Ce paramètre n'a d'effet que pour une épaisseur de bordure  (ci-dessus) supérieure à 0"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:770
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:772
 msgid "Image list output format"
 msgstr "Format résultat - Liste d'images"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:773
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:775
 msgid "Number of images per list page "
 msgstr "Nombre d'images par page"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:775
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:777
 msgid "Number of images to be listed on the search result page in case the display format is set to \"Image list\""
 msgstr "Nombre d'images à afficher par page de résultat en mode d'affichage \"liste d'images\""
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:780
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:782
 msgid "Used to scale the images displayed in itemized display mode on the Image Tag Search Result Page. The largest of the (width, height) will be scaled to this number"
 msgstr "Utilisé pour redimensionner les images affichées sur la page résultat en mode liste d'images. Le max(H,L) sera mis à l'échelle avec ce chiffre"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:784
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:786
 msgid "Title list output format"
 msgstr "Format résultat - Liste de titres"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:787
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:789
 msgid "Number of image titles per list page "
 msgstr "Nombre de titres d'images  par page"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:789
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:791
 msgid "Number of image titles to be listed on the search result page in case the display format is set to \"Title list\""
 msgstr "Nombre de titres d''images à afficher par page de résultats en mode d'affichage \"liste d'images\""
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:793
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:795
 msgid "Misceallenous"
 msgstr "Divers"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:796
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:798
 msgid "Audit database integrity"
 msgstr "Vérification de l'intégrité de la base de données"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:797
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:799
 msgid "Audit"
 msgstr "Vérifier"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:798
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:800
 msgid "This preview function lets you evaluate the inconsistencies detected in your WordPress database"
 msgstr "Cette fonction permet d'évaluer les anomalies détectées dans la base de données WordPress"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:799
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:801
 msgid "After clicking this link you will be directed to the preview page. From this page you will then have the choice to run automatic cleanup batches"
 msgstr "Cliquer sur le lien lancera l'évaluation. A partir de là vous pourrez accepter de corriger les anomalies par des fonctions appropriées"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:800
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:802
 msgid "This function involves heavy SQL computation. Depending on your hosting plan, this checker can be aborted if you exceed the maximum number of SQL queries allowed in your plan"
 msgstr "Cette fonction déclenche un calcul important sur la base de données. En fonction des spécificités de votre plan d'hébergement, l'exécution pourrait être abortée si le nombre maximum de requêtes autorisées dans votre plan est dépassé"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:802
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:804
 msgid "Display credit line"
 msgstr "Afficher la référence au plugin MediaTagger"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:804
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:806
 msgid "A possibility is offered to not display the very tiny MediaTagger credit line shown below the search form in plain format (not in widget)"
 msgstr "Il est possible de ne pas afficher la ligne de crédit MediaTagger sous le formulaire de recherche (hors version widget)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:805
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:807
 msgid "Anyhow, be aware of the very significative work that was required to develop this plugin to push it to what you can enjoy today"
 msgstr "Conservez toutefois à l'esprit que ce plugin représente un travail important, qui a permis de parvenir au résultat que vous voyez aujourd'hui"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:806
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:808
 msgid "If you decide not to show this line and assuming you like this plugin, I let to your good willingness the possibility to include anywhere else on your site"
 msgstr "Si vous décidez de ne pas afficher cette référence, je vous laisse juge de la possibilité d'insérer ailleurs sur votre site"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:807
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:809
 msgid "a credit line linking back to my home site (http://www.photos-dauphine.com)"
 msgstr "une mention relative au plugin MediaTagger, pointant vers la page d'accueil http://www.photos-dauphine.com"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:810
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:812
 msgid "Update Options"
 msgstr "Enregistrer les options"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:815
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:817
 msgid "Review below the results you would get by applying the media taxonomy to your posts"
 msgstr "Vérifiez les résultats ci-dessous ; ils vous montrent les changements qui seront apportés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:816
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:818
 msgid "Only the posts showing discrepancies between original post tagging and media taxonomy are listed"
 msgstr "Seuls les posts présentant des différences entre les tags d'origine et la taxinomie média sont listés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:817
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:819
 msgid "If you agree with the tagging scheme modification, click the Update button below"
 msgstr "Si vous souhaitez poursuivre, cliquer sur le bouton Mettre à jour"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:818
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:820
 msgid "The update process will modify the posts taxonomy and therefore your WordPress database"
 msgstr "La mise à jour modifiera les tags associés aux posts et par là même affectera la base de données WordPress"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:819
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:821
 msgid "For this reason it is recommended to backup your database before to be able to revert to the original setup if needed"
 msgstr "Pour cette raison un backup est recommandé. Cela fournira un point de retour si vous souhaitez revenir à la taxinomie d'origine"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:830
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:832
 msgid "post needs to have its taxonomy updated."
 msgid_plural "posts need to have their taxonomy updated."
 msgstr[0] "post doit subir une mise à jour de sa taxinomie."
@@ -1285,85 +1291,86 @@ msgstr[1] "post doivent subir une mise à jour de leur taxinomie."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:833
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:835
 msgid "Update posts tags using media taxonomy"
 msgstr "Mettre à jours les tags posts à partir de la taxinomie média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:833
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:835
 msgid "Cancel"
 msgstr "Abandonner"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:837
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:839
 msgid "No update is required, the post taxonomy is already aligned on the media taxonomy."
 msgstr "La taxinomie post est déjà alignée sur la taxinomie média. Une mise à jour n'est pas requise."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:840
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:842
 msgid "OK"
 msgstr "OK"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:863
-msgid "Clean post revisions"
-msgstr "Nettoyer les révisions de posts"
-
-#: C:\Documents
-#: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:864
-msgid "Clean post attachments"
-msgstr "Nettoyer les images disjointes des posts"
-
-#: C:\Documents
-#: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:865
-msgid "Clean post taxonomy"
-msgstr "Nettoyer la taxinomie post"
-
-#: C:\Documents
-#: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:866
-msgid "Clean media taxonomy"
-msgstr "Nettoyer la taxinomie média"
-
-#: C:\Documents
-#: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:867
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:849
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:873
 msgid "Return"
 msgstr "Retour"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:887
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:869
+msgid "Clean post revisions"
+msgstr "Nettoyer les révisions de posts"
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:870
+msgid "Clean post attachments"
+msgstr "Nettoyer les images disjointes des posts"
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:871
+msgid "Clean post taxonomy"
+msgstr "Nettoyer la taxinomie post"
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:872
+msgid "Clean media taxonomy"
+msgstr "Nettoyer la taxinomie média"
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:893
 msgid "If you found this plugin useful for your site, you are free to make a donation for supporting the development and maintenance."
 msgstr "Si vous trouvez ce plugin utile, vous êtes libre d'effectuer un don afin de soutenir l'effort de développement et de maintenance."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:887
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:893
 msgid "Remind that even small donations matter and are encouraging !"
 msgstr "Même les petits dons sont importants et encourageants !"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:891
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-admin.php:897
 msgid "not available"
 msgstr "non disponible"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:434
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:471
 msgid "Others"
 msgstr "Autres"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:543
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:580
 msgid "media associated to tag"
 msgid_plural "medias associated to tag"
 msgstr[0] "média associé au tag"
@@ -1371,55 +1378,55 @@ msgstr[1] "médias associés au tag"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:562
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:599
 msgid "This blog does not hold any media."
 msgstr "Le blog ne contient pas de médias."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:563
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:600
 msgid "Start to populate the WordPress Media Library before trying to tag those medias."
 msgstr "Commencez par insérer des médias dans la Librairie de Médias WordPress avant de pouvoir associer ces médias à des tags."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:566
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:603
 msgid "Medias are already all tagged."
 msgstr "Les médias ont tous été associés à des tags."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:567
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:604
 msgid "To modify tagging, go to the Media Explorer view and select \"tagged medias\" or \"all medias\"."
 msgstr "Pour modifier les affectations, passer en mode Explorateur de Médias et afficher les médias taggés ou tous les médias."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:570
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:607
 msgid "There is no tagged media yet."
 msgstr "Aucun média n'a encore été taggé."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:571
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:608
 msgid "To start tagging, go to the Tag Editor view or select \"untagged medias\" or \"all medias\" in the Media Explorer view."
 msgstr "Pour commencer à tagger, passer en mode Editeur de tags ou sélectionner les médias non taggés, ou tous les médias dans l'Explorateur de Médias."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:591
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:628
 msgid "No tag was found in this blog"
 msgstr "Aucun tag n'a été trouvé sur ce blog."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:592
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:629
 msgid "Start to create a list of tag that you will use to tag your medias"
 msgstr "Commencez par créer une liste de tags auxquels vous pourrez ensuite associer des médias"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1405
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1606
 msgid "Original tag"
 msgid_plural "Original tags"
 msgstr[0] "Tag d'origine"
@@ -1427,7 +1434,7 @@ msgstr[1] "Tags d'origine"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1406
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1607
 msgid "New tag"
 msgid_plural "New tags"
 msgstr[0] "Nouveau tag"
@@ -1435,232 +1442,232 @@ msgstr[1] "Nouveaux tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1478
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1679
 msgid "Post revision cleanup : nothing to clean"
 msgstr "Purge des révisions de posts : rien à purger"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1484
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1685
 #, php-format
 msgid "Cleaning up table %s from post revisions"
 msgstr "Purge des révisions de posts dans la table %s"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1485
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1506
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1528
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1550
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1686
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1707
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1729
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1751
 #, php-format
 msgid "Running SQL : %s"
 msgstr "Exécution de la requête SQL : %s"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1487
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1508
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1530
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1552
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1688
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1709
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1731
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1753
 msgid "Done"
 msgstr "Effectué"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1499
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1700
 msgid "Post attachment cleanup : nothing to clean"
 msgstr "Purge des inclusions post : rien à purger"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1505
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1706
 #, php-format
 msgid "Cleaning up table %s from unused attachments"
 msgstr "Purge des inclusions non référencées dans la table %s"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1521
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1722
 msgid "Post taxonomy cleanup : nothing to clean"
 msgstr "Purge de la taxinomie post : rien à purger"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1527
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1728
 #, php-format
 msgid "Cleaning up table %s from entries referring to posts not having anymore an entry in the posts table"
 msgstr "Purge de la table %s des entrées reliées à des posts n'étant plus référencés dans la table posts"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1543
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1744
 msgid "Image taxonomy cleanup : nothing to clean"
 msgstr "Purge de la taxinomie image : rien à purger"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1549
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1750
 #, php-format
 msgid "Cleaning up table %s from entries referring to media not having anymore an entry in the posts table"
 msgstr "Purge de la table %s des entrées reliées aux médias n'étant plus référencés dans la table posts"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1568
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1769
 msgid "Check below the possibly detected database inconsistencies"
 msgstr "Vérifier ci-dessous les anomalies potentiellement détectées"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1569
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1770
 msgid "If you go for the cleanup, the process will delete some entries in the posts, post taxonomy and image taxonomy table(s)"
 msgstr "Si vous choisissez de nettoyer, le process supprimera certaines entrées dans les tables posts, taxinomie post et taxinomie image"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1570
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1771
 msgid "For this reason it is mandatory to backup your database before to be able to revert to the original database setup if needed"
 msgstr "Pour cette raison un backup est recommandé afin de garder la possibilité de revenir à l'état d'origine si nécessaire"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1571
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1772
 msgid "In any case, read entirely the list of impacted entries shown in the analysis below before deciding to cleaning up"
 msgstr "Il est indispensable de lire dans le détail l'analyse de la liste d'entrées impactées, fournie ci-dessous"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1572
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1773
 msgid "Given the dependencies, execute the following sequence partially or totally, assuming you have the proper understanding of the consequences on your database"
 msgstr "En raison des dépendances, exécuter la séquence suivante partiellement ou totallement, partant du principe que vous avez la bonne compréhension des implications sur votre base de données"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1573
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1774
 msgid "If any doubt, do not run the cleanup sequence you are not clear with"
 msgstr "En cas de doute, ne pas exécuter la purge correspondante"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1575
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1602
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1776
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1803
 #, php-format
 msgid "Left-over post revisions (table %s)"
 msgstr "Révisions de posts (table %s)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1577
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1778
 msgid "This step does not induce any risk of data loss. It will erase posts revisions automatically created and not needed anymore"
 msgstr "Cette purge n'induit pas de risque de perte de données. Les révisions de posts créées automatiquement seront effacées"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1579
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1780
 #, php-format
 msgid "Media library elements not included in any post content (table %s)"
 msgstr "Elements de la librairie de médias n'apparaissant dans aucun contenu de post (table %s)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1581
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1782
 msgid "This step might present risk of data loss and requires proper understanding and judgment ; it will remove attachments from the table if this attachment does not appear anywhere in any of the posts content. Do not use it if you created a media library with items not included in the posts, and still want to keep this library unchanged"
 msgstr "Cette purge peut conduire dans certains cas à une perte de données, et requiert une bonne compréhension des mécanismes sous-jacents ; les pièces jointes (\"attachments\") de la table seront supprimés si ces pièces jointes n'apparaissent pas dans aucun des contenus des posts. Ne pas utiliser si les fichiers chargés dans la librairie média ne sont pas inclus dans les posts et si vous souhaitez garder votre bibliothèque de médias intacte"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1583
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1654
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1784
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1855
 #, php-format
 msgid "Left-over post taxonomies (table %s)"
 msgstr "Taxinomies de posts orphelines (table %s)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1585
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1786
 msgid "This step does not induce any risk of data loss. It will erase from the post taxonomy table post IDs still tagged but not present anymore in the posts table as attachment entries"
 msgstr "Cette purge ne présente pas de risque de perte de données. Elle supprimera de la table de taxinomie posts les IDs correspondant aux posts encores taggés bien que n'ayant plus d'entrée associée plus dans la table post"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1587
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1788
 #, php-format
 msgid "Left-over medias taxonomies (table %s)"
 msgstr "Taxinomies médias orphelines (table %s)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1589
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1790
 msgid "This step does not induce any risk of data loss. It will erase from the media taxonomy table image IDs still tagged but not present anymore in the posts table as attachment entries"
 msgstr "Cette purge ne présente pas de risque de perte de données. Elle supprimera de la table de taxinomie média les IDs correspondant aux médias encores taggés bien que n'ayant plus d'entrée associée plus dans la table post"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1591
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1710
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1792
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1911
 #, php-format
 msgid "Information only : Medias remaining untagged (table %s)"
 msgstr "A titre d'information : médias non taggés (table %s)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1593
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1794
 msgid "This analysis provides you the list of untagged images. To fix situation where medias would remain untagged, go to the MediaTagger Tag Editor and complete the job"
 msgstr "Cette analyse présente la liste des médias non taggés. Si des médias ne sont pas encore taggés, aller dans l'Editeur de Tags MédiaTagger pour leur associer des tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1595
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1796
 msgid "The benefit of this cleanup is to reduce your database to the only required information, therefore improving site reactivity and decreasing required processing power"
 msgstr "L'intérêt de ce nettoyage consiste à réduire la base de données à la somme des informations utiles. Cela améliorera la réactivité du site et réduira la puissance de calcul demandée"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1597
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1798
 msgid "Analysis result"
 msgstr "Résultat de l'analyse"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1612
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1813
 msgid "No left-over post revision found - No cleanup needed"
 msgstr "Aucune révision de post détectée - Nettoyage non requis"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1628
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1829
 #, php-format
 msgid "Media library elements not included in any post (table %s)"
 msgstr "Elements de la librairie média non inclus dans aucun des posts (table %s)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1648
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1849
 msgid "No orphean attachment found - no cleanup needed"
 msgstr "Pas d'inclusion orpheline détectée - Nettoyage non requis"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1675
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1876
 msgid "No left-over post taxonomy found - no cleanup needed"
 msgstr "Pas de taxinomie post orpheline détectée - Nettoyage non requis"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1683
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1884
 #, php-format
 msgid "Left-over media taxonomies (table %s)"
 msgstr "Taxinomies média orphelines (table %s)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1704
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1905
 msgid "No left-over media taxonomy found - no cleanup needed"
 msgstr "Pas de taxinomie média orpheline détectée - Nettoyage non requis"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1727
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger-lib.php:1928
 msgid "All the medias are tagged, you made it well !"
 msgstr "Tous les médias sont taggés, bravo !"
 
@@ -1756,44 +1763,49 @@ msgstr "FAQ"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:363
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:369
-msgid "Search tag starting with..."
-msgstr "Mot-clé commençant par..."
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:192
+msgid "Search attachment like..."
+msgstr "Chercher média contenant..."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:391
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:407
 msgid "Search display"
 msgstr "Format de recherche"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:393
-msgid "Display the search form as a tag cloud"
-msgstr "Effectuer la recherche à partir d'un nuage de tags"
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:408
+msgid "Toggle tag cloud"
+msgstr "Permuter l'affichage du nuage de tags"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:397
-msgid "Display the search form as a check boxes form"
-msgstr "Effectuer la recherche à partir d'un formulaire multicritères"
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:410
+msgid "Toggle form"
+msgstr "Permuter l'affichage du formulaire de recherche"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:398
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:410
 msgid "Form"
 msgstr "Formulaire"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:401
-msgid "Display the search form as a combination of the tag cloud and check boxed form"
-msgstr "Effectuer la recherche à partir d'un nuage de tags couplé à un formulaire multicritères"
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:412
+msgid "Toggle search field"
+msgstr "Permuter l'affichage du champ de recherche"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:425
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:418
+msgid "Type here the keyword that will be searched in the media names database, rather than filtering on the tags attached to the medias."
+msgstr "Entrer ici le mot clé à recherche parmi les noms de médias de la base de données."
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:434
 msgid "occurence"
 msgid_plural "occurences"
 msgstr[0] "occurence"
@@ -1801,31 +1813,61 @@ msgstr[1] "occurences"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:438
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:448
 msgid "None of the selected tag(s) match existing tags. The media search URL should be composed as http://www.mysite.com/library?tags=tag1+tag2+...+tagN, where http://www.mysite.com/library is the search result page. Check the spelling of the tag slugs"
 msgstr "Aucun des tags recherchés n'est reconnu sur le site. L'URL de recherche de médias doit être composée de la manière suivante :  http://www.mysite.com/library?tags=tag1+tag2+...+tagN, où  http://www.mysite.com/library correspond à la page d'affichage du résultat de la recherche. Vérifier la syntaxe des identifiants de tags (slugs)"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:440
-msgid "You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK."
-msgstr "La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus ou par la sélection des mots-clefs appropriés ci-dessous."
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:450
+msgid "You can search a media by theme with the tag cloud above."
+msgstr "La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:442
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:452
 msgid "You can search a media by theme by selecting appropriate keywords below and clicking OK."
 msgstr "Pour effectuer une recherche par thème, sélectionner les mots-clefs appropriés et cliquer sur OK."
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:454
+msgid "You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK."
+msgstr "La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus ou par la sélection des mots-clefs appropriés ci-dessous."
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:456
+msgid "You can search a media entering a keyword above that will be searched as part of the medias name."
+msgstr "Pour effectuer une recherche, saisissez un mot clé dans le champ texte ci-dessus. Ce mot clé sera recherché parmi les noms de médias."
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
 #: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:458
+msgid "You can search a media by theme with the tag cloud above or entering a keyword above that will be searched as part of the medias name."
+msgstr "La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus ou en saisissant un mot clé dans le champ texte ci-dessus. Ce mot clé sera recherché parmi les noms de médias."
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:460
+msgid "You can search a media by theme by selecting appropriate keywords below and clicking OK or entering a keyword above that will be searched as part of the medias name."
+msgstr "Pour effectuer une recherche par thème, sélectionner les mots-clefs appropriés et cliquer sur OK. Ou saisissez un mot clé dans le champ texte ci-dessus. Ce mot clé sera recherché parmi les noms de médias."
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:462
+msgid "You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK or entering a keyword above that will be searched as part of the medias name."
+msgstr "La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus ou par la sélection des mots-clefs appropriés ci-dessous. Ou saisissez un mot clé dans le champ texte ci-dessus. Ce mot clé sera recherché parmi les noms de médias."
+
+#: C:\Documents
+#: and Settings\bruno.bourgeois\My
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:486
 msgid "no media found matching this criteria list"
 msgstr "aucun média trouvée correspondant à ces critères"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:464
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:492
 msgid "media found"
 msgid_plural "medias found"
 msgstr[0] "média trouvé"
@@ -1833,61 +1875,61 @@ msgstr[1] "médias trouvés"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:476
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:504
 msgid "Results display"
 msgstr "Format résultat"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:477
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:505
 msgid "Display the results as an image gallery"
 msgstr "Afficher les résultats sous forme de galerie"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:478
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:506
 msgid "Gallery"
 msgstr "Galerie"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:481
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:509
 msgid "Display the results as an itemized image list"
 msgstr "Afficher les résultats sous forme de liste d'images"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:482
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:510
 msgid "Itemized"
 msgstr "Liste d'images"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:485
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:513
 msgid "Display the results as an image title list"
 msgstr "Afficher les résultats sous forme de liste d'images"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:486
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:514
 msgid "Titles"
 msgstr "Liste de titres"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:528
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:556
 msgid "not attached to any post"
 msgstr "rattaché à aucun post"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:558
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:586
 msgid "Access to media"
 msgstr "Accéder au média"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:574
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:602
 #, php-format
 msgid "image %d to %d"
 msgid_plural "images %d to %d"
@@ -1896,45 +1938,64 @@ msgstr[1] "images %d à %d"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:575
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:603
 msgid "Click to display previous page"
 msgstr "Aller à la page précédente"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:576
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:604
 msgid "previous"
 msgstr "précédente"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:577
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:605
 msgid "Click to display next page"
 msgstr "Aller à la page suivante"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:578
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:606
 msgid "next"
 msgstr "suivante"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:596
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:624
 msgid "Offer a media search engine to your blog with"
 msgstr "Offrez à votre blog un moteur de recherche de médias avec"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:716
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:744
 msgid "Settings"
 msgstr "Réglages"
 
 #: C:\Documents
 #: and Settings\bruno.bourgeois\My
-#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:732
+#: Documents\Home\phd\WP3.2.0\wp-content\plugins\wp-mediatagger\svn-mediatagger\trunk/mediatagger.php:760
 msgid "Donate"
 msgstr "Faire un don"
+
+#~ msgid "Combined"
+#~ msgstr "Combiné"
+
+#~ msgid "Search tag starting with..."
+#~ msgstr "Mot-clé commençant par..."
+
+#~ msgid "Display the search form as a tag cloud"
+#~ msgstr "Effectuer la recherche à partir d'un nuage de tags"
+
+#~ msgid "Display the search form as a check boxes form"
+#~ msgstr "Effectuer la recherche à partir d'un formulaire multicritères"
+
+#~ msgid ""
+#~ "Display the search form as a combination of the tag cloud and check boxed "
+#~ "form"
+#~ msgstr ""
+#~ "Effectuer la recherche à partir d'un nuage de tags couplé à un formulaire "
+#~ "multicritères"
 
 #~ msgid "Display image"
 #~ msgstr "Afficher l'image"

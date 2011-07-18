@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 3.0.1
+Stable tag: 3.1
 
 
 
@@ -23,11 +23,12 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
 
 
-= 3.0.2 (under development) =
+= 3.1 =
 
 - New feature : when the media is not an image, the filename is displayed below the icon in gallery mode.
-- New feature : if the media is a PDF file and if the server support the thumbnail extraction routines, a thumbnail of the cover page is displayed instead of the generic PDF image. 
+- New feature : if the media is a PDF file and if the server support the thumbnail extraction routines, a thumbnail of the cover page is displayed (PNG format) instead of the generic PDF image. Server prerequisites : Imagemagick and Ghostscript must be properly installed and enabled.
 - New feature : the column layout of the tags form can now be forced, keeping the group names on the first line. Insert a blank line before the line defining the tag group. It will be interpreted as a column break when displaying the tag form. This overrides the rule defined by the parameters "number of tags per column" for the tag editor and search form ; these 2 parameters are greyed out in the administration panel and not used by the plugin.
+- New feature : an new search method is added, with a free search field. This field can be toggled on and off, as for the cloud and tag form. When triggered through this field, the search is done on the medias names rather than on the tags attached to the medias.
 
 
 = 3.0.1 =

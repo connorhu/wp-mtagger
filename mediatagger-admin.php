@@ -131,7 +131,8 @@ if (strlen($_POST['Submit']) > 0) {
 	imgt_get_valid_post_data($wpit_search_tags_excluded, 'wpit_search_tags_excluded', 'check_string_is_taglist("VALUE")',
 		$invalid_wpit_search_tags_excluded, $wpit_errmsg, __('The tag exclusion list must contain available tags separated by commas (Search format)', 'mediatagger'));
 
-	$wpit_search_default_display_mode = $_POST['wpit_search_default_display_mode'];		// combo choice - no need of error checking
+	imgt_get_valid_search_default_display_mode($wpit_search_default_display_mode, 'wpit_search_default_display_mode',
+		$invalid_wpit_search_default_display_mode, $wpit_errmsg, __('At least one default display mode needs to be selected (Search format)', 'mediatagger'));	
 
 	$wpit_search_display_switchable = $_POST['wpit_search_display_switchable'];		// combo choice - no need of error checking
 
@@ -519,6 +520,7 @@ if ($show_post_tags) {
 <input type="hidden" name="display_options" value="<?php echo $display_options ?>">
 <input type="hidden" name="panel_img_id" value="<?php echo $obj_id ?>">
 <input type="hidden" name="preview" value="">
+<input type="hidden" name="checkpdf" value="">
 <input type="hidden" name="audit" value="">
 <input type="hidden" name="fix_post_revisions" value="">
 <input type="hidden" name="fix_post_attachements" value="">
@@ -533,7 +535,7 @@ if ($show_post_tags) {
 
 
 <?php	
-if ($display_options && !$_POST['preview'] && !$_POST['audit'] && !$_POST['fix_post_revisions'] && !$_POST['fix_post_attachements'] && 
+if ($display_options && !$_POST['preview'] && !$_POST['checkpdf'] && !$_POST['audit'] && !$_POST['fix_post_revisions'] && !$_POST['fix_post_attachements'] && 
 		!$_POST['fix_post_taxonomy'] && !$_POST['fix_image_taxonomy']) {
 ?>
 <?php
@@ -642,11 +644,11 @@ echo $h_on ; _e("Search excluded tags", 'mediatagger'); echo $h_off; ?></p>
 <input type="text" name="wpit_search_tags_excluded" value="<?php echo $wpit_search_tags_excluded; ?>" size="60">
 <p class="legend"><?php _e('List of comma separated tag names defined in your blog and that will not appear in the list of searchable tags', 'mediatagger')?></p>
 
-<p class="label"><?php _e("Default search display mode", 'mediatagger' ); ?></p>
-<select name="wpit_search_default_display_mode">
-<option value="1" <?php echo ($wpit_search_default_display_mode == 1 ? "selected" : "") . '>'; _e("Tag cloud", 'mediatagger') ?>&nbsp;</option>
-<option value="3" <?php echo ($wpit_search_default_display_mode == 3 ? "selected" : "") . '>'; _e("Search form", 'mediatagger') ?>&nbsp;</option>
-<option value="2" <?php echo ($wpit_search_default_display_mode == 2 ? "selected" : "") . '>'; _e("Combined", 'mediatagger') ?>&nbsp;</option></select>
+<p class="label"><?php imgt_get_error_highlight($invalid_wpit_search_default_display_mode, $h_on, $h_off);
+echo $h_on ; _e("Default search display mode", 'mediatagger' ); ?></p>
+<input type="checkbox" value=cloud name=wpit_search_default_display_mode[] <?php echo (wpmt_is_search_mode("cloud", $wpit_search_default_display_mode) ? "checked" : "") ?> > <?php _e("Tag cloud", 'mediatagger'); ?> &nbsp;
+<input type="checkbox" value=form name=wpit_search_default_display_mode[] <?php echo (wpmt_is_search_mode("form", $wpit_search_default_display_mode) ? "checked" : "") ?> > <?php _e("Tag form", 'mediatagger'); ?> &nbsp;
+<input type="checkbox" value=field name=wpit_search_default_display_mode[] <?php echo (wpmt_is_search_mode("field", $wpit_search_default_display_mode) ? "checked" : "") ?> > <?php _e("Search field", 'mediatagger'); ?>
 <p class="legend"><?php _e('Tag cloud is more compact but does not allow the multi-criteria search provided by the check boxes form.', 'mediatagger')?><br/>
 <?php _e('The combined mode permits to refine the initial search done with the cloud thanks to the form.', 'mediatagger') ?></p>
 
@@ -842,6 +844,10 @@ if ($n_required) {
 <?php	
 	}
 }	// end image taxonomy preview
+else if ($_POST['checkpdf']){	// check pdf conversion
+	imgt_check_pdf_converter(1, 1);			// args : force check, verbose
+	echo '<input type="submit" name="return" value="' . __('Return', 'mediatagger' ) .  ' ">';
+}	// end pdf conversion check
 else if ($_POST['audit'] || $_POST['fix_post_revisions'] || $_POST['fix_post_attachements'] || $_POST['fix_post_taxonomy'] || $_POST['fix_image_taxonomy']) {
 	if ($_POST['fix_post_revisions'])
 		imgt_database_fix_post_revisions($_POST['fix_revisions_liststr']);

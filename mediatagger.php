@@ -4,8 +4,8 @@ Plugin Name: MediaTagger
 Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: This extensively configurable plugin comes packed with a bunch of features enabling media tagging, including search and media taxonomy.
 Author: www.photos-dauphine.com
-Version: 3.0.2_dev4
-Stable tag: 3.0.1
+Version: 3.1
+Stable tag: 3.1
 Author URI: http://www.photos-dauphine.com/
 */
 
@@ -189,10 +189,12 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	global $g_imgt_tag_taxonomy;
 	global $WPIT_SELF_VERSION_STABLE;
 	global $WPIT_GD_VERSION;
+	$search_field_default = __('Search attachment like...', 'mediatagger');
+	$wpit_run_free_search = 0;
 	$wpit_debug = 0;
 	$strout = '';
 	
-	//print_ro($_POST);
+	//phdbg($_POST);
 	
 	if (isset($_GET['tags'])){		// a GET url was formed : http://www.photos-dauphine.com/phototheque?tags=lumiere+arbre+foret
 		$tag_list_get = $_GET['tags'];
@@ -200,17 +202,17 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 		//print_ro($tag_list_get);
 		$tax_id_list = imgt_slug_to_taxonomy($tag_list_get);
 		//print_ro($tax_id_list);
+	}
+	
+	if (isset($_GET['display'])){		// a GET url was formed : http://www.photos-dauphine.com/phototheque?tag=lumiere+arbre+foret&display=cloud 
+		// display argument can be :  cloud+form+field at the max ; by default the setup defined in the admin panel applies
 		$search_mode=0;
-		if (isset($_GET['display'])){		// a GET url was formed : http://www.photos-dauphine.com/phototheque?tag=lumiere+arbre+foret&display=cloud 
-			// display argument can be :  cloud | form | combined ; by default the setup defined in the admin panel applies
-			$search_display_get = $_GET['display'];
-			//echo $search_display_get;
-			switch($search_display_get) {
-				case cloud: 	$search_mode=1; break;
-				case combined: 	$search_mode=2; break;
-				case form: 		$search_mode=3; break;
-			}
-		}
+		$search_display_get = $_GET['display'];
+		if (strstr($search_display_get, "cloud")) $search_mode += 1;
+		if (strstr($search_display_get, "form")) $search_mode += 2;
+		if (strstr($search_display_get, "field")) $search_mode += 4;
+		
+		//echo wpmt_is_search_mode("cloud", $search_mode) . " " . wpmt_is_search_mode("form", $search_mode). " " . wpmt_is_search_mode("field", $search_mode);			
 	}
 	
 	//$tax_id_list = (isset($tax_id_list) ? $tax_id_list : $_POST['tags']);
@@ -219,15 +221,27 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	// Define form prefix to avoid 2 same form names when widget displayed on result page
 	$search_form_prefix = ($called_from_widget ? 'widget_' : ''); 
 	
+	// Free field search
+	$wpit_free_search = (($_POST['search'] == "Clear" || ($_POST['wpit_free_search'] == $_POST['last_free_search']) && ($_POST['link_triggered']<21)) ? "" : $_POST['wpit_free_search']);
+	if ($wpit_free_search == "") {
+		$wpit_free_search = $search_field_default;	
+	}
+	if ($wpit_free_search != $search_field_default) {
+		$wpit_run_free_search = 1;
+		$tax_id_list = array();
+	}
+	//echo "wpit_free_search : " . $wpit_free_search . " (run : $wpit_run_free_search) <br/>";
+	
 	// Get result page
 	if ($result_page_url == '')
 		$result_page_url = get_permalink();
 		
 	// Get preset modes 
-	$preset_search_mode = admin_get_option_safe('wpit_search_default_display_mode', WPIT_SEARCH_INIT_DEFAULT_DISPLAY_MODE);	// 1: cloud only; 2: cloud & form; 3: form only
+	$preset_search_mode = admin_get_option_safe('wpit_search_default_display_mode', WPIT_SEARCH_INIT_DEFAULT_DISPLAY_MODE);	// bit : 0: cloud only; 1: cloud & form; 2: form only
 	$preset_result_mode = admin_get_option_safe('wpit_result_default_display_mode', WPIT_RESULT_INIT_DEFAULT_DISPLAY_MODE); // 1: gallery; 2: itemized image list; 3: title list
 	$search_mode = ($called_from_widget ? 1 : (isset($search_mode) ? $search_mode : ( $_POST['coming_from_widget'] ? $preset_search_mode : (isset($_POST['search_mode']) ? $_POST['search_mode'] : $preset_search_mode))));	
-	$is_search_mode_switchable = ($called_from_widget ? 0 : (isset($search_mode) && $search_mode == 0 ? 0 : admin_get_option_safe('wpit_search_display_switchable', WPIT_SEARCH_INIT_DISPLAY_SWITCHABLE)));
+	//phdbg($search_mode);
+	$is_search_mode_switchable = ($called_from_widget ? 0 : (admin_get_option_safe('wpit_search_display_switchable', WPIT_SEARCH_INIT_DISPLAY_SWITCHABLE)));
 	$is_result_mode_switchable = admin_get_option_safe('wpit_result_display_switchable', WPIT_RESULT_INIT_DISPLAY_SWITCHABLE);
 	$wpit_search_tags_excluded = admin_get_option_safe('wpit_search_tags_excluded', WPIT_SEARCH_INIT_TAGS_EXCLUDED);
 	$wpit_admin_background_color = admin_get_option_safe('wpit_admin_background_color', WPIT_ADMIN_INIT_BACKGROUND_COLOR);
@@ -235,10 +249,10 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	$result_mode = (isset($_POST['result_mode']) ? $_POST['result_mode'] : $preset_result_mode);
 
 	switch ($_POST['link_triggered']){
-		// 0: nothing ; 1: cloud only ; 2: cloud & form ; 3: form only
-		case 11:
-		case 12:
-		case 13: $search_mode = $_POST['link_triggered'] - 10; break; 
+		// 0: nothing ; 1: toggle cloud ; 2: toggle form ; toggle field
+		case 11: wpmt_toggle_search_mode("cloud", $search_mode); break;
+		case 12: wpmt_toggle_search_mode("form", $search_mode); break;
+		case 13: wpmt_toggle_search_mode("field", $search_mode); break; 
 		// 1: gallery ; 2: itemized image list; 3: title list
 		case 21:
 		case 22:
@@ -263,7 +277,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	
 	$wpit_result_display_optimize_xfer = admin_get_option_safe('wpit_result_display_optimize_xfer', WPIT_RESULT_INIT_OPTIMIZE_XFER);
 	
-	if ($search_mode <= 2) {  		// tagcloud or combined => prepare tagcloud display		
+	if (wpmt_is_search_mode("cloud", $search_mode)) {  				
 		$wpit_tagcloud_order = admin_get_option_safe('wpit_tagcloud_order', WPIT_INIT_TAGCLOUD_ORDER);
 
 		if ($num_tags_displayed == '')
@@ -326,7 +340,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 		
 	} // End prepare tag cloud
 	
-	if ($search_mode >= 2) {  // Prepare form display
+	if (wpmt_is_search_mode("form", $search_mode)) {  
 		$num_tags_per_col = admin_get_option_safe('wpit_search_num_tags_per_col', WPIT_SEARCH_INIT_NUM_TAGS_PER_COL);
 		$search_form_font = admin_get_option_safe('wpit_search_form_font', WPIT_SEARCH_INIT_FORM_FONT);
 
@@ -346,6 +360,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 		$tax_id_list[0] = $_POST['tagcloud'];
 	}
 
+
 	$strout .= '<script language="JavaScript" type="text/javascript">
 ';
 	$strout .= '<!--
@@ -360,13 +375,13 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 ';
 	$strout .= 'function tagsearchblur(element) {
 ';
-	$strout .= 'if(element.value == \'\') {element.value = \'' . __('Search tag starting with...', 'mediatagger') . '\';}
+	$strout .= 'if(element.value == \'\') {element.value = \'' . $search_field_default . '\';}
 ';
 	$strout .= '}
 ';
 	$strout .= 'function tagsearchfocus(element) {
 ';
-	$strout .= 'if(element.value == \'' . __('Search tag starting with...', 'mediatagger') . '\') {element.value = \'' . '' . '\';}
+	$strout .= 'if(element.value == \'' . $search_field_default . '\') {element.value = \'' . '' . '\';}
 ';
 	$strout .= '}
 ';
@@ -381,6 +396,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	$strout .= '<input type="hidden" name="tagcloud" value="">';
 	$strout .= '<input type="hidden" name="num_img_start" value="' . $num_img_start . '">';
 	$strout .= '<input type="hidden" name="link_triggered" value="">';
+	$strout .= '<input type="hidden" name="last_free_search" value="' . $wpit_free_search . '">';
 	if ($called_from_widget) $strout .= '<input type="hidden" name="coming_from_widget" value="1">';
 	
 
@@ -389,28 +405,21 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if ($is_search_mode_switchable) { 
 		$strout .= '<div style="clear:both;font-size:0.9em;padding:4px;margin:0;background-color:#' . $wpit_admin_background_color . '"><div style="float:right;color:#AAA;padding-right:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . __('Search display', 'mediatagger') . '</em></div><div style="padding-left:5px">';
-		if ($search_mode!=1) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'11\');return false" title="' .
-			__('Display the search form as a tag cloud', 'mediatagger') . '">';
-		$strout .= __('Tag cloud', 'mediatagger');
-		if ($search_mode!=1) $strout .= '</a>';
+		$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'11\');return false" title="' . __('Toggle tag cloud', 'mediatagger') . '">'. __('Tag cloud', 'mediatagger') . '</a>';
 		$strout .= ' &nbsp;';
-		if ($search_mode!=3) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'13\');return false" title="' . __('Display the search form as a check boxes form', 'mediatagger') . '">';
-		$strout .= __('Form', 'mediatagger');
-		if ($search_mode!=3) $strout .= '</a>';
+		$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'12\');return false" title="' . __('Toggle form', 'mediatagger') . '">'. __('Form', 'mediatagger') . '</a>';
 		$strout .= ' &nbsp;';
-		if ($search_mode!=2) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'12\');return false" title="' . __('Display the search form as a combination of the tag cloud and check boxed form', 'mediatagger') . '">';
-		$strout .= __('Combined', 'mediatagger'); 
-		if ($search_mode!=2) $strout .= '</a>';
+		$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'13\');return false" title="' . __('Toggle search field', 'mediatagger') . '">'. __('Search field', 'mediatagger') . '</a>';
 		$strout .= '</div></div>';
 	}
 
 	// Free search field
-	if (!$called_from_widget)
-		$strout .=  '<p style="clear:both;margin:0;padding:20px 0 0 10px"><input type="text" style="font-style: italic;" name="wpit_free_search" size="24" onblur="tagsearchblur(this);" onfocus="tagsearchfocus(this);" value="' .  __('Search tag starting with...', 'mediatagger') . '"></p>';
+	if (!$called_from_widget && wpmt_is_search_mode("field", $search_mode))
+		$strout .=  '<p style="clear:both;margin:0;padding:' . ($is_search_mode_switchable ? '15' : '0') . 'px 0 0 10px"><input type="text" style="font-style: italic;" name="wpit_free_search" size="26" onblur="tagsearchblur(this);" onfocus="tagsearchfocus(this);" value="' . $wpit_free_search . '" title="' . __('Type here the keyword that will be searched in the media names database, rather than filtering on the tags attached to the medias.', 'mediatagger') .'"></p>';
 	
-	$strout .= '<p style="clear:both;padding:' . ($is_search_mode_switchable ? '15' : '0') . 'px 0 0 0;margin:0">';	
+	$strout .= '<p style="clear:both;padding:' . ($is_search_mode_switchable ? '15' : '15') . 'px 0 0 0;margin:0">';	
 
-	if ($search_mode > 0 && $search_mode <= 2) { // Display tag cloud
+	if (wpmt_is_search_mode("cloud", $search_mode)) { // Display tag cloud
 		$checked_tags = (isset($tax_id_list) ? $tax_id_list : array());
 		foreach ($tax_tab as $tax){ 
 			$color_rgb[0] = round($color_scale[0]*$tax->count + $color_min_rgb[0], 0);
@@ -433,26 +442,45 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	}
 
 	
-	if (empty($tax_id_list) ) {	// case no tag selected
-		if ($search_mode == 0)
-			$strout .= '<em>'. __('None of the selected tag(s) match existing tags. The media search URL should be composed as http://www.mysite.com/library?tags=tag1+tag2+...+tagN, where http://www.mysite.com/library is the search result page. Check the spelling of the tag slugs', 'mediatagger') . '</em> : <strong>' . $_GET['tags'] . '</strong>';
-		else if ($search_mode == 2)
-			$strout .= '<em>'. __('You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK.', 'mediatagger') . '</em>';
-		else if ($search_mode == 3)
-			$strout .= '<em>'. __('You can search a media by theme by selecting appropriate keywords below and clicking OK.', 'mediatagger') . '</em>';
-	} else {
-		// Tags selected - search must be started
-		$tagsSelected = 1;
-		//printf(_n('Theme matched', 'Themes matched', sizeof($_POST['tags']), 'mediatagger')) ; 
+	if (empty($tax_id_list) && !$wpit_run_free_search) {	// case no tag selected
+		switch ($search_mode) {
+			case 0:	// available search method : none (means search was done from URL)
+				$strout .= '<em>'. __('None of the selected tag(s) match existing tags. The media search URL should be composed as http://www.mysite.com/library?tags=tag1+tag2+...+tagN, where http://www.mysite.com/library is the search result page. Check the spelling of the tag slugs', 'mediatagger') . '</em> : <strong>' . $_GET['tags'] . '</strong>'; break;
+			case 1:	// available search method : cloud
+				$strout .= '<em>'. __('You can search a media by theme with the tag cloud above.', 'mediatagger') . '</em>'; break;
+			case 2:	// available search method : 		form
+				$strout .= '<em>'. __('You can search a media by theme by selecting appropriate keywords below and clicking OK.', 'mediatagger') . '</em>'; break;	
+			case 3: // available search method : cloud 	form
+				$strout .= '<em>'. __('You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK.', 'mediatagger') . '</em>'; break;
+			case 4: // available search method : 				field
+				$strout .= '<em>'. __('You can search a media entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;
+			case 5: // available search method : cloud 			field
+				$strout .= '<em>'. __('You can search a media by theme with the tag cloud above or entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;
+			case 6: // available search method : 		form	field
+				$strout .= '<em>'. __('You can search a media by theme by selecting appropriate keywords below and clicking OK or entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;	
+			case 7: // available search method : cloud	form	field
+				$strout .= '<em>'. __('You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK or entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;
+		}
+	} else {	// free search
 		$strout .= '&raquo;<strong> ';
-		foreach($tax_id_list as $n=>$img_tax_id) {
-			if ($n) $strout .= ', ';
-			$tax = imgt_get_tag_descriptors('term_taxonomy_id=' . $img_tax_id);
-			$strout .= $tax->name;
+		if ($wpit_run_free_search) {
+			$multisort_img_list = imgt_get_image_ID($wpit_free_search);	// search images matching keyword
+			$strout .= "*" . $wpit_free_search . "*";
+		} else {
+			// Tags selected - search must be started
+			//$tagsSelected = 1;
+			//printf(_n('Theme matched', 'Themes matched', sizeof($_POST['tags']), 'mediatagger')) ; 
+			foreach($tax_id_list as $n=>$img_tax_id) {
+				if ($n) $strout .= ', ';
+				$tax = imgt_get_tag_descriptors('term_taxonomy_id=' . $img_tax_id);
+				$strout .= $tax->name;
+			}
+			$multisort_img_list = imgt_get_image_ID($tax_id_list);	// search images matching tag list
 		}
 		$strout .= '</strong> : ';
+		
+		//phdbg($multisort_img_list);
 
-		$multisort_img_list = imgt_get_image_ID($tax_id_list);	// search images matching tag list
 		$num_img_found = sizeof($multisort_img_list);
 		if (!$num_img_found) {
 			$strout .= '<i>' . __('no media found matching this criteria list', 'mediatagger') . '</i><br/>';
@@ -539,7 +567,7 @@ if ($is_result_mode_switchable) {
 								'px solid #' . $img_border_color . '"></a>';
 						} else {	// attachment is not an image : TXT, PDF, MP3, etc.
 							$strout .= '<span style="float:left"><a href="'. ($link_media_to_post ? $img_info->post_URI : $img_info->url) .
-								 '">' . '<img src="' . $img_info->image . '" width="' . $img_w*.5 .'" >' . '<br/><span style="font-size:0.6em;padding:0 5px">' . 
+								 '">' . '<img src="' . $img_info->image . '" width="' . $img_w*.8 .'" >' . '<br/><span style="font-size:0.7em;padding:0 5px">' . 
 								 basename($img_info->url) . '</span></a></span>';	
 						}
 						break;
@@ -577,7 +605,7 @@ if ($is_result_mode_switchable) {
 		if ($num_img_stop < $num_img_found) $strout .= '<a href="' . $result_page_url . '" onClick="post_submit(\'link_triggered\',\'31\');return false" title="' . __("Click to display next page",'mediatagger') . '">';
 		$strout .= __('next', 'mediatagger') . ' &raquo;' . ($num_img_stop < $num_img_found ? '</a>' : '') . '</p>';
 	}	// if ($display_pagination)
-	if ($search_mode >= 2) {	// form
+	if (wpmt_is_search_mode("form", $search_mode)) {	// form
 		if ($display_pagination || !$num_img_found || ($num_img_found && !$display_pagination) )
 			$strout .= '<p style="margin:0;padding:5px 0 0 0;clear:both">&nbsp;</p>';
 		
