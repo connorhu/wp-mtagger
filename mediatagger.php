@@ -202,6 +202,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 		//print_ro($tag_list_get);
 		$tax_id_list = imgt_slug_to_taxonomy($tag_list_get);
 		//print_ro($tax_id_list);
+		$search_mode=0;
 	}
 	
 	if (isset($_GET['display'])){		// a GET url was formed : http://www.photos-dauphine.com/phototheque?tag=lumiere+arbre+foret&display=cloud 
@@ -417,7 +418,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 	if (!$called_from_widget && wpmt_is_search_mode("field", $search_mode))
 		$strout .=  '<p style="clear:both;margin:0;padding:' . ($is_search_mode_switchable ? '15' : '0') . 'px 0 0 10px"><input type="text" style="font-style: italic;" name="wpit_free_search" size="26" onblur="tagsearchblur(this);" onfocus="tagsearchfocus(this);" value="' . $wpit_free_search . '" title="' . __('Type here the keyword that will be searched in the media names database, rather than filtering on the tags attached to the medias.', 'mediatagger') .'"></p>';
 	
-	$strout .= '<p style="clear:both;padding:' . ($is_search_mode_switchable ? '15' : '15') . 'px 0 0 0;margin:0">';	
+	$strout .= '<p style="clear:both;padding:' . ($called_from_widget ? '0' : '15') . 'px 0 0 0;margin:0">';	
 
 	if (wpmt_is_search_mode("cloud", $search_mode)) { // Display tag cloud
 		$checked_tags = (isset($tax_id_list) ? $tax_id_list : array());

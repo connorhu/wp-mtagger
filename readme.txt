@@ -350,7 +350,9 @@ The search can be presented to the visitor under two different representations t
 
 - a **tag cloud display** : the tags available for search are presented WordPress fashion ; this representation is compact but suitable for single tag search only
 - a **form display** : the tags are listed in a form ; the search is done by ticking one or more tags. This makes this representation more adapted for advanced, multi-criteria search, although requiring potentially much more room on your page in case of big tag collection.
-- a **combined display** : ultimately the 2 display styles can be merged in one ; the tag cloud is displayed above the search form, to bring at the same time the lightness and efficiency of the tag cloud method while proposing the search form for more advanced filtering.
+- a **text field** : to search on the media names rather on the tags associated to those medias.
+
+All these modes can be freely combined.
 
 = Can the visitor switch between the three search display styles ? =
 
@@ -464,11 +466,11 @@ Some examples :
 *Result* : 	the 6 parameters are forced to the values passed in, and the corresponding options set in the admin panel are ignored.
 
 
-= Can a search be triggered directly from the URL, not being through the tag cloud or search form ? =
+= Can a search be triggered directly from the URL, not being through the tag cloud, search form or search field? =
 
 Yes, this is possible. A search can now be done directly on the media database without going through the search form or tag cloud. All you have to do is to form URLs like `http://wwww.mysite.com/media_library?tags=car+plane+airport`, forming your tag list using tag slugs. In that example, the page *media_library* is the one set with the search form and/or tag cloud, that will be displayed with the tag cloud and/or search form, clean of any search result if requesting `http://wwww.mysite.com/media_library`. A tag slug is the tag name with no accent and spaces replaced by hyphens. For instance, the tag "l'automne en for&ecirc;t" becomes "l-automne-en-foret".
 
-By default the result page produced by explicit search URL will not hold any tag cloud or search form. Anyhow you can request to have this capability on top of the search results by forming URL like : `http://wwww.mysite.com/media_library?tags=car+plane+airport&display=cloud`. Possible values for the *display* argument are : *cloud*, *form*, *combined*.
+By default the result page produced by explicit search URL will not hold any tag cloud or search form. Anyhow you can request to have this capability on top of the search results by forming URL like : `http://wwww.mysite.com/media_library?tags=car+plane+airport&display=cloud+form`. Possible values for the *display* argument are : *cloud*, *form*, *field*, which can be combined together.
 
 
 = What is the Media Taxonomy feature all about ? =
