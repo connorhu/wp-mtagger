@@ -1,8 +1,0 @@
-- free field : understood.
-- thumbnails width control : I will have a look, it will probably be controlled by an extra parameter, specifying that the maximum applies either to W, to H or to the max of the 2 (as done today) - no way to override by yourself without changing the code
-- png displayed as TXT : I visited your sandbox site today and did not understood why that. I have PNG file on my server and did not face such a behaviour. I really cannot figure out why that. Is your PNG file extension really ".png" ? (it seems to be as I could see on your site, but pls document any specificity here). To make sure I uploaded your file on my site and look :
-   
-    http://www.photos-dauphine.com/phototheque?tags=inclassable
-
-The png thumbnail (bottom right) is hard to read due to the strong undersampling (original image is BIG), but the image is well identified as PNG.
-Ultimately I will provide you a release logging some information to better understand
