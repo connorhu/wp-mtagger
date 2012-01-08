@@ -4,12 +4,12 @@ Plugin Name: MediaTagger
 Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: This extensively configurable plugin comes packed with a bunch of features enabling media tagging, including search and media taxonomy.
 Author: www.photos-dauphine.com
-Version: 3.1
+Version: 3.1.1
 Stable tag: 3.1
 Author URI: http://www.photos-dauphine.com/
 */
 
-/*  Copyright 2011 PHD - http://www.photos-dauphine.com  (email : http://www.photos-dauphine.com/ecrire )
+/*  Copyright 2012 PHD - http://www.photos-dauphine.com  (email : http://www.photos-dauphine.com/ecrire )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -405,7 +405,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 //////////////////////////////////////////////////////// Display search mode selector  ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if ($is_search_mode_switchable) { 
-		$strout .= '<div style="clear:both;font-size:0.9em;padding:4px;margin:0;background-color:#' . $wpit_admin_background_color . '"><div style="float:right;color:#AAA;padding-right:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . __('Search display', 'mediatagger') . '</em></div><div style="padding-left:5px">';
+		$strout .= '<div style="clear:both;font-size:0.9em;height:25px;padding:4px;margin:0;background-color:#' . $wpit_admin_background_color . '"><div style="float:left;color:#AAA;padding-left:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . __('Search display', 'mediatagger') . '</em></div><div style="float:right;padding-right:5px">';
 		$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'11\');return false" title="' . __('Toggle tag cloud', 'mediatagger') . '">'. __('Tag cloud', 'mediatagger') . '</a>';
 		$strout .= ' &nbsp;';
 		$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_prefix . 'post_submit(\'link_triggered\',\'12\');return false" title="' . __('Toggle form', 'mediatagger') . '">'. __('Form', 'mediatagger') . '</a>';
@@ -502,7 +502,7 @@ function imgt_multisort_insert($result_page_url='', $num_tags_displayed = '', $f
 //////////////////////////////////////////////////////// Display result mode selector  ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if ($is_result_mode_switchable) {
-	$strout .= '<div style="clear:both;font-size:0.9em;padding:4px;margin:0;background-color:#' . $wpit_admin_background_color . '"><div style="float:right;color:#AAA;padding-right:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . __('Results display', 'mediatagger') . '</em></div><div style="padding-left:5px">';
+	$strout .= '<div style="clear:both;font-size:0.9em;height:25px;padding:4px;margin:0;background-color:#' . $wpit_admin_background_color . '"><div style="float:left;color:#AAA;padding-left:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . __('Results display', 'mediatagger') . '</em></div><div style="float:right;padding-right:5px">';
 	if ($result_mode != 1) $strout .= '<a href="' . $result_page_url . '" onClick="post_submit(\'link_triggered\',\'21\');return false" title="' . __('Display the results as an image gallery', 'mediatagger') . '">';
 	$strout .= __('Gallery', 'mediatagger');
 	if ($result_mode != 1) $strout .= '</a>';

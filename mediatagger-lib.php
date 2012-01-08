@@ -960,7 +960,8 @@ function imgt_get_img_info($obj_id) {
 	//echo ">> get_option( 'upload_path' ) : " . get_option( 'upload_path' ) . "<br/>";
 		
 	$img_info->title = get_the_title($obj_id);
-	$img_info->mime = my_mime_content_type(get_attached_file($obj_id));
+	//$img_info->mime = my_mime_content_type(get_attached_file($obj_id));
+	$img_info->mime = get_post_mime_type($obj_id);
 	//echo "MIME : $img_info->mime <br/>";
 	$img_info->url = wp_get_attachment_url($obj_id);
 
