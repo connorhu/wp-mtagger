@@ -520,8 +520,8 @@ function print_tag_form($checked_tags, $admin_page = 0) {
 		$multiple_groups = 1;
 	$manual_col_brk = imgt_detect_form_column_breaks();
 		
-//phdbg($wpit_admin_tags_groups);
-//phdbg($g_imgt_tag_taxonomy);
+// phdbg($wpit_admin_tags_groups);
+// phdbg($g_imgt_tag_taxonomy);
 
 	$group = '';
 	$new_group = 0;
@@ -1278,6 +1278,8 @@ function imgt_taxonomy_update(){
 	
 	$g_imgt_tag_taxonomy = array_merge($g_imgt_tag_taxonomy_tags, $g_imgt_tag_taxonomy_cats);
 	
+	// Sort tags alphabetically - this sort will be the one used for the tag form if no groups are defined for the tags
+	uasort($g_imgt_tag_taxonomy, imgt_cmp_objects_lexicography);
 	
 	// Build tag groups as defined in the admin interface
 	imgt_build_tag_groups($wpit_admin_tags_groups, $wpit_admin_tags_source);
