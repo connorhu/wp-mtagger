@@ -3,8 +3,8 @@ Contributors: phd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WY6KNNHATBS5Q
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 3.1.1
+Tested up to: 3.4
+Stable tag: 3.2
 
 
 
@@ -21,6 +21,12 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Log visitors search and make it visible to the administrator
 - Group wpit options in one string to streamline options table usage (no usability impact)
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
+
+
+= 3.2 =
+
+- Changes made to bring compatibility with WP3.4. Indeed image caption shortcode is not supported anymore starting with 3.4. As a consequence it is not possible anymore to click on the caption to assign a tag to an image, when logged as admin.
+- Some opening php achors ("<?") were corrected to the compliant notation ("<?php")
 
 
 = 3.1.1 =
@@ -319,7 +325,7 @@ Having installed the plugin according to the instructions provided on the [insta
 
 - From your WordPress administration panel, go to *Manage > MediaTagger* and start associating the first media found to any tag in the *Tag Editor* ;
 - Or, switch to the *Media Explorer* mode, navigate to the file you want to tag and click on the file to select it back to the *Tag Editor* ;
-- Or, assuming your site display captions below each media : from any post or page holding medias, click on the media caption (being administrator) and make the association with any tag from the *Tag Editor* panel.
+- *** NOT SUPPORTED ANYMORE STARTING 3.4 *** Or, assuming your site display captions below each media : from any post or page holding medias, click on the media caption (being administrator) and make the association with any tag from the *Tag Editor* panel.
 
 = How do I know if a media is tagged or not ? =
 
