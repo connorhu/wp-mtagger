@@ -26,7 +26,7 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 = 3.2 =
 
 - Changes made to bring compatibility with WP3.4. Indeed image caption shortcode is not supported anymore starting with 3.4. As a consequence it is not possible anymore to click on the caption to assign a tag to an image, when logged as admin.
-- Some opening php achors ("<?") were corrected to the compliant notation ("<?php")
+- Some opening php achors ("&lt;?") were corrected to the compliant notation ("&lt;?php")
 
 
 = 3.1.1 =
