@@ -453,10 +453,17 @@ if ($show_post_tags) {
 
 <?php if ($view == 'list_view') { // ===================================================== List view ===================================================== 
 	$num_img_per_page = 100;
+	$list_view_search_tab = explode(':', $list_view_search);
+	if ($list_view_search_tab[0] == 'start') {
+		$start_img_num = $list_view_search_tab[1];
+		$list_view_search = "";
+	} else
+		$start_img_num = $list_image_start_page;
+	//phdbg($start_img_num);
 	$img_list = imgt_match_keyword($list_type, $list_view_search);
 	//print_ro($img_list);
+
 	$num_img = count($img_list);
-	$start_img_num = $list_image_start_page;
 	$stop_img_num = $start_img_num + $num_img_per_page;
 	if ($stop_img_num > $num_img)
 		$stop_img_num = $num_img;
@@ -470,7 +477,7 @@ if ($show_post_tags) {
 <input type="hidden" name="list_image_start_page" value="">
 <input type="hidden" name="list_img_id" value="">
 
-<p style="padding:0px 0px 20px 0px;margin:0;font-size:0.9em"><em><?php _e('Displaying medias', 'mediatagger') ?> :</em> <?php echo ($list_type != 'tagged_images' ? '<a href="" title="' . __('Display tagged medias', 'mediatagger') . '" onClick="post_submit(' . "'list_type', 'tagged_images');return false" . '">' : '') . __('tagged', 'mediatagger') .  ($list_type != 'tagged_images' ? '</a>' : '') . '&nbsp; ' . ($list_type != 'untagged_images' ? '<a href="" title="' . __('Display untagged medias', 'mediatagger') . '" onClick="post_submit(' . "'list_type', 'untagged_images');return false" . '">' : '') . __('untagged', 'mediatagger') . ($list_type != 'utagged_images' ? '</a>' : '') . '&nbsp; ' . ($list_type != 'all_images' ? '<a href="" title="' . __('Display all medias', 'mediatagger') . '" onClick="post_submit(' . "'list_type', 'all_images');return false" . '">' : '') . __('all', 'mediatagger') . ($list_type != 'all_images' ? '</a>' : '') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="list_view_search" value="<? echo $list_view_search ?>" size="40" title="<?php _e('The search currently supports single keyword pattern - Search will be done on media title and hosting post or page title', 'mediatagger') ?>"></p>
+<p style="padding:0px 0px 20px 0px;margin:0;font-size:0.9em"><em><?php _e('Displaying medias', 'mediatagger') ?> :</em> <?php echo ($list_type != 'tagged_images' ? '<a href="" title="' . __('Display tagged medias', 'mediatagger') . '" onClick="post_submit(' . "'list_type', 'tagged_images');return false" . '">' : '') . __('tagged', 'mediatagger') .  ($list_type != 'tagged_images' ? '</a>' : '') . '&nbsp; ' . ($list_type != 'untagged_images' ? '<a href="" title="' . __('Display untagged medias', 'mediatagger') . '" onClick="post_submit(' . "'list_type', 'untagged_images');return false" . '">' : '') . __('untagged', 'mediatagger') . ($list_type != 'utagged_images' ? '</a>' : '') . '&nbsp; ' . ($list_type != 'all_images' ? '<a href="" title="' . __('Display all medias', 'mediatagger') . '" onClick="post_submit(' . "'list_type', 'all_images');return false" . '">' : '') . __('all', 'mediatagger') . ($list_type != 'all_images' ? '</a>' : '') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="list_view_search" value="<?php echo $list_view_search ?>" size="40" title="<?php _e('The search currently supports single keyword pattern - Search will be done on media title and hosting post or page title', 'mediatagger') ?>"></p>
 
 <?php
 	if ($num_img > $num_img_per_page) { 	// display pagination
@@ -811,7 +818,7 @@ echo $h_on ; _e("Number of image titles per list page ", 'mediatagger' ); echo $
 
 <div class="submit" style="padding-top:5px"><input type="submit" name="Submit" value="<?php _e('Update Options', 'mediatagger' ) ?> &raquo;" /></div>
 
-<? } // end if ($display_options) 
+<?php } // end if ($display_options) 
 else if ($_POST['preview']) {
 
 echo "<br/>" . __('Review below the results you would get by applying the media taxonomy to your posts', 'mediatagger') . ' ;<br/>';
