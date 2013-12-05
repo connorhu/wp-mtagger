@@ -32,6 +32,7 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - The plugin is now available in spanish. It is by default in english, you can now localize it in french or spanish. In order to do so, add to your wp-config.php file : 
 
 French: *define('WPLANG', 'fr_FR');*
+
 Spanish: *define('WPLANG', 'es_ES');*
 
 Thanks to J. Kovacevic, A. Kurtis for their contribution.
