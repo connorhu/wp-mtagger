@@ -33,7 +33,6 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 
 French :
 *define('WPLANG', 'fr_FR');*
-
 Spanish :
 *define('WPLANG', 'es_ES');*
 
