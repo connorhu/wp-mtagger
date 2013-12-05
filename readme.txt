@@ -3,7 +3,7 @@ Contributors: phd38
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WY6KNNHATBS5Q
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
-Tested up to: 3.4
+Tested up to: 3.7.1
 Stable tag: 3.2.1
 
 
