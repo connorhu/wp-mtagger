@@ -23,9 +23,21 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
 
 
-= 3.2.1 =
+= 3.2.2 =
 
 - In the list view, you can select the first photo to be listed on the page by typing 'start:xxx' in the seach field, xxx being the index of the first photo to be listed on the page. The newer the photo, the higher the index.
+
+= 3.2.1 =
+
+- The plugin is now available in spanish. It is by default in english, you can now localize it in french or spanish. In order to do so, add to your wp-config.php file : 
+
+*// For french :*
+*define('WPLANG', 'fr_FR');*
+
+*// For spanish :*
+*define('WPLANG', 'es_ES');*
+
+Thanks to J. Kovacevic, A. Kurtis for their contribution.
 
 
 = 3.2 =
