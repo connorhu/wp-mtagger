@@ -527,7 +527,7 @@ Make sure you include the *wp_term_relationships_img* table specifically created
 
 = What are the available languages ? =
 
-*English*, *French*,  
+*English*, *French*, *Spanish* 
 ... and as much as you can contribute if you are fluent with a language not in this list. More details on the [changelog page bottom](http://wordpress.org/extend/plugins/wp-mediatagger/changelog/ "WP MediaTagger Changelog"), *in project* section.  
 
 = Damned, my question is not listed there !!? =
