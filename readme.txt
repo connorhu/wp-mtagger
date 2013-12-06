@@ -31,6 +31,7 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 
 Thanks to [WebHostingHub](http://www.webhostinghub.com/ "WebHostingHub") for the spanish translation.
 
+- In the list view of the media explorer (admin), you can select the first photo to be listed on the page by typing 'start:xxx' in the seach field, xxx being the index of the first photo to be listed on the page. The newer the photo, the higher the index.
 
 
 = 3.2 =
