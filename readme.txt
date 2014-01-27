@@ -1,9 +1,9 @@
 === WP MediaTagger ===
-Contributors: phd38, WebHostingHub
+Contributors: phd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WY6KNNHATBS5Q
-Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, gallery, photoblog, search, engine, classification, database, cleanup
+Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, tagging, bulk tagging, group tagging, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
-Tested up to: 3.7.1
+Tested up to: 4.0
 Stable tag: 3.2.1
 
 
@@ -13,14 +13,31 @@ Stable tag: 3.2.1
 = Future possible implementations =
 A lot of some enhancements brought to *MediaTagger* were made thanks to your suggestions. Feel free to [contribute](http://www.photos-dauphine.com/ecrire "Suggestions") with your own proposals :
 
-- Implement bulk tagging,
 - Check tags associated to medias in the *wp_term_relationships* table. Sometime there are many, although I would expect the only default tag '1' (default category) is there. Possibly cleanup if too mazy.
-- Fix GD problem occuring in some cases
 - Plugin cleanup to make the HTML generated code strict XHTML compliant
 - Improved pagination for multipage results, displaying quick access page links
 - Log visitors search and make it visible to the administrator
-- Group wpit options in one string to streamline options table usage (no usability impact)
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
+
+
+= 4.0 - Major release, plugin redevelopped using OOP =
+
+- Structural change : plugin ported to Object Oriented Programmation ; ths will drastically reduce the risk of variable collision with other plugin or WordPress codex itself.
+- Compatible with previous plugin releases. 
+- Compatible with WordPress 3.8.
+- Graphical interface streamlined :
+- Plugin setup now directly accessible from the left side column menu in the WordPress administration panel. 3 submenus :
+- Interface 1 : media explorer, to select media and manage tags; functionality widely enhanced to improve user experience. For instance a customer list of media can be built for later tagging. In the tagging view, easier navigation back and forth.
+- Interface 2 : player, to interact live with the database you populate while tagging.
+- Interface 3 : options ; the presentation is now much lighter.
+- Group (or 'bulk') tagging to tag similarly a group of media selected ; flexible media selection.
+- Tagging data now stored in *wp_mediatagger* table - not anymore in *wp_term_relationships_img*.
+- plugin options are now stored in a serialized option variable in the database to avoid jamming it with too many insertions related to the same plugin.
+- code cleaning : deprecated functions replaced with recommended equivalents.
+- new short code added, on top of the existing *[mediatagger]* used so far : [mediatagger_count] ; it displays the number of media available.
+- spanish version temporarily unavailable with this release - this will be fixed in the next release. this is due to many messages that were changed and not available anymore in the translation.
+- finally : this new version was extensively tested on a database holding 2000 media. I would rate it as pretty stable, waiting for your feedbacks...
+
 
 
 = 3.2.1 =
