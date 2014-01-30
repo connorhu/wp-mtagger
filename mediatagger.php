@@ -140,6 +140,7 @@ class wp_mediatagger{
 
 		include_once($filename_prefix . '-def.php');
 		self::$t = $t;
+		//self::print_ro($t);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -733,8 +734,8 @@ class wp_mediatagger{
 			
 		echo "<h1>" . self::$PLUGIN_NAME . " - Explorer</h1>";
 		
-		$list_type_desc = array('media_all' => 'all media', 'media_tagged' => 'tagged media', 'media_untagged' => 'untagged media', 
-			'custom_list' => 'list', 'post' => 'post', 'search' => 'search result');
+		$list_type_desc = array('media_all' => self::$t->all_media, 'media_tagged' => self::$t->tagged_media, 'media_untagged' => self::$t->untagged_media, 
+			'custom_list' => self::$t->list_media, 'post' => 'post', 'search' => 'search result');
 
 		$search_keyword = $_POST['mdtg_search'];
 		$list_select = ($_POST['mdtg_select'] ? $_POST['mdtg_select'] : array());
@@ -796,12 +797,12 @@ class wp_mediatagger{
         	<input type="hidden" name="mdtg_list_type" value="<?php echo $list_type ?>">
         	<input type="hidden" name="mdtg_custom_list" value="<?php echo implode(',', $custom_list) ?>">
         	<input type="hidden" name="mdtg_post_ID" value="<?php echo $post_ID ?>">
-            Displaying : <b><?php echo $list_type_desc[$list_type] . ' (' . count($media_list) . ')'; ?></b><br/>View : &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','media_all');return false;" title="List all media">All media</a> (<?php echo $count->total ?>) &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','media_tagged');return false;" title="List tagged media">Tagged media</a> (<?php echo $count->tagged ?>) &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','media_untagged');return false;" title="List untagged media">Untagged media</a> (<?php echo $count->untagged ?>) &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','custom_list');return false;" title="List media added to the custom list">List</a> (<?php echo count($custom_list) ?>) &nbsp;
-            <input type="text" name="mdtg_search" title="Search all media" value="<?php echo $search_keyword ?>" onkeydown="if (event.keyCode == 13) {mdtg_submit('mdtg_list_type','search');return false;}" />
+            <?php echo self::$t->displaying ?> : <b><?php echo $list_type_desc[$list_type] . ' (' . count($media_list) . ')'; ?></b><br/><?php echo self::$t->view ?> : &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','media_all');return false;" title="List all media"><?php echo self::$t->all_media ?></a> (<?php echo $count->total ?>) &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','media_tagged');return false;" title="List tagged media"><?php echo self::$t->tagged_media ?></a> (<?php echo $count->tagged ?>) &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','media_untagged');return false;" title="List untagged media"><?php echo self::$t->untagged_media ?></a> (<?php echo $count->untagged ?>) &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','custom_list');return false;" title="List media added to the custom list"><?php echo self::$t->list_media ?></a> (<?php echo count($custom_list) ?>) &nbsp;
+            <input type="text" name="mdtg_search" title="<?php echo self::$t->search_all_media ?>" value="<?php echo $search_keyword ?>" onkeydown="if (event.keyCode == 13) {mdtg_submit('mdtg_list_type','search');return false;}" />
             
 		<?php
 		$button_list_disable = array();
@@ -812,7 +813,7 @@ class wp_mediatagger{
 		if (!$custom_list) $button_list_disable = array_merge($button_list_disable, array('Reset list'));
 
 		self::print_media_list(count($media_list), $media_displayed_list, $list_select, $display_start, $display_depth, 
-			array("Tag", "spacer", "Add to list", "Remove from list", "Reset list"), $button_list_disable);
+			array(self::$t->tag_, "spacer", self::$t->add_to_list_, self::$t->remove_from_list_, self::$t->reset_list_), $button_list_disable);
 		?>
         </form>
         <?php
@@ -869,13 +870,14 @@ class wp_mediatagger{
     	<?php 
 			foreach ($button_group as $button) {
 				if ($button == "spacer") echo " &nbsp; &nbsp; ";
-				else echo '<input type="submit" name="mdtg_submit_list" value="' . $button . '" ' . 
-					(in_array($button, $button_list_disable) && $button_list_disable ? 'disabled' : '') . ' />';
+				else echo '<button type="submit" name="mdtg_submit_list" value="' . $button . '" ' . 
+					(in_array($button, $button_list_disable) && $button_list_disable ? 'disabled' : '') . ' >' . self::__($button) . '</button>';
+//				else echo '<input type="submit" name="mdtg_submit_list" value="' . $button . '" ' . 
+//					(in_array($button, $button_list_disable) && $button_list_disable ? 'disabled' : '') . ' />';
 			}
 			echo '</div><div>';
 		?>
-				Display <input type="text" name="mdtg_display_depth" value="<?php echo $display_depth ?>" size="4" title="display depth"/> media
-				starting from <input type="text" name="mdtg_display_start" value="<?php echo $display_start ?>" size="4" title="start display index"/>
+				<?php echo self::$t->display ?> <input type="text" name="mdtg_display_depth" value="<?php echo $display_depth ?>" size="4" title="<?php echo self::$t->display_depth ?>"/> <?php echo self::$t->media_starting_from ?> <input type="text" name="mdtg_display_start" value="<?php echo $display_start ?>" size="4" title="<?php echo self::$t->start_display_index ?>"/>
 			</div>
 		</div>
 		<?php
