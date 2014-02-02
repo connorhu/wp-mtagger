@@ -898,7 +898,7 @@ class wp_mediatagger{
 			if (strlen($media_title) > 50) $media_title = substr($media_title,0, 50) . '...'; // shorten name if too long
 			$post_url = '<a href="" . onClick="mdtg_submit(\'mdtg_list_type\',\'post\', 1);mdtg_submit(\'mdtg_post_ID\',' . $media_info->post_ID . ');return false;" ' . 
 				'title="View media attached to post" style="color:#889;">' . $media_info->post_title . '</a>';
-			$post_title = ($media_info->post_ID < 0 ? '<em>(' . __('Orphean media, not linked to any post', 'mediatagger') . ')</em>' : ($is_editor ? $media_info->post_title : $post_url));
+			$post_title = ($media_info->post_ID < 0 ? '<em>(' . self::$t->orphean_media . ')</em>' : ($is_editor ? $media_info->post_title : $post_url));
 			
 			$bckcol = ($bckcol == "ffffff" ? "f0f0f0" : "ffffff");
 			echo '<div class="media_list" style="background-color:#' . $bckcol . ';">' . 
@@ -911,7 +911,7 @@ class wp_mediatagger{
 				if ($key) echo ", ";
 					echo $tag->name; 
 				}
-			if (!count($media_tags)) echo "<i>No tag associated to this media</i>";
+			if (!count($media_tags)) echo "<i>" . self::$t->no_tag_associated . "</i>";
 			echo '</p></div>';
 		}
 	}
@@ -1458,7 +1458,7 @@ class wp_mediatagger{
 				break;
 		}
 		
-		$result_display_optimize_xfer = self::$opt['result_display_optimize_xfer'];
+		$result_display_optimize_xfer = self::$opt['result_display_optimize_xfer'] % 2 ;	// 1==>1 2==>0
 
 	
 		//////////////////////////////// BEGIN : prepare cloud search mode /////////////////////////////////////////////////////////////
@@ -2027,6 +2027,23 @@ class wp_mediatagger{
         
         </form>
         
+    <hr />
+    <p>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="padding-right:10px; float:left">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="WY6KNNHATBS5Q">
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    
+    </form>
+    
+    <?php echo __('If you experience this plugin brings value to your site, you are free to make a donation for supporting the development and maintenance.', 'mediatagger') . '<br/>'. __('Even small donations matter and are encouraging !', 'mediatagger' ) ?>
+    </p>
+    
+    <hr />
+    <p style="padding:0;margin-top:-5px;font-size:0.8em"><em><?php echo ' <a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="WordPress MediaTagger Plugin Home">WP MediaTagger</a> ' . self::$PLUGIN_VERSION . ' | ' ; echo 'PHP ' . phpversion() .  ' | MySQL ' . mysql_get_server_info() . ' | GD Lib ' . ( self::$GD_VERSION ? self::$GD_VERSION : __('not available','mediatagger') ) ;?></em></p>
+        
         <?php
 //		self::print_ro(self::$opt);
 //		self::print_ro(self::$tax);
@@ -2215,7 +2232,7 @@ class wp_mediatagger{
 	//	
 	private function check_option_coherence(&$error_list=array()) {
 		
-		// Force display optimize xfer to 0 if library GD not installed
+		// Force display optimize xfer to 2 if library GD not installed
 		if (!self::$GD_VERSION) {
 			self::$opt['result_display_optimize_xfer'] = 2;
 			

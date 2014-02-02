@@ -25,6 +25,8 @@ _("Tag");
 _("Add to list");
 _("Remove from list");
 _("Reset list");
+_("Orphean media, not linked to any post");
+_("No tag associated to this media");
 _("Search display");
 _("PHP Version %.2f is the minimum required on your server to run the %s plugin.");
 _("Version %s was detected on the server.");

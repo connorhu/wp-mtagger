@@ -35,6 +35,9 @@
 	$t-> remove_from_list = 'Remove from list';
 	$t-> reset_list = 'Reset list';
 	
+	$t-> orphean_media = 'Orphean media, not linked to any post';
+	$t-> no_tag_associated = 'No tag associated to this media';
+	
 	$t-> search_display = "Search display";
 	$t-> php_version_outdated = "PHP Version %.2f is the minimum required on your server to run the %s plugin.";
 	$t-> php_version_current = "Version %s was detected on the server.";

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP MediaTagger\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-imagetagger\n"
-"POT-Creation-Date: 2014-01-29 21:45+0100\n"
+"POT-Creation-Date: 2014-01-30 08:07+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: phd38 <contact@photos-dauphie.com>\n"
 "Language-Team: phd <http://www.photos-dauphine.com/ecrire>\n"
@@ -87,15 +87,15 @@ msgstr "Afficher"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:15
 msgid "All media"
-msgstr "Tous les média"
+msgstr "Tous les médias"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:16
 msgid "Tagged media"
-msgstr "Média taggés"
+msgstr "Médias taggés"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:17
 msgid "Untagged media"
-msgstr "Média non taggés"
+msgstr "Médias non taggés"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:18
 msgid "List"
@@ -103,7 +103,7 @@ msgstr "Liste"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:19
 msgid "Search all media"
-msgstr "Rechercher parmi tous les media"
+msgstr "Rechercher parmi tous les médias"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:20
 msgid "Display"
@@ -111,11 +111,11 @@ msgstr "Afficher"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:21
 msgid "Display depth"
-msgstr "Nombre de média à afficher"
+msgstr "Nombre de médias à afficher"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:22
 msgid "media starting from"
-msgstr "média à partir de"
+msgstr "médias à partir de"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:23
 msgid "Start display index"
@@ -138,10 +138,18 @@ msgid "Reset list"
 msgstr "Effacer la liste"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:28
+msgid "Orphean media, not linked to any post"
+msgstr "Média orphelin, lié à aucun post"
+
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:29
+msgid "No tag associated to this media"
+msgstr "Aucun tag associé à ce média"
+
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:30
 msgid "Search display"
 msgstr "Format de recherche"
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:29
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:31
 #, php-format
 msgid ""
 "PHP Version %.2f is the minimum required on your server to run the %s plugin."
@@ -149,16 +157,16 @@ msgstr ""
 "Le serveur hébergeant le blog doit être équipé au minimum de la version PHP "
 "%.2f pour pouvoir faire fonctionner le plugin %s."
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:30
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:32
 #, php-format
 msgid "Version %s was detected on the server."
 msgstr "La version %s a été détectée sur ce serveur."
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:31
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:33
 msgid "Update options"
 msgstr "Enregistrer les options"
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:32
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:34
 msgid "Others"
 msgstr "Autres"
 
@@ -393,9 +401,6 @@ msgstr "Autres"
 
 #~ msgid "Description"
 #~ msgstr "Description"
-
-#~ msgid "Orphean media, not linked to any post"
-#~ msgstr "Média orphelin, lié à aucun post"
 
 #~ msgid "Media tags"
 #~ msgstr "Tags média"
@@ -1263,12 +1268,6 @@ msgstr "Autres"
 
 #~ msgid "not available"
 #~ msgstr "non disponible"
-
-#, fuzzy
-#~ msgid "media associated to tag"
-#~ msgid_plural "medias associated to tag"
-#~ msgstr[0] "média associé au tag"
-#~ msgstr[1] "médias associés au tag"
 
 #, fuzzy
 #~ msgid "This blog does not hold any media."
