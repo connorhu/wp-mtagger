@@ -6,7 +6,7 @@ Description: Extensively configurable plugin packed with a bunch of features ena
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
 Version: 4.0
-Stable Tag: 3.2.1
+Stable Tag: 4.0
 */
 
 
@@ -90,9 +90,9 @@ class wp_mediatagger{
 		
 		// Plugin filters
 		add_filter('plugin_action_links', array($this, 'action_links'), 10, 2);
-		add_filter('the_content', array($this, 'run_shortcode'), 7);
+		add_filter('the_content', array($this, 'run_shortcode'), 7);		
 	}
-
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Set various plugin information obtained from plugin header
 	//
@@ -132,6 +132,7 @@ class wp_mediatagger{
 
 		$filename_prefix = self::$PLUGIN_DIR_PATH . self::$PLUGIN_NAME_LC;
  
+		
  		include_once($filename_prefix . '-form.php');
 		self::$form = $form;
 																						
@@ -139,10 +140,10 @@ class wp_mediatagger{
 		self::$opt_init = $opt_init;
 
 		include_once($filename_prefix . '-def.php');
-		self::$t = $t;
+		self::$t = self::translate_i18_strings($t, $filename_prefix . '-form.php');
 		//self::print_ro($t);
 	}
-	
+		
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Create image taxonomy database structure if not existing
 	//
@@ -249,7 +250,7 @@ class wp_mediatagger{
 				
 		add_utility_page(self::$PLUGIN_NAME, self::$PLUGIN_NAME, "manage_options", self::$PLUGIN_NAME_LC, array($this, 'manager_page'),
 			self::$PLUGIN_DIR_URL . 'images/menu.png');
-		add_submenu_page(self::$PLUGIN_NAME_LC, "Explorer", "Explorer", "manage_options", self::$PLUGIN_NAME_LC, array($this, 'manager_page'));
+		add_submenu_page(self::$PLUGIN_NAME_LC, self::$t->explorer, self::$t->explorer, "manage_options", self::$PLUGIN_NAME_LC, array($this, 'manager_page'));
 		add_submenu_page(self::$PLUGIN_NAME_LC, "Options", "Options", "manage_options", self::$PLUGIN_NAME_LC .'_options', array($this, 'options_page'));
 		add_submenu_page(self::$PLUGIN_NAME_LC, "Player", "Player", "manage_options", self::$PLUGIN_NAME_LC .'_database', array($this, 'player_page'));
 		if (defined('self::DEBUG')) {
@@ -300,6 +301,7 @@ class wp_mediatagger{
 		
 		// Save to database in case of fix at loading
 		update_option(self::$PLUGIN_NAME_LC, self::$opt);
+		//print_r(self::$opt);
 		
 	}	
 
@@ -334,6 +336,7 @@ class wp_mediatagger{
 				case 'search_display_switchable':		
 				case 'result_display_optimize_xfer':		
 				case 'result_display_switchable':		
+				case 'gallery_image_link_ctrl':		
 					$option_val = ($option_val ? 1 : 2);
 					break;
 				case 'tagcloud_order':
@@ -461,7 +464,7 @@ class wp_mediatagger{
 		$submit_type = $_POST['mdtg_submit_list'];
 		$view = ($_POST['mdtg_view'] ? $_POST['mdtg_view'] : 'Explorer');
 		
-		if (($view == 'Explorer' && $submit_type != 'Tag') || $submit_type == 'Explorer') {
+		if (($view == 'Explorer' && $submit_type != self::$t->tag_) || $submit_type == 'Explorer') {
 			self::Explorer_page();
 		} else {
 			self::editor_page($submit_type);
@@ -474,7 +477,7 @@ class wp_mediatagger{
 	//
 	private function manage_media_tags($media_list, $submit_type){
 	
-		$new_tag_list = (strstr($submit_type, "Clear") ? array() : $_POST['mdtg_tags']);
+		$new_tag_list = (strstr($submit_type, self::$t->clear_) ? array() : $_POST['mdtg_tags']);
 		
 		foreach ($media_list as $media_id) {
 			self::set_media_tags($media_id, $new_tag_list);
@@ -492,7 +495,7 @@ class wp_mediatagger{
 	//
 	private function editor_page($submit_type){
 		
-		echo "<h1>" . self::$PLUGIN_NAME . " - Editor</h1>";
+		echo "<h1>" . self::$PLUGIN_NAME . " - " . self::$t->editor . "</h1>";
 
 		$submit_type = $_POST['mdtg_submit_list'];
 		$view = $_POST['mdtg_view'];
@@ -521,7 +524,7 @@ class wp_mediatagger{
 		//self::print_ro($list_select);	
 		
 		$num_selected_media = count($list_select);
-		if ($num_selected_media > 1 && ($submit_type == 'Tag' || $submit_type == 'Clear') ) 
+		if ($num_selected_media > 1 && ($submit_type == self::$t->tag_ || $submit_type == self::$t->clear_) ) 
 			$submit_type = 'Group ' . $submit_type;
 		?>
         
@@ -531,23 +534,23 @@ class wp_mediatagger{
             <input type="hidden" name="mdtg_custom_list" value="<?php echo implode(',', $custom_list) ?>">
 
 		<?php
-		$button_list = array('<', '< Tag', 'Tag', 'Tag >', '>', 'spacer', 'Clear', 'spacer', 'Explorer');
+		$button_list = array('<', self::$t->tag_and_previous_, self::$t->tag_, self::$t->tag_and_next_, '>', 'spacer', self::$t->clear_, 'spacer', self::$t->explorer_);
 		
 		if (!$list_select) {
 			self::user_message(self::$t->select_media_before_tagging);
-			$button_list_disable = array('<', '< Tag', 'Tag', 'Tag >', '>', 'Clear');
+			$button_list_disable = array('<', self::$t->tag_and_previous_, self::$t->tag_, self::$t->tag_and_next_, '>', self::$t->clear_);
 		} else {	
 			$media_id = current($list_select);
 			//self::print_ro($media_id);	
 						
 			switch($submit_type) {
-				case "Clear" :
-				case "Tag" :
-				case "< Tag" :
-				case "Tag >" :
+				case self::$t->clear_ :
+				case self::$t->tag_ :
+				case self::$t->tag_and_previous_ :
+				case self::$t->tag_and_next_ :
 				case "<" :
 				case ">" :
-					if ((strstr($submit_type, "Tag") && $view == 'Editor') || ($submit_type == "Clear")){	// tag media_id	
+					if ((strstr($submit_type, self::$t->tag_) && $view == self::$t->editor_) || ($submit_type == self::$t->clear_)){	// tag media_id	
 						self::manage_media_tags(array($media_id), $submit_type);
 					}
 					if (strstr($submit_type, ">") || strstr($submit_type, "<"))  {	
@@ -560,8 +563,8 @@ class wp_mediatagger{
 					}
 					break;
 					
-				case "Group Tag" :											// tag list_select
-				case "Group Clear" :										// tag list_select
+				case "Group " . self::$t->tag_ :										// tag list_select
+				case "Group " . self::$t->clear_ :										// tag list_select
 					self::manage_media_tags($list_select, $submit_type);
 					break;
 			}
@@ -580,7 +583,7 @@ class wp_mediatagger{
 					echo '<div style="margin:20px;float:left"><img src="' . $media_info->image . '" height="' . self::$opt['admin_img_height'] . '" ></div>';
 					//echo '<div style="margin:20px;float:left"><img src="' . $media_info->image . '" ' . ($media_info->w < $media_info->h ? 'height="' : 'width="') . self::$opt['admin_img_height'] . '" ></div>';
 					echo '<div style="padding:20px;">';
-					echo '<i>File : </i>' . basename($media_info->url) . '<br/>';
+					echo '<i>' . self::$t->file . ' : </i>' . basename($media_info->url) . '<br/>';
 					echo '<i>Description : </i>' . $media_info->title  . '<br/>';
 					echo '<i>Type : </i>' . $media_info->mime  . '<br/>';
 					echo '<i>Post : </i>' . $media_info->post_title  . '<br/>';
@@ -591,15 +594,14 @@ class wp_mediatagger{
 					echo '<div style="clear:both">' . self::print_tag_form($media_tags, 1) . '</div>';
 					
 					// configure buttons
-					//$key = array_search($media_id, $list);
-					
-					$button_list = array('<', '< Tag', 'Tag', 'Tag >', '>', 'spacer', 'Clear', 'spacer', 'Explorer');
+
+					//$button_list = array('<', '< Tag', 'Tag', 'Tag >', '>', 'spacer', 'Clear', 'spacer', 'Explorer');
 					$button_list_disable = array();
 					//if ($key >= count($list) - 1 ) 	$button_list_disable = array('Tag >', '>');
 					if ($media_id >= end($media_displayed_list)) 
-						$button_list_disable = array('Tag >', '>');
+						$button_list_disable = array(self::$t->tag_and_next_, '>');
 					if ($media_id <= $media_displayed_list[0]) 
-						$button_list_disable = array_merge($button_list_disable, array('< Tag', '<'));					
+						$button_list_disable = array_merge($button_list_disable, array('<', self::$t->tag_and_previous_));					
 					
 					break;
 					
@@ -622,7 +624,7 @@ class wp_mediatagger{
 					echo '<div style="clear:both">' . self::print_tag_form($media_tags, 1) . '</div>';
 				
 					// configure buttons
-					$button_list_disable = array('<', '< Tag', 'Tag >', '>');
+					$button_list_disable = array('<', self::$t->tag_and_previous_, self::$t->tag_and_next_, '>');
 			}
 		}
 
@@ -717,14 +719,12 @@ class wp_mediatagger{
 			$strout .= '<input type="checkbox" value=' . $tax_item->term_taxonomy_id . " name=mdtg_tags[]" . ($checked? " checked" : "") . '> ' . 
 				($checked ? '<span style="color:#00F">' : "") .	$tax_item->name . ($checked ? "</span>" : "") . 
 				'<span style="font-size:0.7em;color:#999" title="' . $tax_item->count . ' ' . 
-				_n('media associated to tag', 'medias associated to tag', $tax_item->count, 'mediatagger') .
-				' : ' . $tax_item->name . '"> ' . $tax_item->count . "&nbsp;</span><br />";
+				self::n('media_associated_tag', $tax_item->count) . ' : ' . $tax_item->name . '"> ' . $tax_item->count . "&nbsp;</span><br />";
 			$tag_displayed_count++;
 		}
 	//phdbg($strout);
 		return $strout;
 	}
-
 
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -732,7 +732,7 @@ class wp_mediatagger{
 	//
 	private function explorer_page(){
 			
-		echo "<h1>" . self::$PLUGIN_NAME . " - Explorer</h1>";
+		echo "<h1>" . self::$PLUGIN_NAME . " - " . self::$t->explorer . "</h1>";
 		
 		$list_type_desc = array('media_all' => self::$t->all_media, 'media_tagged' => self::$t->tagged_media, 'media_untagged' => self::$t->untagged_media, 
 			'custom_list' => self::$t->list_media, 'post' => 'post', 'search' => 'search result');
@@ -746,15 +746,15 @@ class wp_mediatagger{
 
 		// Manage custom list
 		switch($_POST['mdtg_submit_list']) {
-			case 'Add to list' :
+			case self::$t->add_to_list_ :
 				$custom_list = array_unique(array_merge($custom_list, $list_select));
 				$list_type = 'custom_list';
 				break;
-			case 'Remove from list' :
+			case self::$t->remove_from_list_ :
 				$custom_list = array_unique(array_diff($custom_list, $list_select));
 				$list_type = 'custom_list';
 				break;
-			case 'Reset list' :
+			case self::$t->reset_list_ :
 				$custom_list = array();
 				$list_select = array();
 				break;
@@ -783,7 +783,7 @@ class wp_mediatagger{
 			default :	// media_all || media_tagged || media_untagged 
 				$media_list = self::get_media_list($list_type, $count, $reason);
 				if ($list_type == 'media_all' && !$count->total) {
-					self::user_message("No media detected in your blog - Start by adding media before tagging.");
+					self::user_message(self::$t->no_media_detected);
 					return;
 				}
 				break;
@@ -798,10 +798,10 @@ class wp_mediatagger{
         	<input type="hidden" name="mdtg_custom_list" value="<?php echo implode(',', $custom_list) ?>">
         	<input type="hidden" name="mdtg_post_ID" value="<?php echo $post_ID ?>">
             <?php echo self::$t->displaying ?> : <b><?php echo $list_type_desc[$list_type] . ' (' . count($media_list) . ')'; ?></b><br/><?php echo self::$t->view ?> : &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','media_all');return false;" title="List all media"><?php echo self::$t->all_media ?></a> (<?php echo $count->total ?>) &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','media_tagged');return false;" title="List tagged media"><?php echo self::$t->tagged_media ?></a> (<?php echo $count->tagged ?>) &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','media_untagged');return false;" title="List untagged media"><?php echo self::$t->untagged_media ?></a> (<?php echo $count->untagged ?>) &nbsp;
-			<a href="" onClick="mdtg_submit('mdtg_list_type','custom_list');return false;" title="List media added to the custom list"><?php echo self::$t->list_media ?></a> (<?php echo count($custom_list) ?>) &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','media_all');return false;" title="<?php echo self::$t->list_all_media ?>"><?php echo self::$t->all_media ?></a> (<?php echo $count->total ?>) &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','media_tagged');return false;" title="<?php echo self::$t->list_tagged_media ?>"><?php echo self::$t->tagged_media ?></a> (<?php echo $count->tagged ?>) &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','media_untagged');return false;" title="<?php echo self::$t->list_untagged_media ?>"><?php echo self::$t->untagged_media ?></a> (<?php echo $count->untagged ?>) &nbsp;
+			<a href="" onClick="mdtg_submit('mdtg_list_type','custom_list');return false;" title="<?php echo self::$t->list_media_custom ?>"><?php echo self::$t->list_media ?></a> (<?php echo count($custom_list) ?>) &nbsp;
             <input type="text" name="mdtg_search" title="<?php echo self::$t->search_all_media ?>" value="<?php echo $search_keyword ?>" onkeydown="if (event.keyCode == 13) {mdtg_submit('mdtg_list_type','search');return false;}" />
             
 		<?php
@@ -809,8 +809,8 @@ class wp_mediatagger{
 		
 		self::manage_explorer_window($media_list, $list_select, $media_displayed_list, $display_start, $display_depth, $display_all);
 		
-		if (!$list_select || !array_intersect($media_displayed_list, $list_select)) $button_list_disable = array_merge($button_list_disable, array('Tag', 'Add to list', 'Remove from list'));
-		if (!$custom_list) $button_list_disable = array_merge($button_list_disable, array('Reset list'));
+		if (!$list_select || !array_intersect($media_displayed_list, $list_select)) $button_list_disable = array_merge($button_list_disable, array(self::$t->tag_, self::$t->add_to_list_, self::$t->remove_from_list_));
+		if (!$custom_list) $button_list_disable = array_merge($button_list_disable, array(self::$t->reset_list_));
 
 		self::print_media_list(count($media_list), $media_displayed_list, $list_select, $display_start, $display_depth, 
 			array(self::$t->tag_, "spacer", self::$t->add_to_list_, self::$t->remove_from_list_, self::$t->reset_list_), $button_list_disable);
@@ -836,7 +836,7 @@ class wp_mediatagger{
 			$display_start = 0;
 			$display_depth = 20;
 			$media_displayed_list = array_slice($media_list, $display_start, $display_depth);			
-			self::user_message('No media to display in this range - Start / stop indexes reset to default.');
+			self::user_message(self::$t->no_media_range);
 		}
 		$list_select = array_intersect($media_displayed_list, $list_select);
 	
@@ -1162,7 +1162,7 @@ class wp_mediatagger{
 		//self::print_ro($tax_id_list);
 		
 		if ($debug) {
-			echo "Tags detected from the image taxonomy : <br/>";
+			echo self::$t->tags_from_taxonomy . "<br/>";
 			print_ro(self::taxonomy_to_name($tax_id_list));
 		}
 		
@@ -1205,10 +1205,10 @@ class wp_mediatagger{
 		if (!$update) {
 			$original_tags = implode(', ', self::taxonomy_to_name($current_tax));
 			$new_tags = implode(', ', self::taxonomy_to_name($tag_list));
-			echo '=== <em>' . __('Post', 'mediatagger') . '</em> : <strong>' . get_the_title($post_id) . "</strong> ===<br/>";
+			echo '=== <em>' . self::$t->post . '</em> : <strong>' . get_the_title($post_id) . "</strong> ===<br/>";
 			//echo '<em>' . _n('Original category', 'Original categories', count($cats), 'mediatagger') . ":</em> " . $original_cats . "<br/>";
-			echo '<em>' . _n('Original tag', 'Original tags', count($current_tax), 'mediatagger') . ":</em> " . $original_tags . "<br/>";
-			echo '<em>' . _n('New tag', 'New tags', count($current_tax), 'mediatagger') . ":</em> " . $new_tags . "<br/>";
+			echo '<em>' . self::n('original_tags', count($current_tax)) . ":</em> " . $original_tags . "<br/>";
+			echo '<em>' . self::n('new_tags', count($new_tags)) . ":</em> " . $new_tags . "<br/>";
 			//print_ro($current_tax);
 			//print_ro($tag_list);
 			return $tag_list;
@@ -1358,7 +1358,7 @@ class wp_mediatagger{
 	//
 	private function multisort_insert($result_page_url='', $num_tags_displayed = '', $font_size_min = '', $font_size_max = '', 
 								   $font_color_min = '', $font_color_max = '', $called_from_widget = 0){
-		$search_field_default = __('Search attachment like...', 'mediatagger');
+		$search_field_default = self::$t->search_attachment_like;
 		$run_free_search = 0;
 		$debug = 0;
 		$strout = '';
@@ -1447,7 +1447,7 @@ class wp_mediatagger{
 				$img_norm_size = self::$opt['result_img_gallery_w_h'];
 				$img_border_width = self::$opt['gallery_image_border_w'];
 				$img_border_color = self::$opt['gallery_image_border_color'];
-				$link_to_post = self::$opt['gallery_image_link_ctrl'];
+				$link_to_post = self::$opt['gallery_image_link_ctrl'] % 2;
 				break;
 			case 2:				//  itemized image list
 				$num_img_per_page = self::$opt['list_image_num_per_page'];
@@ -1583,17 +1583,17 @@ class wp_mediatagger{
 			
 		if ($is_search_mode_switchable) { 
 			$strout .= '<div style="clear:both;font-size:0.9em;height:1.2em;padding:4px;margin:0;background-color:#' . $admin_background_color . '"><div style="float:left;color:#AAA;padding-left:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . self::$t->search_display . '</em></div><div style="float:right;padding-right:5px">';
-			$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'11\');return false" title="' . __('Toggle tag cloud', 'mediatagger') . '">'. __('Tag cloud', 'mediatagger') . '</a>';
+			$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'11\');return false" title="' . self::$t->toggle_tag_cloud . '">'. self::$t->tag_cloud . '</a>';
 			$strout .= ' &nbsp;';
-			$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'12\');return false" title="' . __('Toggle form', 'mediatagger') . '">'. __('Form', 'mediatagger') . '</a>';
+			$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'12\');return false" title="' . self::$t->toggle_form . '">'. self::$t->form . '</a>';
 			$strout .= ' &nbsp;';
-			$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'13\');return false" title="' . __('Toggle search field', 'mediatagger') . '">'. __('Search field', 'mediatagger') . '</a>';
+			$strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'13\');return false" title="' . self::$t->toggle_search_field . '">'. self::$t->search_field . '</a>';
 			$strout .= '</div></div>';
 		}
 
-			// Free search field
+		// Free search field
 		if (!$called_from_widget && self::is_search_mode("field", $search_mode))
-			$strout .=  '<p style="clear:both;margin:0;padding:' . ($is_search_mode_switchable ? '15' : '0') . 'px 0 0 10px"><input type="text" style="font-style: italic;" name="free_search" size="26" onblur="tagsearchblur(this);" onfocus="tagsearchfocus(this);" value="' . $free_search . '" title="' . __('Type here the keyword that will be searched in the media names database, rather than filtering on the tags attached to the medias.', 'mediatagger') .'"></p>';
+			$strout .=  '<p style="clear:both;margin:0;padding:' . ($is_search_mode_switchable ? '15' : '0') . 'px 0 0 10px"><input type="text" style="font-style: italic;" name="free_search" size="26" onblur="tagsearchblur(this);" onfocus="tagsearchfocus(this);" value="' . $free_search . '" title="' . self::$t->type_here_keyword .'"></p>';
 	
 		$strout .= '<p style="clear:both;padding:' . ($called_from_widget ? '0' : '15') . 'px 0 0 0;margin:0">';	
 	
@@ -1608,8 +1608,8 @@ class wp_mediatagger{
 					(in_array($tax->term_taxonomy_id, $checked_tags) && $use_hover_and_search_highlight && !$called_from_widget ? 'color:#' . $highlight_text_color : '') . 
 					'" onClick="' . $search_form_submit . '(' . "'tagcloud','" . $tax->term_taxonomy_id . "');return false" . '"' . 
 					($called_from_widget ? '' : ($use_hover_and_search_highlight && $use_dynamic_colors && !in_array($tax->term_taxonomy_id, $checked_tags) ? 
-					' onmouseover="this.style.color=' . "'#" . $highlight_text_color . "'" . '" onmouseout="this.style.color=' . "'" . self::rgb2html($color_rgb) . "'" . '"' : '')) . 
-					' title="' . $tax->count . ' ' . _n('occurence', 'occurences', $tax->count, 'mediatagger') . '">' . $tax->name . '</a> ';
+					' onmouseover="this.style.color=' . "'#" . $highlight_text_color . "'" . '" onmouseout="this.style.color=' . "'" . self::rgb2html($color_rgb) . 
+					"'" . '"' : '')) . ' title="' . $tax->count . ' ' . self::n(occurence, $tax->count) . '">' . $tax->name . '</a> ';
 			}	// if ($search_mode <= 2)
 			$strout .= '</p>';
 		} // end tag cloud
@@ -1622,21 +1622,21 @@ class wp_mediatagger{
 		if (empty($tax_id_list) && !$run_free_search) {	// case no tag selected
 			switch ($search_mode) {
 				case 0:	// available search method : none (means search was done from URL)
-					$strout .= '<em>'. __('None of the selected tag(s) match existing tags. The media search URL should be composed as http://www.mysite.com/library?tags=tag1+tag2+...+tagN, where http://www.mysite.com/library is the search result page. Check the spelling of the tag slugs', 'mediatagger') . '</em> : <strong>' . $_GET['tags'] . '</strong>'; break;
+					$strout .= '<em>'. self::$t->no_tag_match . '</em> : <strong>' . $_GET['tags'] . '</strong>'; break;
 				case 1:	// available search method : cloud
-					$strout .= '<em>'. __('You can search a media by theme with the tag cloud above.', 'mediatagger') . '</em>'; break;
+					$strout .= '<em>'. self::$t->search_cloud . '</em>'; break;
 				case 2:	// available search method : 		form
-					$strout .= '<em>'. __('You can search a media by theme by selecting appropriate keywords below and clicking OK.', 'mediatagger') . '</em>'; break;	
+					$strout .= '<em>'. self::$t->search_form . '</em>'; break;	
 				case 3: // available search method : cloud 	form
-					$strout .= '<em>'. __('You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK.', 'mediatagger') . '</em>'; break;
+					$strout .= '<em>'. self::$t->search_cloud_form . '</em>'; break;
 				case 4: // available search method : 				field
-					$strout .= '<em>'. __('You can search a media entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;
+					$strout .= '<em>'. self::$t->search_keyword . '</em>'; break;
 				case 5: // available search method : cloud 			field
-					$strout .= '<em>'. __('You can search a media by theme with the tag cloud above or entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;
+					$strout .= '<em>'. self::$t->search_cloud_keyword . '</em>'; break;
 				case 6: // available search method : 		form	field
-					$strout .= '<em>'. __('You can search a media by theme by selecting appropriate keywords below and clicking OK or entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;	
+					$strout .= '<em>'. self::$t->search_form_keyword . '</em>'; break;	
 				case 7: // available search method : cloud	form	field
-					$strout .= '<em>'. __('You can search a media by theme either with the tag cloud above or selecting appropriate keywords below and clicking OK or entering a keyword above that will be searched as part of the medias name.', 'mediatagger') . '</em>'; break;
+					$strout .= '<em>'. self::$t->search_cloud_form_keyword . '</em>'; break;
 			}
 		} else {	// free search || tags selected
 			$strout .= '&raquo;<strong> ';
@@ -1661,13 +1661,13 @@ class wp_mediatagger{
 
 		$num_img_found = sizeof($multisort_img_list);
 		if (!$num_img_found) {
-			$strout .= '<i>' . __('no media found matching this criteria list', 'mediatagger') . '</i><br/>';
+			$strout .= '<i>' . self::$t->no_media_matching . '</i><br/>';
 		} else {
 			if ($num_img_stop > $num_img_found)
 				$num_img_stop = $num_img_found;
 				
 			$strout .= '<i>' . $num_img_found . ' ';
-			$strout .= _n('media found', 'medias found', $num_img_found, 'mediatagger'); 
+			$strout .= self::n('n_media_found', $num_img_found); 
 			$strout .= '</i><br/>&nbsp;<br/>';
 			
 			// Get image display size
@@ -1680,17 +1680,17 @@ class wp_mediatagger{
 			//////////////////////////////////////////////////////// Display result mode selector  ////////////////////////////////////////////////////////
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			if ($is_result_mode_switchable) {
-				$strout .= '<div style="clear:both;font-size:0.9em;height:1.2em;padding:4px;margin:0;background-color:#' . $admin_background_color . '"><div style="float:left;color:#AAA;padding-left:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . __('Results display', 'mediatagger') . '</em></div><div style="float:right;padding-right:5px">';
-				if ($result_mode != 1) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'21\');return false" title="' . __('Display the results as an image gallery', 'mediatagger') . '">';
-				$strout .= __('Gallery', 'mediatagger');
+				$strout .= '<div style="clear:both;font-size:0.9em;height:1.2em;padding:4px;margin:0;background-color:#' . $admin_background_color . '"><div style="float:left;color:#AAA;padding-left:5px;letter-spacing:1pt;font-variant:small-caps"><em>' . self::$t->result_display . '</em></div><div style="float:right;padding-right:5px">';
+				if ($result_mode != 1) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'21\');return false" title="' . self::$t->result_gallery . '">';
+				$strout .= self::$t->gallery;
 				if ($result_mode != 1) $strout .= '</a>';
 				$strout .= ' &nbsp;';
-				if ($result_mode != 2) $strout .= '<a href="' . $result_page_url  .'" onClick="' . $search_form_submit . '(\'link_triggered\',\'22\');return false" title="' . __('Display the results as an itemized image list', 'mediatagger') . '">';
-				$strout .= __('Itemized', 'mediatagger');
+				if ($result_mode != 2) $strout .= '<a href="' . $result_page_url  .'" onClick="' . $search_form_submit . '(\'link_triggered\',\'22\');return false" title="' . self::$t->result_image_list . '">';
+				$strout .= self::$t->itemized;
 				if ($result_mode != 2) $strout .= '</a>';
 				$strout .= ' &nbsp;';
-				if ($result_mode != 3) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'23\');return false" title="' .  __('Display the results as an image title list', 'mediatagger') . '">';
-				$strout .= __('Titles', 'mediatagger');
+				if ($result_mode != 3) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'23\');return false" title="' .  self::$t->title_list . '">';
+				$strout .= self::$t->titles;
 				if ($result_mode != 3) $strout .='</a>';
 				$strout .= '</div></div>';
 			}	// if ($is_result_mode_switchable) 
@@ -1732,7 +1732,7 @@ class wp_mediatagger{
 				if (strpos($img_info->mime, 'image') !== false)	// JPEG, GIF or PNG
 					$is_image = true;
 				
-				$unattached_msg = __('not attached to any post', 'mediatagger');	
+				$unattached_msg = self::$t->not_attached_post;	
 				$img_tooltip = $img_obj->post_title . ' ('. ($is_media_attached_to_post ? $img_info->post_title : $unattached_msg) . ')';
 				
 				switch ($result_mode) {
@@ -1745,14 +1745,14 @@ class wp_mediatagger{
 								'" width="' . $img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '" style="border:' . $img_border_width . 
 								'px solid #' . $img_border_color . '"></a>';
 						} else {	// attachment is not an image : TXT, PDF, MP3, etc.
-							$strout .= '<span style="float:left"><a href="'. ($link_media_to_post ? $img_info->post_URI : $img_info->url) .
+							$strout .= '<span style="float:left"><a href="'. ($link_media_to_post ? $img_info->post_URI : $img_info->url) . '" title="' . $img_tooltip .
 								 '">' . '<img src="' . $img_info->image . '" width="' . $img_w*.8 .'" >' . '<br/><span style="font-size:0.7em;padding:0 5px">' . 
 								 basename($img_info->url) . '</span></a></span>';	
 						}
 						break;
 					case 2:	// image list
 						$strout .= '<p style="padding: 10px 0 0 0;margin:0">' . $img_obj->post_title . 
-							' (' . ($is_media_attached_to_post ? '<a href="'. $img_info->post_URI . '" title="'  . __('Go to page', 'mediatagger') . '">' .
+							' (' . ($is_media_attached_to_post ? '<a href="'. $img_info->post_URI . '" title="'  . self::$t->go_to_page . '">' .
 							 $img_info->post_title. '</a>' : $unattached_msg) . ')<br/>' .
 							'<a href="' . $img_info->url . '" title="' . $img_tooltip . '"><img src="' . ($result_display_optimize_xfer ?
 								$thumb_url . '?s=' . $img_info->image . '&w=' . $img_w . '&h=' . $img_h :
@@ -1762,7 +1762,7 @@ class wp_mediatagger{
 					case 3:	// title list
 						$strout .= '<p style="padding: 2px 0 0 0;margin:0">' . ($is_media_attached_to_post ? '<a href="'. $img_info->post_URI . '" title="'  .
 						__('Go to page', 'mediatagger') . '">' : ucfirst($unattached_msg)) .
-						$img_info->post_title. '</a> : ' . '<a href="' . $img_info->url . '" title="' . __('Access to media', 'mediatagger') . '">' . 
+						$img_info->post_title. '</a> : ' . '<a href="' . $img_info->url . '" title="' . self::$t->access_to_media . '">' . 
 						$img_obj->post_title . '</a></p>';
 						break;
 				}	// end switch
@@ -1778,11 +1778,12 @@ class wp_mediatagger{
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if ($display_pagination) { 
 		$strout .= '<p style="clear:both;font-size:0.9em;padding:4px;margin:15px 0 0 0;background-color:#' . $admin_background_color . '">&nbsp;<em>Page ' . (int)(1+$num_img_start/$num_img_per_page) . ' (';
-		$strout .= sprintf(_n('image %d to %d', 'images %d to %d',  $num_img_found, 'mediatagger'), (int)($num_img_start+1), $num_img_stop) . ') &nbsp;&nbsp;</em>';
-		if ($num_img_start > 0) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'30\');return false" title="' . __("Click to display previous page",'mediatagger') . '">';
-		$strout .= '&laquo; ' . __('previous', 'mediatagger') . ($num_img_start > 0 ? '</a>' : '') . '&nbsp;';
-		if ($num_img_stop < $num_img_found) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'31\');return false" title="' . __("Click to display next page",'mediatagger') . '">';
-		$strout .= __('next', 'mediatagger') . ' &raquo;' . ($num_img_stop < $num_img_found ? '</a>' : '') . '</p>';
+		$strout .= sprintf(self::n('image_x_to_y', $num_img_found), (int)($num_img_start+1), $num_img_stop) . ') &nbsp;&nbsp;</em>';
+		if ($num_img_start > 0) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'30\');return false" title="' . 
+			self::$t->click_previous_page . '">';
+		$strout .= '&laquo; ' . self::$t->previous . ($num_img_start > 0 ? '</a>' : '') . '&nbsp;';
+		if ($num_img_stop < $num_img_found) $strout .= '<a href="' . $result_page_url . '" onClick="' . $search_form_submit . '(\'link_triggered\',\'31\');return false" title="' . self::$t->click_next_page . '">';
+		$strout .= self::$t->next . ' &raquo;' . ($num_img_stop < $num_img_found ? '</a>' : '') . '</p>';
 	}	// if ($display_pagination)
 	if (self::is_search_mode("form", $search_mode)) {	// form
 		if ($display_pagination || !$num_img_found || ($num_img_found && !$display_pagination) )
@@ -1800,7 +1801,7 @@ class wp_mediatagger{
 	
 	if (self::$opt['admin_credit'])
 		$strout .= '<div style="clear:both;float:right;font-size:0.7em;padding:5px 10px 0 0"><a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="' . 
-			__('Offer a media search engine to your blog with', 'mediatagger') . ' WP MediaTagger ' . self::$PLUGIN_VERSION_STABLE . '"><em>MediaTagger</em></a></div>';
+			self::$t->offer_media_engine . ' WP MediaTagger ' . self::$PLUGIN_VERSION_STABLE . '"><em>MediaTagger</em></a></div>';
 		
 	$strout .= '</form>';
 	
@@ -1987,12 +1988,12 @@ class wp_mediatagger{
 				// display errors
 				// self::print_ro($error_list);
 				if (count($error_list)) {
-					self::user_message("Invalid values restored to the last correct settings :");
+					self::user_message(self::$t->invalid_option_value);
 					foreach($error_list as $varname) {
 						self::user_message(self::$form[$varname]['desc'] . ' - ' . self::$form[$varname]['errmsg']);				
 					}
 				} else {
-					self::user_message("Parameters saved.");	
+					self::user_message(self::$t->options_saved);	
 				}
 			}	// end "if (strlen($_POST['submit_options']) > 0)"
 			?>
@@ -2038,11 +2039,11 @@ class wp_mediatagger{
     
     </form>
     
-    <?php echo __('If you experience this plugin brings value to your site, you are free to make a donation for supporting the development and maintenance.', 'mediatagger') . '<br/>'. __('Even small donations matter and are encouraging !', 'mediatagger' ) ?>
+    <?php echo self::$t->option_pane_donation . '<br/>'. self::$t->option_pane_donation2; ?>
     </p>
     
     <hr />
-    <p style="padding:0;margin-top:-5px;font-size:0.8em"><em><?php echo ' <a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="WordPress MediaTagger Plugin Home">WP MediaTagger</a> ' . self::$PLUGIN_VERSION . ' | ' ; echo 'PHP ' . phpversion() .  ' | MySQL ' . mysql_get_server_info() . ' | GD Lib ' . ( self::$GD_VERSION ? self::$GD_VERSION : __('not available','mediatagger') ) ;?></em></p>
+    <p style="padding:0;margin-top:-5px;font-size:0.8em"><em><?php echo ' <a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="WordPress MediaTagger Plugin Home">WP MediaTagger</a> ' . self::$PLUGIN_VERSION . ' | ' ; echo 'PHP ' . phpversion() .  ' | MySQL ' . mysql_get_server_info() . ' | GD Lib ' . ( self::$GD_VERSION ? self::$GD_VERSION : self::$t->not_available) ;?></em></p>
         
         <?php
 //		self::print_ro(self::$opt);
@@ -2724,6 +2725,105 @@ class wp_mediatagger{
 		}
 		return $sql_result;
 	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Translate i18 strings
+	//
+    private function translate_i18_strings($t, $form_file) {
+
+		if ($_SERVER['REMOTE_ADDR'] == PHD_CLIENT_IP) {
+			//echo PHD_CLIENT_IP . " detected<br/>";
+
+			$def_filename = self::$PLUGIN_DIR_PATH . self::$PLUGIN_NAME_LC . '-def.php';
+			//echo $def_filename . '<br/>';
+			$file_basename = self::$PLUGIN_DIR_PATH . 'languages/' . self::$PLUGIN_NAME_LC . '-def-i18n';
+			$i18n_filename = $file_basename . '.php';
+			$md5_filename = $file_basename . '.md5';
+			
+			$md5_ref = @file_get_contents($md5_filename);
+			$md5 = md5_file($def_filename);
+			//echo $md5_ref . '<br/>';
+			//echo $md5 . '<br/>';
+			
+			if ($md5 != $md5_ref) {
+				echo "MD5 differs <br/>";
+		
+				//
+				//	Create i18 parsing file that will be then processed by poedit locally
+				//
+				$t_tab = (array)$t;
+				$key_plural = '';
+				foreach ($t_tab as $key => $string) {
+					//echo $key . '<br/>';
+					if ($key_plural) {
+						$t_tab[$key_plural] .= $string . '");' . "\n";
+						$key_plural = '';
+						unset($t_tab[$key]);
+						continue;
+					}
+					if (substr(strrev($key), 0, 3) == '1__') {
+						//echo $key . '<br/>';
+						$key_plural = strrev(substr(strrev($key), 3));
+						//echo $key_plural . '<br/>';
+						$t_tab[$key_plural] = '_n("' . $string . '", "';
+						unset($t_tab[$key]);
+					} else {
+						$t_tab[$key] = '_("' . $string . '");' . "\n";
+					}
+				}
+				array_unshift($t_tab, "<?php\n\n");
+				array_push($t_tab, "\n?>\n\n"); 
+				file_put_contents($i18n_filename, $t_tab);
+				file_put_contents($i18n_filename, file_get_contents($form_file), FILE_APPEND);
+				file_put_contents($md5_filename, $md5);
+				
+				// Get i18 file by FTP
+				//self::get_ftp_file('www/wp-content/plugins/wp-mediatagger/languages/mediatagger-def-i18n.php', 
+				//	'C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages\1234.txt');
+				/*if (unlink('/homez.424/photosdab/www/C:\\Users\\bruno.bourgeois\\Documents\\HOME\\phd\\phd\\wp-content\\plugins\\wp-mediatagger\\languages\\1234.txt'))
+					echo 'SUCCESS <br/>';
+				else
+					echo 'fail <br/>';*/
+			}
+		}
+		
+		//
+		//	Get translates strings
+		//
+		$t_tab = (array)$t;
+		$singular = 0;
+		foreach ($t_tab as $key => $string) {
+			if ($singular) {
+				$t_tab[$key] = _n($singular, $string, 2, self::$PLUGIN_NAME_LC);
+				//echo $t_tab[$key] . '<br/>';
+				$t_tab[$key . '_'] = $string;
+				$singular = 0;
+				continue;
+			}
+			if (substr(strrev($key), 0, 3) == '1__') {
+				$singular = $string;
+				$t_tab[$key] = _n($string, 'dummy', 1, self::$PLUGIN_NAME_LC);
+				//echo $t_tab[$key] . '<br/>';
+				$t_tab[$key . '_'] = $string;
+			} else {
+				$t_tab[$key] = __($string, self::$PLUGIN_NAME_LC);
+				$t_tab[$key . '_'] = $string;
+			}
+		}
+	
+		$t = (object)$t_tab;
+		return $t;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Plural text string management
+	//
+	private function n($key, $n){
+		$key_sing = $key . '__1';
+		$key_plur = $key . '__2';
+		return ($n > 1 ? self::$t->$key_plur : self::$t->$key_sing);
+	}
 
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2732,6 +2832,10 @@ class wp_mediatagger{
 	private function __($text) {return __($text, self::$PLUGIN_NAME_LC);}
 	private function _e($text) {_e($text, self::$PLUGIN_NAME_LC);}
 	
+	
+//	_n('media associated to tag', 'medias associated to tag', $tax_item->count, 'mediatagger') .
+	
+	
 	private function print_ro($obj){echo "<pre>";print_r($obj);echo "</pre>";}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2739,7 +2843,7 @@ class wp_mediatagger{
 	//
 	private function user_message(){
 		$arg_list = func_get_args();
-		$msg = sprintf(self::__($arg_list[0]), $arg_list[1], $arg_list[2], $arg_list[3], $arg_list[4], $arg_list[5]);
+		$msg = sprintf($arg_list[0], $arg_list[1], $arg_list[2], $arg_list[3], $arg_list[4], $arg_list[5]);
 		echo '<div class="updated"><p>' . $msg . '</p></div>';
 	}
 
