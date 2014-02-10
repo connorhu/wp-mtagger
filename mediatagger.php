@@ -5,8 +5,8 @@ Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
-Version: 4.0
-Stable Tag: 4.0
+Version: 4.0.2
+Stable Tag: 4.0.1
 */
 
 
@@ -2936,9 +2936,16 @@ class wp_mediatagger{
 		$widget_options_holder = self::$PLUGIN_NAME_LC . '_widget';
 		$options = get_option($widget_options_holder);
 		
-		if (!$options)
-			$options = array('title'=>'My photo library', 'text'=>'Descriptive text here', 'num_tags'=>0, 'font_min'=>8,
-				'font_max'=>18, 'color_min'=>'aaaaaa', 'color_max'=>'333333', 'result_url'=>'http://my-result-page');
+		if (!$options) {	// first : try to read back legacy variable
+			$widget_options_holder_legacy = 'wpit_widget';
+			$options = get_option($widget_options_holder_legacy);
+			
+			if (!$options) { // else : init to default
+				$options = array('title'=>'My photo library', 'text'=>'Descriptive text here', 'num_tags'=>0, 'font_min'=>8,
+					'font_max'=>18, 'color_min'=>'aaaaaa', 'color_max'=>'333333', 'result_url'=>'http://my-result-page');
+			}
+			update_option($widget_options_holder, $options);
+		}
 		
 		if ($_POST["mdtg_widget_submit"]) {
 			$options['title'] = strip_tags(stripslashes($_POST["mdtg_widget_title"]));

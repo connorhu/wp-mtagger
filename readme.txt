@@ -3,8 +3,8 @@ Contributors: phd38
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WY6KNNHATBS5Q
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, tagging, bulk tagging, group tagging, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 4.0
+Tested up to: 4.0.1
+Stable tag: 4.0.1
 
 
 
@@ -18,6 +18,12 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Improved pagination for multipage results, displaying quick access page links
 - Log visitors search and make it visible to the administrator
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
+
+
+
+= 4.0.1 =
+- Fix widget parameter loading moving from before 4.0 to 4.x
+
 
 
 = 4.0 - Major release, plugin redevelopped using OOP =
