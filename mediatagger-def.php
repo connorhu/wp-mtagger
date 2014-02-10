@@ -118,5 +118,7 @@
 	$t-> option_pane_donation = 'If you experience this plugin brings value to your site, you are free to make a donation for supporting the development and maintenance.';
 	$t-> option_pane_donation2 = 'Even small donations matter and are encouraging !';
 	
+	$t-> plugin_description = 'Display your MediaTagger tag cloud in the sidebar. Before that, you need to have properly tagged your medias in the MediaTagger plugin Admin Panel and have as well setup a result page that you will use as your tag cloud target page';
+	
 	
 ?>
