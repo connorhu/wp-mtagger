@@ -83,6 +83,7 @@ _("Update options");
 _("Others");
 _("If you experience this plugin brings value to your site, you are free to make a donation for supporting the development and maintenance.");
 _("Even small donations matter and are encouraging !");
+_("Display your MediaTagger tag cloud in the sidebar. Before that, you need to have properly tagged your medias in the MediaTagger plugin Admin Panel and have as well setup a result page that you will use as your tag cloud target page");
 _n("media associated to tag", "medias associated to tag");
 _n("media found", "medias found");
 _n("image %d to %d", "images %d to %d");
@@ -100,7 +101,6 @@ $form = array(
 	//
 	'header_general' => array(
 		'type' => "HEADER",
-		//'desc' => self::$t->general
 		'desc' => self::__("General")
 	),
 	

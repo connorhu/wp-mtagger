@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP MediaTagger\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-imagetagger\n"
-"POT-Creation-Date: 2014-02-09 07:30+0100\n"
+"POT-Creation-Date: 2014-02-10 17:35+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: phd38 <contact@photos-dauphie.com>\n"
 "Language-Team: phd <http://www.photos-dauphine.com/ecrire>\n"
@@ -428,37 +428,49 @@ msgid "Even small donations matter and are encouraging !"
 msgstr "Même les petits dons sont importants et encourageants !"
 
 #: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:86
+msgid ""
+"Display your MediaTagger tag cloud in the sidebar. Before that, you need to "
+"have properly tagged your medias in the MediaTagger plugin Admin Panel and "
+"have as well setup a result page that you will use as your tag cloud target "
+"page"
+msgstr ""
+"Affichez le nuage de tags MediaTagger dans la colonne latérale. Avant tout, "
+"vous devez avoir taggé vos médias dans le panneau d'administration du plugin "
+"MediaTagger, et avoir également défini une page résultat qui sera utilisée "
+"comme page cible pour le nuage de tags."
+
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:87
 msgid "media associated to tag"
 msgid_plural "medias associated to tag"
 msgstr[0] "média associé à ce tag"
 msgstr[1] "médias associés à ce tag"
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:87
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:88
 msgid "media found"
 msgid_plural "medias found"
 msgstr[0] "média trouvé"
 msgstr[1] "médias trouvés"
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:88
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:89
 #, php-format
 msgid "image %d to %d"
 msgid_plural "images %d to %d"
 msgstr[0] "image %d à %d"
 msgstr[1] "images %d à %d"
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:89
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:90
 msgid "Original tag"
 msgid_plural "Original tags"
 msgstr[0] "Tag d'origine"
 msgstr[1] "Tags d'origine"
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:90
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:91
 msgid "New tag"
 msgid_plural "New tags"
 msgstr[0] "Nouveau tag"
 msgstr[1] "Nouveaux tags"
 
-#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:91
+#: C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages/mediatagger-def-i18n.php:92
 msgid "occurence"
 msgid_plural "occurences"
 msgstr[0] "occurence"
@@ -2241,18 +2253,6 @@ msgstr ""
 
 #~ msgid "Result page address"
 #~ msgstr "Adresse de la page résultat"
-
-#, fuzzy
-#~ msgid ""
-#~ "Display your MediaTagger tag cloud in the sidebar. Before that, you need "
-#~ "to have properly tagged your medias in the MediaTagger plugin Admin Panel "
-#~ "and have as well setup a result page that you will use as your tag cloud "
-#~ "target page"
-#~ msgstr ""
-#~ "Affichez le nuage de tags MediaTagger dans la colonne latérale. Avant "
-#~ "tout, vous devez avoir taggé vos médias dans le panneau d'administration "
-#~ "du plugin MediaTagger, et avoir également défini une page résultat qui "
-#~ "sera utilisée comme page cible pour le nuage de tags."
 
 #, fuzzy
 #~ msgid ""

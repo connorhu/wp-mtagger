@@ -6,7 +6,7 @@ Description: Extensively configurable plugin packed with a bunch of features ena
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
 Version: 4.0.2
-Stable Tag: 4.0.1
+Stable Tag: 4.0.2
 */
 
 
@@ -148,33 +148,13 @@ class wp_mediatagger{
     // Create image taxonomy database structure if not existing
 	//
     function plugin_activation(){
-		global $wpdb;
 		
 		self::admin_message_log(self::$t->activation . " :<br/>", true);
 		
-		// Create DB if not existing
+		// Create table if not existing
 		//
-		$db_table_legacy = 	$wpdb->term_relationships . '_img';	// up to release 3.2.1
-		$db_table = self::$SQL_MDTG_TABLE;
-		// For testing, uncomment line below
-		// $db_table = self::$SQL_MDTG_TABLE . '_test';
+		self::check_table_exists(1);
 		
-		// If table already there, return with no action
-		if ($wpdb->get_var('SHOW TABLES LIKE "' . $db_table . '"') == $db_table){
-			self::admin_message_log(self::$t->table_detected_not_created . ".<br/>");
-		} else {	// create or create AND import
-			$sql = 'CREATE TABLE ' . $db_table . '(object_id BIGINT(20) NOT NULL DEFAULT 0,term_taxonomy_id BIGINT(20) NOT NULL DEFAULT 0,PRIMARY KEY (object_id,term_taxonomy_id),KEY term_taxonomy_id (term_taxonomy_id)) ENGINE=MyISAM DEFAULT CHARSET=utf8;';
-    		$wpdb->query($sql);
-			
-			if ($wpdb->get_var('SHOW TABLES LIKE "' . $db_table_legacy . '"') == $db_table_legacy){	// copy legacy to new
-				self::admin_message_log(self::$t->table_detected_converted . ".<br/>");			
-				$sql = 'INSERT INTO ' . $db_table . ' SELECT * FROM ' . $db_table_legacy . ';';
-	    		$wpdb->query($sql);		
-			} else {
-				self::admin_message_log(self::$t->table_not_detected_created . ".<br/>");			
-			}
-		}
-
 		self::load_options($admin_msg);	
 		self::admin_message_log($admin_msg);			
 	}
@@ -2717,6 +2697,8 @@ class wp_mediatagger{
 			return;
 		}
 		
+		self::check_table_exists();
+		
 		$sql_result = $wpdb->get_results($sql_query);
 		if (mysql_error()) {
 			echo 'MYSQL query returned error executing query <strong>"'. $sql_query . '"</strong> : <br/>=> <span style="color:red">' . 
@@ -2725,7 +2707,36 @@ class wp_mediatagger{
 		}
 		return $sql_result;
 	}
-	
+
+	////////////////////////////////////////////////////////////////
+	// Check table exists - initialize of copy according to case
+	//
+	private function check_table_exists($verbose=0){
+		
+		global $wpdb;
+		$db_table_legacy = 	$wpdb->term_relationships . '_img';	// up to release 3.2.1
+		$db_table = self::$SQL_MDTG_TABLE;
+		// For testing, uncomment line below
+		// $db_table = self::$SQL_MDTG_TABLE . '_test';
+		
+		// If table already there, return with no action
+		if ($wpdb->get_var('SHOW TABLES LIKE "' . $db_table . '"') == $db_table){
+			if ($verbose)
+				self::admin_message_log(self::$t->table_detected_not_created . ".<br/>");
+			return;
+		} else {	// create or create AND import
+			$sql = 'CREATE TABLE ' . $db_table . '(object_id BIGINT(20) NOT NULL DEFAULT 0,term_taxonomy_id BIGINT(20) NOT NULL DEFAULT 0,PRIMARY KEY (object_id,term_taxonomy_id),KEY term_taxonomy_id (term_taxonomy_id)) ENGINE=MyISAM DEFAULT CHARSET=utf8;';
+    		$wpdb->query($sql);
+			
+			if ($wpdb->get_var('SHOW TABLES LIKE "' . $db_table_legacy . '"') == $db_table_legacy){	// copy legacy to new
+				self::admin_message_log(self::$t->table_detected_converted . ".<br/>");			
+				$sql = 'INSERT INTO ' . $db_table . ' SELECT * FROM ' . $db_table_legacy . ';';
+	    		$wpdb->query($sql);		
+			} else {
+				self::admin_message_log(self::$t->table_not_detected_created . ".<br/>");			
+			}
+		}
+	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Translate i18 strings
@@ -2777,14 +2788,6 @@ class wp_mediatagger{
 				file_put_contents($i18n_filename, $t_tab);
 				file_put_contents($i18n_filename, file_get_contents($form_file), FILE_APPEND);
 				file_put_contents($md5_filename, $md5);
-				
-				// Get i18 file by FTP
-				//self::get_ftp_file('www/wp-content/plugins/wp-mediatagger/languages/mediatagger-def-i18n.php', 
-				//	'C:\Users\bruno.bourgeois\Documents\HOME\phd\phd\wp-content\plugins\wp-mediatagger\languages\1234.txt');
-				/*if (unlink('/homez.424/photosdab/www/C:\\Users\\bruno.bourgeois\\Documents\\HOME\\phd\\phd\\wp-content\\plugins\\wp-mediatagger\\languages\\1234.txt'))
-					echo 'SUCCESS <br/>';
-				else
-					echo 'fail <br/>';*/
 			}
 		}
 		
@@ -2996,7 +2999,7 @@ class wp_mediatagger{
 	//
 	function mdtg_widget_init(){
 		$id = self::$PLUGIN_NAME;
-		wp_register_sidebar_widget($id, $id, array($this, 'mdtg_widget'), array('description'=>__('Display your MediaTagger tag cloud in the sidebar. Before that, you need to have properly tagged your medias in the MediaTagger plugin Admin Panel and have as well setup a result page that you will use as your tag cloud target page', 'mediatagger')));     
+		wp_register_sidebar_widget($id, $id, array($this, 'mdtg_widget'), array('description'=>self::$t->plugin_description));     
 		wp_register_widget_control($id, $id, array($this, 'mdtg_widget_control'));
 	}
 	 
