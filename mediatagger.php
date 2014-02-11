@@ -5,8 +5,8 @@ Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
-Version: 4.0.2
-Stable Tag: 4.0.2
+Version: 4.0.3
+Stable Tag: 4.0.3
 */
 
 
@@ -1389,8 +1389,9 @@ class wp_mediatagger{
 			
 		// Get preset modes 
 		$preset_search_mode_tab = self::$opt['search_default_display_mode'];	
+		//self::print_ro($preset_search_mode_tab);
 		foreach($preset_search_mode_tab as $i => $mode)	// bit : 0: cloud only; 1: cloud & form; 2: form only
-			$preset_search_mode += 1<<$i;
+			$preset_search_mode += 1<<($mode-1);
 		//self::print_ro("Preset search mode : " . $preset_search_mode);
 		$search_mode = ($called_from_widget ? 1 : (isset($search_mode) ? $search_mode : ( $_POST['coming_from_widget'] ? $preset_search_mode : (isset($_POST['search_mode']) ? $_POST['search_mode'] : 
 			$preset_search_mode))));	
