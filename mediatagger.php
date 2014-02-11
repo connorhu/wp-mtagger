@@ -5,8 +5,8 @@ Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
-Version: 4.0.3
-Stable Tag: 4.0.3
+Version: 4.0.4
+Stable Tag: 4.0.4
 */
 
 
@@ -1403,8 +1403,10 @@ class wp_mediatagger{
 		$result_mode = (isset($_POST['result_mode']) ? $_POST['result_mode'] : $preset_result_mode);
 		//self::print_ro('Result mode : ' . $result_mode);
 
-		$is_search_mode_switchable = ($called_from_widget ? 0 : self::$opt['search_display_switchable']);
-		$is_result_mode_switchable = self::$opt['result_display_switchable'];
+		//self::print_ro('search_display_switchable mode : ' . self::$opt['search_display_switchable']);
+		//self::print_ro('result_display_switchable mode : ' . self::$opt['result_display_switchable']);
+		$is_search_mode_switchable = ($called_from_widget ? 0 : self::$opt['search_display_switchable']%2);
+		$is_result_mode_switchable = self::$opt['result_display_switchable']%2;
 		$search_tags_excluded = self::$opt['search_tags_excluded'];
 		$admin_background_color = self::$opt['admin_background_color'];
 	
