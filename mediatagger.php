@@ -5,7 +5,7 @@ Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
-Version: 4.0.4
+Version: 4.0.5
 Stable Tag: 4.0.4
 */
 
@@ -70,6 +70,7 @@ class wp_mediatagger{
 		
 		if (is_admin()) {
 			add_action('admin_menu', array($this, 'add_admin_menu'));
+			//add_action('admin_bar_menu', array($this, 'add_menu_admin_bar'), 100);
 		}
 		
 		add_action("plugins_loaded", array($this, 'mdtg_widget_init'));
@@ -90,8 +91,10 @@ class wp_mediatagger{
 		
 		// Plugin filters
 		add_filter('plugin_action_links', array($this, 'action_links'), 10, 2);
-		add_filter('the_content', array($this, 'run_shortcode'), 7);		
+		add_filter('the_content', array($this, 'run_shortcode'), 7);
+				
 	}
+
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Set various plugin information obtained from plugin header
@@ -187,11 +190,16 @@ class wp_mediatagger{
 		//
 		self::admin_message_debug(self::$t->loading, true);
 		self::load_options($admin_msg);
+//self::print_ro(self::$opt);
 		self::admin_message_debug($admin_msg);
 
 		//	Load taxonomy
 		//		
 		self::taxonomy_update();
+		
+		// Save to database in case of fix at loading
+		update_option(self::$PLUGIN_NAME_LC, self::$opt);
+
 
 		//d($this);
 	}
@@ -242,6 +250,35 @@ class wp_mediatagger{
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Menu bar - unused
+	//
+	function add_menu_admin_bar($wp_admin_bar) {
+		$wp_admin_bar->add_node(array(
+			'id' => 'mediatagger',
+			'title' => __('<img src="'.self::$PLUGIN_DIR_URL . 'images/menu.png" style="vertical-align:middle;margin-right:5px;margin-bottom:2px" alt="MediaTagger" title="MediaTagger" />MediaTagger' ),
+			'href' => get_bloginfo('wpurl') ));
+	
+		$wp_admin_bar->add_node( array(
+			'parent' => 'mediatagger',
+			'title' => 'Explorer',
+			'href' => 'http://www.photos-dauphine.com/wp-admin/admin.php?page=mediatagger',
+			'meta' => FALSE) );
+	
+		$wp_admin_bar->add_node( array(
+			'parent' => 'mediatagger',
+			'title' => 'Options',
+			'href' => 'http://www.photos-dauphine.com/wp-admin/admin.php?page=mediatagger_options',
+			'meta' => FALSE) );
+			
+		$wp_admin_bar->add_node( array(
+			'parent' => 'mediatagger',
+			'title' => 'Player',
+			'href' => 'http://www.photos-dauphine.com/wp-admin/admin.php?page=mediatagger_database',
+			'meta' => FALSE) );
+	}
+
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Init plugin options
 	//
 	private function load_options(&$admin_msg){
@@ -278,11 +315,7 @@ class wp_mediatagger{
 		//	Check options coherence 
 		//
 		self::check_option_coherence();
-		
-		// Save to database in case of fix at loading
-		update_option(self::$PLUGIN_NAME_LC, self::$opt);
-		//print_r(self::$opt);
-		
+				
 	}	
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -338,6 +371,39 @@ class wp_mediatagger{
 		$tag_source = self::$opt['admin_tags_source'];
 		$tag_groups = self::$opt['admin_tags_groups'];
 		
+		$ts_terms_table = self::get_table_timestamp($wpdb->terms);
+		$ts_term_taxonomy_table = self::get_table_timestamp($wpdb->term_taxonomy);
+		$ts_mediatagger_table = self::get_table_timestamp(self::$SQL_MDTG_TABLE);
+		//unset(self::$opt['cache']);	
+		$tax_cache = self::$opt['cache'];
+		
+		if (isset($tax_cache)){
+			if ($tax_cache['tag_source'] == $tag_source && 
+					$tax_cache['md5_tag_groups'] == md5($tag_groups) && 
+					$tax_cache['ts_terms_table'] == $ts_terms_table &&
+					$tax_cache['ts_term_taxonomy_table'] == $ts_term_taxonomy_table &&
+					$tax_cache['ts_mediatagger_table'] == $ts_mediatagger_table) {
+					
+				//echo "Using CACHED taxonomy <br/>";
+				self::$tax = $tax_cache['tax'];
+				if (!self::$tax)
+					return 0;	
+				else
+					return 1;
+			} else {
+				echo "Cached taxonomy outdated - RECALCULATING <br/>";
+				/*
+				if ($tax_cache['tag_source'] != $tag_source) echo "out of date due to tag_source update <br/>";
+				if ($tax_cache['md5_tag_groups'] != md5($tag_groups)) echo "out of date due to tag_groups update <br/>";
+				if ($tax_cache['ts_terms_table'] != $ts_terms_table) echo "out of date due to terms table update <br/>";
+				if ($tax_cache['ts_term_taxonomy_table'] != $ts_term_taxonomy_table) echo "out of date due to taxonomy table update <br/>";
+				if ($tax_cache['ts_mediatagger_table'] != $ts_mediatagger_table) echo "out of date due to mediatagger table update <br/>";	
+				*/
+			}
+		} else {
+			echo "No cached taxonomy detected - Computing fresh one <br/>";
+		}
+
 		if ($tag_source <= 2) {	// select only tags, or tags and categories	
 			$sql_query = 'SELECT term_taxonomy_id, tax.term_id, slug, name '.
 						 'FROM ' . $wpdb->term_taxonomy . ' AS tax INNER JOIN ' . $wpdb->terms . ' AS ter ON tax.term_id = ter.term_id ' .
@@ -366,8 +432,34 @@ class wp_mediatagger{
 		
 		// Build tag groups as defined in the admin interface
 		self::build_tag_groups($tag_groups);
+		
 		self::taxonomy_stats_update();
+		//self::print_ro(self::$tax);
+	
+		//
+		// Create cache record to minimize later SQL transactions
+		//
+		self::$opt['cache']['tag_source'] = $tag_source;
+		self::$opt['cache']['md5_tag_groups'] = md5($tag_groups);
+		self::$opt['cache']['ts_terms_table'] = $ts_terms_table;
+		self::$opt['cache']['ts_term_taxonomy_table'] = $ts_term_taxonomy_table;
+		self::$opt['cache']['ts_mediatagger_table'] = $ts_mediatagger_table;
+		self::$opt['cache']['tax'] = self::$tax;
+		
 		return 1;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////
+	// Make stats on tags ; add it as a 'count' field to the tag structure
+	//
+	private function get_table_timestamp($table_name){
+
+		$sql_query = "show table status where name='" . $table_name ."'";
+		$sql_query_result = self::run_mysql_query($sql_query);
+		$update_time = $sql_query_result[0]->Update_time;
+		//echo $update_time . '<br/>';
+		return $update_time;
+		
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////
@@ -2700,7 +2792,8 @@ class wp_mediatagger{
 			return;
 		}
 		
-		self::check_table_exists();
+		if (!self::$opt['table_conversion_OK'])
+			self::check_table_exists();
 		
 		$sql_result = $wpdb->get_results($sql_query);
 		if (mysql_error()) {
@@ -2726,6 +2819,9 @@ class wp_mediatagger{
 		if ($wpdb->get_var('SHOW TABLES LIKE "' . $db_table . '"') == $db_table){
 			if ($verbose)
 				self::admin_message_log(self::$t->table_detected_not_created . ".<br/>");
+				
+			self::$opt['table_conversion_OK'] = 1;
+			update_option(self::$PLUGIN_NAME_LC, self::$opt);
 			return;
 		} else {	// create or create AND import
 			$sql = 'CREATE TABLE ' . $db_table . '(object_id BIGINT(20) NOT NULL DEFAULT 0,term_taxonomy_id BIGINT(20) NOT NULL DEFAULT 0,PRIMARY KEY (object_id,term_taxonomy_id),KEY term_taxonomy_id (term_taxonomy_id)) ENGINE=MyISAM DEFAULT CHARSET=utf8;';
@@ -2739,6 +2835,7 @@ class wp_mediatagger{
 				self::admin_message_log(self::$t->table_not_detected_created . ".<br/>");			
 			}
 		}
+		
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3026,6 +3123,8 @@ class Ckeyword_filter {
 		return (stristr($media_info->post_title, $this->keyword) !== false || stristr($media_info->title, $this->keyword) !== false);
     }
 }
+
+function is_first_vowel($string){ $vowels = array('A','E','I','O','U','Y'); return (in_array(substr(ucfirst($string), 0, 1), $vowels) ? 1 : 0);}
 
 
 ?>
