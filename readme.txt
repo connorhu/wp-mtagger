@@ -1,10 +1,10 @@
 === WP MediaTagger ===
-Contributors: phd38
+Contributors: phd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WY6KNNHATBS5Q
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, tagging, bulk tagging, group tagging, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
-Tested up to: 4.0.4
-Stable tag: 4.0.4
+Tested up to: 4.0.5
+Stable tag: 4.0.5
 
 
 
@@ -19,28 +19,25 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Log visitors search and make it visible to the administrator
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
 
+= 4.0.5 = 
 
-= 4.0.5 dev =
-- Optimization for faster and lighter SQL transactions - operations are cached to decrease SQL server loading : 
-- check_table_exists() runs once for all - no later calls
-- taxonomy is cached and updated only when required : new tag, tag group modification, or table modification - see taxonomy_update()
+- Fixed negative logics for link to gallery image display mode.
 
+= 4.0.4 = 
 
-= 4.0.4 =
 - Search display mode switchable / result display mode switchable bug fixed.
 
-
 = 4.0.3 =
+
 - Default search mode bug fixed.
 
-
 = 4.0.2 =
+
 - Read & write to new table secured with systematic table detection checking.
 
-
 = 4.0.1 =
-- Fix widget parameter loading moving from before 4.0 to 4.x
 
+- Fix widget parameter loading moving from before 4.0 to 4.x
 
 = 4.0 - Major release, plugin redevelopped using OOP =
 
@@ -59,7 +56,6 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - new short code added, on top of the existing *[mediatagger]* used so far : [mediatagger_count] ; it displays the number of media available.
 - spanish version may not cover all the texts with this release - this will be fixed in the next release. This is due to many messages that were changed and not available anymore in the translation.
 - finally : this new version was extensively tested on my own database holding 2000 media. A user reported using with more than 40,000. I would rate it as pretty stable, waiting for your feedbacks...
-
 
 = 3.2.1 =
 

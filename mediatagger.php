@@ -6,7 +6,7 @@ Description: Extensively configurable plugin packed with a bunch of features ena
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
 Version: 4.0.5
-Stable Tag: 4.0.4
+Stable Tag: 4.0.5
 */
 
 
@@ -813,7 +813,7 @@ class wp_mediatagger{
 		$list_select = ($_POST['mdtg_select'] ? $_POST['mdtg_select'] : array());
 		$custom_list = ($_POST['mdtg_custom_list'] ? explode(',', $_POST['mdtg_custom_list']) : array());
 		$list_type = $_POST['mdtg_list_type'];
-		$list_type = ($list_type && !($list_type == 'search' && !$search_keyword)  ? $list_type : 'media_all');	// media_all || media_tagged || media_untagged || list || post
+		$list_type = ($list_type && !($list_type == 'search' && !$search_keyword)  ? $list_type : 'media_untagged');	// media_all || media_tagged || media_untagged || list || post
 		if ($list_type != 'search') $search_keyword = '';
 
 		// Manage custom list
@@ -1515,14 +1515,14 @@ class wp_mediatagger{
 			case 30: $change_page_previous = 1; break;	
 			case 31: $change_page_next = 1; break;
 		}
-		
+				
 		switch ($result_mode) {
 			case 1:				// gallery
 				$num_img_per_page = self::$opt['gallery_image_num_per_page'];
 				$img_norm_size = self::$opt['result_img_gallery_w_h'];
 				$img_border_width = self::$opt['gallery_image_border_w'];
 				$img_border_color = self::$opt['gallery_image_border_color'];
-				$link_to_post = self::$opt['gallery_image_link_ctrl'] % 2;
+				$link_to_post = ! (self::$opt['gallery_image_link_ctrl'] % 2);
 				break;
 			case 2:				//  itemized image list
 				$num_img_per_page = self::$opt['list_image_num_per_page'];
