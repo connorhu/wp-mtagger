@@ -5,8 +5,8 @@ Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
 Description: Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
 Author: www.photos-dauphine.com
 Author URI: http://www.photos-dauphine.com/
-Version: 4.0.5
-Stable Tag: 4.0.5
+Version: 4.0.6
+Stable Tag: 4.0.6
 */
 
 
@@ -124,7 +124,7 @@ class wp_mediatagger{
 		//	Init constants
 		//
 		self::$PHP_VERSION = phpversion();
-		self::$MYSQL_VERSION = mysql_get_server_info();
+		self::$MYSQL_VERSION = $wpdb->db_version();
 		self::$GD_VERSION = self::get_gd_version();
 		
 		self::$SQL_MDTG_TABLE = $wpdb->prefix . self::$PLUGIN_NAME_LC;
@@ -2118,7 +2118,7 @@ class wp_mediatagger{
     </p>
     
     <hr />
-    <p style="padding:0;margin-top:-5px;font-size:0.8em"><em><?php echo ' <a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="WordPress MediaTagger Plugin Home">WP MediaTagger</a> ' . self::$PLUGIN_VERSION . ' | ' ; echo 'PHP ' . phpversion() .  ' | MySQL ' . mysql_get_server_info() . ' | GD Lib ' . ( self::$GD_VERSION ? self::$GD_VERSION : self::$t->not_available) ;?></em></p>
+    <p style="padding:0;margin-top:-5px;font-size:0.8em"><em><?php echo ' <a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="WordPress MediaTagger Plugin Home">WP MediaTagger</a> ' . self::$PLUGIN_VERSION . ' | ' ; echo 'PHP ' . phpversion() .  ' | MySQL ' . self::$MYSQL_VERSION . ' | GD Lib ' . ( self::$GD_VERSION ? self::$GD_VERSION : self::$t->not_available) ;?></em></p>
         
         <?php
 //		self::print_ro(self::$opt);
