@@ -37,6 +37,7 @@ _("Add to list");
 _("Remove from list");
 _("Reset list");
 _("No media to display in this range - Start / stop indexes reset to default.");
+_("View media attached to post");
 _("None of the selected tag(s) match existing tags. The media search URL should be composed as http://www.mysite.com/library?tags=tag1+tag2+...+tagN, where http://www.mysite.com/library is the search result page. Check the spelling of the tag slugs");
 _("You can search a media by theme with the tag cloud above.");
 _("You can search a media by theme by selecting appropriate keywords below and clicking OK.");

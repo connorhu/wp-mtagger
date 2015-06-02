@@ -24,7 +24,7 @@ class wp_mediatagger{
 	private static $PLUGIN_NAME;			// "MediaTagger"
 	private static $PLUGIN_NAME_UCF;		// "Mediatagger"
 	private static $PLUGIN_NAME_LC;			// "mediatagger"
-	private static $PLUGIN_DIR_PATH;		// "/homez.424/photosdab/www/wp-content/plugins/wp-mediatagger/"
+	private static $PLUGIN_DIR_PATH;		// "/home/photosdab/www/wp-content/plugins/wp-mediatagger/"
 	private static $PLUGIN_DIR_URL;			// "http://www.photos-dauphine.com/wp-content/plugins/wp-mediatagger/"
 	private static $PLUGIN_DIR_NAME;		// "wp-mediatagger/"
 	private static $PLUGIN_VERSION;			// "2.1.1
@@ -77,17 +77,17 @@ class wp_mediatagger{
 		
 		// Load java script
 		//
-		$javascript_filename = self::$PLUGIN_NAME_LC . '.js';
-		wp_register_script($javascript_filename, self::$PLUGIN_DIR_URL . $javascript_filename, false, self::$PLUGIN_VERSION);
-		wp_enqueue_script($javascript_filename);
+		$js_filename = self::$PLUGIN_NAME_LC . '.js';
+		wp_register_script(self::$PLUGIN_NAME_LC, self::$PLUGIN_DIR_URL . $js_filename, false, self::$PLUGIN_VERSION);
+		wp_enqueue_script(self::$PLUGIN_NAME_LC);
 
 		wp_enqueue_script('jquery');		
 		
 		//
 		// Load CSS
 		$css_filename = self::$PLUGIN_NAME_LC . '.css';
-		wp_register_style($css_filename, self::$PLUGIN_DIR_URL . $css_filename, false, self::$PLUGIN_VERSION);
-		wp_enqueue_style($css_filename);
+		wp_register_style(self::$PLUGIN_NAME_LC, self::$PLUGIN_DIR_URL . $css_filename, false, self::$PLUGIN_VERSION);
+		wp_enqueue_style(self::$PLUGIN_NAME_LC);
 		
 		// Plugin filters
 		add_filter('plugin_action_links', array($this, 'action_links'), 10, 2);
@@ -114,7 +114,7 @@ class wp_mediatagger{
 		
 		self::$PLUGIN_NAME_LC = strtolower(self::$PLUGIN_NAME);
 		self::$PLUGIN_NAME_UCF = ucfirst(self::$PLUGIN_NAME_LC);
-		self::$PLUGIN_DIR_PATH = plugin_dir_path(__FILE__);
+		self::$PLUGIN_DIR_PATH = plugin_dir_path(__FILE__); 
 		self::$PLUGIN_DIR_URL = plugin_dir_url(__FILE__);
 		self::$PLUGIN_DIR_NAME = basename(self::$PLUGIN_DIR_PATH) . '/';
 		
@@ -969,7 +969,7 @@ class wp_mediatagger{
 			$media_title = $media_info->title;
 			if (strlen($media_title) > 50) $media_title = substr($media_title,0, 50) . '...'; // shorten name if too long
 			$post_url = '<a href="" . onClick="mdtg_submit(\'mdtg_list_type\',\'post\', 1);mdtg_submit(\'mdtg_post_ID\',' . $media_info->post_ID . ');return false;" ' . 
-				'title="View media attached to post" style="color:#889;">' . $media_info->post_title . '</a>';
+				'title="' . self::$t-> view_attached_media . '" style="color:#889;">' . $media_info->post_title . '</a>';
 			$post_title = ($media_info->post_ID < 0 ? '<em>(' . self::$t->orphean_media . ')</em>' : ($is_editor ? $media_info->post_title : $post_url));
 			
 			$bckcol = ($bckcol == "ffffff" ? "f0f0f0" : "ffffff");

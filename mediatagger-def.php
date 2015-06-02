@@ -52,6 +52,8 @@
 	$t-> reset_list = 'Reset list';
 	$t-> no_media_range = 'No media to display in this range - Start / stop indexes reset to default.';
 	
+	$t-> view_attached_media = 'View media attached to post';
+	
 	$t-> no_tag_match = 'None of the selected tag(s) match existing tags. The media search URL should be composed as http://www.mysite.com/library?tags=tag1+tag2+...+tagN, where http://www.mysite.com/library is the search result page. Check the spelling of the tag slugs';
 	$t-> search_cloud  = 'You can search a media by theme with the tag cloud above.';
 	$t-> search_form = 'You can search a media by theme by selecting appropriate keywords below and clicking OK.';
@@ -83,7 +85,7 @@
 	$t-> image_x_to_y__1 = 'image %d to %d';
 	$t-> image_x_to_y__2 = 'images %d to %d';
 	$t-> offer_media_engine = 'Offer a media search engine to your blog with';
-	
+
 	$t-> invalid_option_value = 'Invalid values restored to the last correct settings :';
 	$t-> options_saved = 'Parameters saved.';
 	$t->not_available = 'not available';

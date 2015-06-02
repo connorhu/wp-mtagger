@@ -19,6 +19,11 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 - Log visitors search and make it visible to the administrator
 - Plugin internationalization : the `mediatagger.pot` file, required to translate the package to any other language, is provided for volunteers with the plugin files (contact me to make sure the *.pot file part of the package is up-to-date). If you are interested in internationalizing this plugin, I would certainly welcome your help. Simply [let me know](http://www.photos-dauphine.com/ecrire "Any volunteer to push the WP MediaTagger internationalization ?") so that I can push your translation to the repository. If needed I can provide you the methodology, many tools are available to ease this task.
 
+= 4.0.7 = 
+
+- Dutch translation now available - Thanks Miriam Vermay !
+- Cleanup of deprecated API calls
+
 = 4.0.6 = 
 
 - Fixed bug linked to obsolete mysql_get_server_info()
