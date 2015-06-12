@@ -3,8 +3,8 @@ Contributors: phd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WY6KNNHATBS5Q
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, tagging, bulk tagging, group tagging, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
-Tested up to: 4.0.6
-Stable tag: 4.0.6
+Tested up to: 4.0.7
+Stable tag: 4.0.7
 
 
 
@@ -13,6 +13,7 @@ Stable tag: 4.0.6
 = Future possible implementations =
 A lot of some enhancements brought to *MediaTagger* were made thanks to your suggestions. Feel free to [contribute](http://www.photos-dauphine.com/ecrire "Suggestions") with your own proposals :
 
+- search field as widget
 - Check tags associated to medias in the *wp_term_relationships* table. Sometime there are many, although I would expect the only default tag '1' (default category) is there. Possibly cleanup if too mazy.
 - Plugin cleanup to make the HTML generated code strict XHTML compliant
 - Improved pagination for multipage results, displaying quick access page links
@@ -21,7 +22,7 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 
 = 4.0.7 = 
 
-- Dutch translation now available - Thanks Miriam Vermay !
+- Dutch translation now available - (Thanks Miriam)
 - Cleanup of deprecated API calls
 
 = 4.0.6 = 
