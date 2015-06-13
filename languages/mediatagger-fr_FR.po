@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP MediaTagger\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-imagetagger\n"
-"POT-Creation-Date: 2015-06-02 15:36+0100\n"
+"POT-Creation-Date: 2015-06-13 07:26+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: phd38 <contact@photos-dauphie.com>\n"
 "Language-Team: phd <http://www.photos-dauphine.com/ecrire>\n"
@@ -1182,7 +1182,7 @@ msgstr "Format résultat - Liste d'images"
 msgid "Number of images per list page"
 msgstr "Nombre d'images par page"
 
-#: mediatagger-def-i18n.php:557 mediatagger-def-i18n.php:584
+#: mediatagger-def-i18n.php:557
 msgid ""
 "Number of images to be listed on the search result page in case the display "
 "format is set to 'Image list'"
@@ -1199,11 +1199,12 @@ msgstr ""
 
 #: mediatagger-def-i18n.php:567
 msgid ""
-"Number of image titles to be listed on the search result page in case the "
-"display format is set to 'Title list'"
+"Used to scale the images displayed in list mode on the Image Tag Search "
+"Result Page. The largest of the (width, height) will be scaled to this "
+"number'"
 msgstr ""
-"Nombre de titres d''images à afficher par page de résultats en mode "
-"d'affichage \"liste d'images\""
+"Utilisé pour redimensionner les images affichées sur la page résultat en "
+"mode liste. Le max(H,L) sera mis à l'échelle avec ce chiffre"
 
 #: mediatagger-def-i18n.php:569
 msgid ""
@@ -1220,6 +1221,14 @@ msgstr "Format résultat - Liste de titres"
 #: mediatagger-def-i18n.php:583
 msgid "Number of image titles per list page"
 msgstr "Nombre de titres d'images par page"
+
+#: mediatagger-def-i18n.php:584
+msgid ""
+"Number of images to be listed on the search result page in case the display "
+"format is set to 'Title list'"
+msgstr ""
+"Nombre d'images à afficher par page de résultat en mode d'affichage \"liste "
+"de titres\""
 
 #: mediatagger-def-i18n.php:586
 msgid ""
@@ -1277,3 +1286,10 @@ msgstr ""
 "Si vous souhaitez ne pas afficher cette référence, vous pouvez encore "
 "établir un lien vers le site http://www.photos-dauphine.com sur la page de "
 "votre choix."
+
+#~ msgid ""
+#~ "Number of image titles to be listed on the search result page in case the "
+#~ "display format is set to 'Title list'"
+#~ msgstr ""
+#~ "Nombre de titres d''images à afficher par page de résultats en mode "
+#~ "d'affichage \"liste d'images\""

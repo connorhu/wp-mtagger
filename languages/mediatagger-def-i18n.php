@@ -564,7 +564,7 @@ In case an image framing plugin or theme is activated, this setting will be gene
 	'result_img_list_w_h' => array(			// TBD : change to list_img_w_h for naming coherence
 		'type' => "TEXT",
 		'desc' => self::__("Maximum image pixel width or height"),
-		'tooltip' => self::__("Number of image titles to be listed on the search result page in case the display format is set to 'Title list'"),
+		'tooltip' => self::__("Used to scale the images displayed in list mode on the Image Tag Search Result Page. The largest of the (width, height) will be scaled to this number'"),
 		'checker' => "is_int(@VAL) && @VAL >= 10",
 		'errmsg' => self::__("The maximum image pixel width or height must be an integer greater than 10 (Image list output format)")
 	),
@@ -581,7 +581,7 @@ In case an image framing plugin or theme is activated, this setting will be gene
 	'list_title_num_per_page' => array(			
 		'type' => "TEXT",
 		'desc' => self::__("Number of image titles per list page"),
-		'tooltip' => self::__("Number of images to be listed on the search result page in case the display format is set to 'Image list'"),
+		'tooltip' => self::__("Number of images to be listed on the search result page in case the display format is set to 'Title list'"),
 		'checker' => "is_int(@VAL) && @VAL > 0",
 		'errmsg' => self::__("The number of image titles per page must be positive (Title list output format)")
 	),
