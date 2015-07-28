@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, plugin, media, library, images, audio, video, mpeg, mp3, pdf, rtf, txt, taxonomy, photos, tags, tagging, bulk tagging, group tagging, gallery, photoblog, search, engine, classification, database, cleanup
 Requires at least: 3.0
 Tested up to: 4.0.8
-Stable tag: 4.0.7
+Stable tag: 4.0.8
 
 
 
