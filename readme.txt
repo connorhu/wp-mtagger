@@ -23,6 +23,7 @@ A lot of some enhancements brought to *MediaTagger* were made thanks to your sug
 = 4.0.8 = 
 
 - Fix of tooltips in the options dashboard
+- Fix of wrong JS code formatting with WP 4.2.3
 
 = 4.0.7 = 
 

@@ -1614,34 +1614,37 @@ class wp_mediatagger{
 			$tax_id_list[0] = $_POST['tagcloud'];
 		}
 
-		$strout .= '<script language="JavaScript" type="text/javascript">
+		$strjs .= '<script language="JavaScript" type="text/javascript">
 ';
-		$strout .= '<!--
+		$strjs .= '<!-- 
 ';
-		$strout .= 'function ' . $search_form_submit . '(post_var_name, post_var_value) {
+		$strjs .= 'function ' . $search_form_submit . '(post_var_name, post_var_value) {
 ';
-		$strout .= 'document.' . $search_form_name . '.elements[post_var_name].value = post_var_value ;
+		$strjs .= 'document.' . $search_form_name . '.elements[post_var_name].value = post_var_value ;
 ';
-		$strout .= 'document.' . $search_form_name . '.submit();
+		$strjs .= 'document.' . $search_form_name . '.submit();
 ';
-		$strout .= '}
+		$strjs .= '}
 ';
-		$strout .= 'function tagsearchblur(element) {
+		$strjs .= 'function tagsearchblur(element) {
 ';
-		$strout .= 'if(element.value == \'\') {element.value = \'' . $search_field_default . '\';}
+		$strjs .= 'if(element.value == \'\') {element.value = \'' . $search_field_default . '\';}
 ';
-		$strout .= '}
+		$strjs .= '}
 ';
-		$strout .= 'function tagsearchfocus(element) {
+		$strjs .= 'function tagsearchfocus(element) {
 ';
-		$strout .= 'if(element.value == \'' . $search_field_default . '\') {element.value = \'' . '' . '\';}
+		$strjs .= 'if(element.value == \'' . $search_field_default . '\') {element.value = \'' . '' . '\';}
 ';
-		$strout .= '}
+		$strjs .= '}
 ';
-		$strout .= '-->
+		$strjs .= '-->
 ';
-		$strout .= '</script>
+		$strjs .= '</script>
 ';
+
+// direct output (not buffered in strout) to avoid formatting issues with autop that broke the javascript formatting starting WP 4.2.3
+echo $strjs; 
 
 		$strout .= '<form name="' . $search_form_name . '" method="post" action="' . $result_page_url . '" style="padding:0;margin:0">';
 		$strout .= '<input type="hidden" name="search_mode" value="' . $search_mode . '">';
