@@ -1,0 +1,1295 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP MediaTagger\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-imagetagger\n"
+"POT-Creation-Date: 2015-06-13 07:26+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: phd38 <contact@photos-dauphie.com>\n"
+"Language-Team: phd <http://www.photos-dauphine.com/ecrire>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: mediatagger-def-i18n.php:3
+msgid "Activation"
+msgstr "Activation"
+
+#: mediatagger-def-i18n.php:4
+msgid "Taxonomy table detected in database - not created"
+msgstr ""
+"Table de taxinomie détectée dans la base de donnée - conservée en l'état"
+
+#: mediatagger-def-i18n.php:5
+msgid "Taxonomy table detected in database - converted."
+msgstr "Table de taxinomie détectée dans la base de donnée - convertie."
+
+#: mediatagger-def-i18n.php:6
+msgid "Taxonomy table not detected in database - created"
+msgstr "Table de taxinomie non détectée dans la base de données - créée."
+
+#: mediatagger-def-i18n.php:7
+msgid "Loading"
+msgstr "Chargement"
+
+#: mediatagger-def-i18n.php:8
+msgid ""
+"Plugin options detected in database in <b>serialized</b> format - RELOADED "
+"successfully."
+msgstr ""
+"Options plugin détectées dans la base de données au format <b>série</b> - "
+"CHARGEES avec succès."
+
+#: mediatagger-def-i18n.php:9
+msgid ""
+"Plugin options detected in database in <b>itemized</b> format - RELOADED and "
+"SERIALIZED successfully."
+msgstr ""
+"Options plugin détectées dans la base de données au format <b>enuméré</b> - "
+"CHARGEES et SERIALISEES avec succès."
+
+#: mediatagger-def-i18n.php:10
+msgid ""
+"No plugin options detected in database from former versions - INITIALIZED "
+"successfully."
+msgstr ""
+"Absence d'options plugin dans la base de données - INITIALISEES avec succès."
+
+#: mediatagger-def-i18n.php:11
+msgid ""
+"<b>No tag detected in your blog - Start by adding tags to your blog before "
+"tagging media.</b>"
+msgstr ""
+"<b>Aucun tag détecté sur votre blog - Commencez par en créer avant de tagger "
+"vos média.</b>"
+
+#: mediatagger-def-i18n.php:12
+msgid "Select at least one media in the list for tagging."
+msgstr "Sélectionner au moins un média dans la liste avant de taguer."
+
+#: mediatagger-def-i18n.php:13
+msgid "Displaying"
+msgstr "Affichage"
+
+#: mediatagger-def-i18n.php:14
+msgid "View"
+msgstr "Afficher"
+
+#: mediatagger-def-i18n.php:15
+msgid "Editor"
+msgstr "Editeur"
+
+#: mediatagger-def-i18n.php:16
+msgid "File"
+msgstr "Fichier"
+
+#: mediatagger-def-i18n.php:17
+msgid "Tag"
+msgstr "Taguer"
+
+#: mediatagger-def-i18n.php:18
+msgid "< Tag"
+msgstr "< Taguer"
+
+#: mediatagger-def-i18n.php:19
+msgid "Tag >"
+msgstr "Taguer >"
+
+#: mediatagger-def-i18n.php:20
+msgid "Clear"
+msgstr "Effacer"
+
+#: mediatagger-def-i18n.php:21
+msgid "Explorer"
+msgstr "Explorateur"
+
+#: mediatagger-def-i18n.php:22
+msgid "All media"
+msgstr "Tous les médias"
+
+#: mediatagger-def-i18n.php:23
+msgid "List all media"
+msgstr "Afficher tous les médias"
+
+#: mediatagger-def-i18n.php:24
+msgid "Tagged media"
+msgstr "Médias taggés"
+
+#: mediatagger-def-i18n.php:25
+msgid "List tagged media"
+msgstr "Afficher les médas taggés"
+
+#: mediatagger-def-i18n.php:26
+msgid "Untagged media"
+msgstr "Médias non taggés"
+
+#: mediatagger-def-i18n.php:27
+msgid "List untagged media"
+msgstr "Afficher les médias non taggés"
+
+#: mediatagger-def-i18n.php:28
+msgid "List"
+msgstr "Liste"
+
+#: mediatagger-def-i18n.php:29
+msgid "List media added to the custom list"
+msgstr "Afficher les médias inclus dans la liste personnalisée"
+
+#: mediatagger-def-i18n.php:30
+msgid "Search all media"
+msgstr "Rechercher parmi tous les médias"
+
+#: mediatagger-def-i18n.php:31
+msgid "Display"
+msgstr "Afficher"
+
+#: mediatagger-def-i18n.php:32
+msgid "Display depth"
+msgstr "Nombre de médias à afficher"
+
+#: mediatagger-def-i18n.php:33
+msgid "media starting from"
+msgstr "médias à partir de"
+
+#: mediatagger-def-i18n.php:34
+msgid "Start display index"
+msgstr "Offset index"
+
+#: mediatagger-def-i18n.php:35
+msgid "No media detected in your blog - Start by adding media before tagging."
+msgstr ""
+"Aucun tag détecté sur votre blog - Commencez par en créer avant de tagger "
+"vos médias."
+
+#: mediatagger-def-i18n.php:36
+msgid "Add to list"
+msgstr "Ajouter à la liste"
+
+#: mediatagger-def-i18n.php:37
+msgid "Remove from list"
+msgstr "Retirer de la liste"
+
+#: mediatagger-def-i18n.php:38
+msgid "Reset list"
+msgstr "Effacer la liste"
+
+#: mediatagger-def-i18n.php:39
+msgid ""
+"No media to display in this range - Start / stop indexes reset to default."
+msgstr ""
+"Aucun média compris dans la fenêtre sélectionnée. Indices de début et de fin "
+"remis à leur valeur par défaut.  "
+
+#: mediatagger-def-i18n.php:40
+msgid "View media attached to post"
+msgstr "Afficher les medias rattachés à ce post"
+
+#: mediatagger-def-i18n.php:41
+msgid ""
+"None of the selected tag(s) match existing tags. The media search URL should "
+"be composed as http://www.mysite.com/library?tags=tag1+tag2+...+tagN, where "
+"http://www.mysite.com/library is the search result page. Check the spelling "
+"of the tag slugs"
+msgstr ""
+"Aucun des tags recherchés n'est reconnu sur le site. L'URL de recherche de "
+"médias doit être composée de la manière suivante :  http://www.mysite.com/"
+"library?tags=tag1+tag2+...+tagN, où  http://www.mysite.com/library "
+"correspond à la page d'affichage du résultat de la recherche. Vérifier la "
+"syntaxe des identifiants de tags (slugs)"
+
+#: mediatagger-def-i18n.php:42
+msgid "You can search a media by theme with the tag cloud above."
+msgstr ""
+"La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus."
+
+#: mediatagger-def-i18n.php:43
+msgid ""
+"You can search a media by theme by selecting appropriate keywords below and "
+"clicking OK."
+msgstr ""
+"Pour effectuer une recherche par thème, sélectionner les mots-clefs "
+"appropriés et cliquer sur OK."
+
+#: mediatagger-def-i18n.php:44
+msgid ""
+"You can search a media by theme either with the tag cloud above or selecting "
+"appropriate keywords below and clicking OK."
+msgstr ""
+"La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus ou "
+"par la sélection des mots-clefs appropriés ci-dessous."
+
+#: mediatagger-def-i18n.php:45
+msgid ""
+"You can search a media entering a keyword above that will be searched as "
+"part of the medias name."
+msgstr ""
+"Pour effectuer une recherche, saisissez un mot clé dans le champ texte ci-"
+"dessus. Ce mot clé sera recherché parmi les noms de médias."
+
+#: mediatagger-def-i18n.php:46
+msgid ""
+"You can search a media by theme with the tag cloud above or entering a "
+"keyword above that will be searched as part of the medias name."
+msgstr ""
+"La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus ou "
+"en saisissant un mot clé dans le champ texte ci-dessus. Ce mot clé sera "
+"recherché parmi les noms de médias."
+
+#: mediatagger-def-i18n.php:47
+msgid ""
+"You can search a media by theme by selecting appropriate keywords below and "
+"clicking OK or entering a keyword above that will be searched as part of the "
+"medias name."
+msgstr ""
+"Pour effectuer une recherche par thème, sélectionner les mots-clefs "
+"appropriés et cliquer sur OK. Ou saisissez un mot clé dans le champ texte ci-"
+"dessus. Ce mot clé sera recherché parmi les noms de médias."
+
+#: mediatagger-def-i18n.php:48
+msgid ""
+"You can search a media by theme either with the tag cloud above or selecting "
+"appropriate keywords below and clicking OK or entering a keyword above that "
+"will be searched as part of the medias name."
+msgstr ""
+"La recherche peut s'effectuer par thème grâce au nuages de tags ci-dessus ou "
+"par la sélection des mots-clefs appropriés ci-dessous. Ou saisissez un mot "
+"clé dans le champ texte ci-dessus. Ce mot clé sera recherché parmi les noms "
+"de médias."
+
+#: mediatagger-def-i18n.php:49
+msgid "no media found matching this criteria list"
+msgstr "aucun média trouvé correspondant à ces critères"
+
+#: mediatagger-def-i18n.php:50
+msgid "Results display"
+msgstr "Format résultat"
+
+#: mediatagger-def-i18n.php:51
+msgid "Display the results as an image gallery"
+msgstr "Afficher les résultats sous forme de galerie"
+
+#: mediatagger-def-i18n.php:52
+msgid "Gallery"
+msgstr "Galerie"
+
+#: mediatagger-def-i18n.php:53
+msgid "Display the results as an itemized image list"
+msgstr "Afficher les résultats sous forme de liste d'images"
+
+#: mediatagger-def-i18n.php:54
+msgid "Itemized"
+msgstr "Liste d'images"
+
+#: mediatagger-def-i18n.php:55
+msgid "Display the results as an image title list"
+msgstr "Afficher les résultats sous forme de liste d'images"
+
+#: mediatagger-def-i18n.php:56
+msgid "Titles"
+msgstr "Liste de titres"
+
+#: mediatagger-def-i18n.php:57
+msgid "not attached to any post"
+msgstr "rattaché à aucun post"
+
+#: mediatagger-def-i18n.php:58
+msgid "Go to page"
+msgstr "Aller à la page"
+
+#: mediatagger-def-i18n.php:59
+msgid "Access to media"
+msgstr "Accéder au média"
+
+#: mediatagger-def-i18n.php:60
+msgid "Click to display previous page"
+msgstr "Aller à la page précédente"
+
+#: mediatagger-def-i18n.php:61
+msgid "previous"
+msgstr "précédente"
+
+#: mediatagger-def-i18n.php:62
+msgid "Click to display next page"
+msgstr "Aller à la page suivante"
+
+#: mediatagger-def-i18n.php:63
+msgid "next"
+msgstr "suivante"
+
+#: mediatagger-def-i18n.php:64
+msgid "Offer a media search engine to your blog with"
+msgstr "Offrez à votre blog un moteur de recherche de médias avec"
+
+#: mediatagger-def-i18n.php:65
+msgid "Invalid values restored to the last correct settings :"
+msgstr "Valeurs d'options incorrectes et non prises en compte"
+
+#: mediatagger-def-i18n.php:66
+msgid "Parameters saved."
+msgstr "Paramètres sauvegardés."
+
+#: mediatagger-def-i18n.php:67
+msgid "not available"
+msgstr "non disponible"
+
+#: mediatagger-def-i18n.php:68
+msgid "Tags detected from the image taxonomy"
+msgstr "Tags dérivés de la taxinomie image"
+
+#: mediatagger-def-i18n.php:69
+msgid "post"
+msgstr "post"
+
+#: mediatagger-def-i18n.php:70
+msgid "Search attachment like..."
+msgstr "Chercher média contenant..."
+
+#: mediatagger-def-i18n.php:71
+msgid "Toggle tag cloud"
+msgstr "Permuter l'affichage du nuage de tags"
+
+#: mediatagger-def-i18n.php:72 mediatagger-def-i18n.php:308
+msgid "Tag cloud"
+msgstr "Nuage de tags"
+
+#: mediatagger-def-i18n.php:73
+msgid "Toggle form"
+msgstr "Permuter l'affichage du formulaire de recherche"
+
+#: mediatagger-def-i18n.php:74
+msgid "Form"
+msgstr "Formulaire"
+
+#: mediatagger-def-i18n.php:75
+msgid "Toggle search field"
+msgstr "Permuter l'affichage du champ de recherche"
+
+#: mediatagger-def-i18n.php:76 mediatagger-def-i18n.php:310
+msgid "Search field"
+msgstr "Champ de recherche"
+
+#: mediatagger-def-i18n.php:77
+msgid ""
+"Type here the keyword that will be searched in the media names database, "
+"rather than filtering on the tags attached to the medias."
+msgstr ""
+"Entrer ici le mot clé à rechercher parmi les noms de médias de la base de "
+"données."
+
+#: mediatagger-def-i18n.php:78
+msgid "Orphean media, not linked to any post"
+msgstr "Média orphelin, lié à aucun post"
+
+#: mediatagger-def-i18n.php:79
+msgid "No tag associated to this media"
+msgstr "Aucun tag associé à ce média"
+
+#: mediatagger-def-i18n.php:80
+msgid "Search display"
+msgstr "Format de recherche"
+
+#: mediatagger-def-i18n.php:81
+#, php-format
+msgid ""
+"PHP Version %.2f is the minimum required on your server to run the %s plugin."
+msgstr ""
+"Le serveur hébergeant le blog doit être équipé au minimum de la version PHP "
+"%.2f pour pouvoir faire fonctionner le plugin %s."
+
+#: mediatagger-def-i18n.php:82
+#, php-format
+msgid "Version %s was detected on the server."
+msgstr "La version %s a été détectée sur ce serveur."
+
+#: mediatagger-def-i18n.php:83
+msgid "Update options"
+msgstr "Enregistrer les options"
+
+#: mediatagger-def-i18n.php:84
+msgid "Others"
+msgstr "Autres"
+
+#: mediatagger-def-i18n.php:85
+msgid ""
+"If you experience this plugin brings value to your site, you are free to "
+"make a donation for supporting the development and maintenance."
+msgstr ""
+"Si vous trouvez ce plugin utile, vous êtes libre d'effectuer un don afin de "
+"soutenir l'effort de développement et de maintenance."
+
+#: mediatagger-def-i18n.php:86
+msgid "Even small donations matter and are encouraging !"
+msgstr "Même les petits dons sont importants et encourageants !"
+
+#: mediatagger-def-i18n.php:87
+msgid ""
+"Display your MediaTagger tag cloud in the sidebar. Before that, you need to "
+"have properly tagged your medias in the MediaTagger plugin Admin Panel and "
+"have as well setup a result page that you will use as your tag cloud target "
+"page"
+msgstr ""
+"Affichez le nuage de tags MediaTagger dans la colonne latérale. Avant tout, "
+"vous devez avoir taggé vos médias dans le panneau d'administration du plugin "
+"MediaTagger, et avoir également défini une page résultat qui sera utilisée "
+"comme page cible pour le nuage de tags."
+
+#: mediatagger-def-i18n.php:88
+msgid "media associated to tag"
+msgid_plural "medias associated to tag"
+msgstr[0] "média associé à ce tag"
+msgstr[1] "médias associés à ce tag"
+
+#: mediatagger-def-i18n.php:89
+msgid "media found"
+msgid_plural "medias found"
+msgstr[0] "média trouvé"
+msgstr[1] "médias trouvés"
+
+#: mediatagger-def-i18n.php:90
+#, php-format
+msgid "image %d to %d"
+msgid_plural "images %d to %d"
+msgstr[0] "image %d à %d"
+msgstr[1] "images %d à %d"
+
+#: mediatagger-def-i18n.php:91
+msgid "Original tag"
+msgid_plural "Original tags"
+msgstr[0] "Tag d'origine"
+msgstr[1] "Tags d'origine"
+
+#: mediatagger-def-i18n.php:92
+msgid "New tag"
+msgid_plural "New tags"
+msgstr[0] "Nouveau tag"
+msgstr[1] "Nouveaux tags"
+
+#: mediatagger-def-i18n.php:93
+msgid "occurence"
+msgid_plural "occurences"
+msgstr[0] "occurence"
+msgstr[1] "occurences"
+
+#: mediatagger-def-i18n.php:105
+msgid "General"
+msgstr "Général"
+
+#: mediatagger-def-i18n.php:112
+msgid "File formats for tagging"
+msgstr "Formats de fichiers à prendre en compte pour la classification"
+
+#: mediatagger-def-i18n.php:113
+msgid ""
+"This defines the set of files available for tagging (admin) and searching "
+"(visitors)"
+msgstr ""
+"Les fichiers correspondant à ces formats seront listés pour la "
+"classification (admin) et la recherche (visiteurs)"
+
+#: mediatagger-def-i18n.php:116
+msgid "At least one file format has to be selected (General)."
+msgstr "Un format de fichier doit au minimum être sélectionné (Général)"
+
+#: mediatagger-def-i18n.php:123
+msgid "Tagging source"
+msgstr "Tags définis à partir des"
+
+#: mediatagger-def-i18n.php:124
+msgid ""
+"You can tag medias either with your blog tags, with your categories, or with "
+"your tags and categories merged together"
+msgstr ""
+"Les médias peuvent être classifiés par mots-clefs correspondant aux tags de "
+"votre blog, aux catégories, ou à l'ensemble des tags et catégories."
+
+#: mediatagger-def-i18n.php:125
+msgid "Tags"
+msgstr "Tags"
+
+#: mediatagger-def-i18n.php:126
+msgid "Tags and categories"
+msgstr "Tags et catégories"
+
+#: mediatagger-def-i18n.php:127
+msgid "Categories"
+msgstr "Catégories"
+
+#: mediatagger-def-i18n.php:138
+msgid "Tags groups"
+msgstr "Groupements de tags"
+
+#: mediatagger-def-i18n.php:139
+msgid ""
+"Optional : you can regroup tags by groups so that those tags are displayed "
+"together. This applies to the tagging panel form as well as to the search "
+"form. If you do not need to categorize your tags, keep this field empty. "
+"Otherwise, use the following CSV syntax, one group definition per line :\n"
+"\n"
+"   my_group1_name=tag1,tag2,tag5,tag7, ... ,tag n\n"
+"   my_group2_name=tag3,tag4,tag6, ... , tag m\n"
+"   ...\n"
+"\n"
+"Spaces do not matter - The tags not listed in these groups will be listed at "
+"the end in the default category. Optionnally, you can name this default "
+"category by adding as last line - do not add anything after '=' :\n"
+"\n"
+"   my_default_group_name=\n"
+"\n"
+"By default the tags are disposed by column automatically ; you can override "
+"this rule by leaving a blank line before the group you want to start to the "
+"next column."
+msgstr ""
+"Optionnel : vous pouvez rassembler les tags par groupe pour que ces tags "
+"soient affichés selon les groupes définis. Ce réglage concerne le panneau de "
+"classification et le formulaire de recherche. Par défaut, laissez ce champ "
+"vide. Sinon, utilisez une syntaxe CSV avec une définition de groupe par "
+"ligne :\n"
+"\n"
+"   mon_groupe_1=tag1,tag2,tag5,tag7, ... ,tag n\n"
+"   mon_groupe_2=tag3,tag4,tag6, ... , tag m\n"
+"   ...\n"
+"\n"
+"Les espaces n'influent pas - Les tags n'apparaissant dans aucun groupe sont "
+"regroupés à la fin dans une catégorie par défaut. Optionnellement, cette "
+"catégorie peut être nommée en ajoutant en dernière ligne - ne rien mettre "
+"après '=' :\n"
+"\n"
+"   mon_groupe_par_défaut= \n"
+"\n"
+"Par défaut les tags sont disposés en colonne automatiquement ; les colonnes "
+"peuvent être formattées manuellement en insérant une ligne vide avant le "
+"groupe à reporter à la colonne suivante."
+
+#: mediatagger-def-i18n.php:151
+msgid "Tag group definition : incorrect syntax (General)."
+msgstr "Définition incorrecte des groupes de tags (Général)."
+
+#: mediatagger-def-i18n.php:159
+msgid "Fields background color"
+msgstr "Couleur de fond des titres au format hexadécimal"
+
+#: mediatagger-def-i18n.php:160
+msgid ""
+"This color is used for the fields background in the tagging panel and search "
+"form"
+msgstr "Couleur de fond pour les champs titres"
+
+#: mediatagger-def-i18n.php:162
+msgid ""
+"The fields background color must be a valid hexadecimal color code as 3ff or "
+"a1b160 (General)."
+msgstr ""
+"La couleur d'arrière-plan doit être codée sous un format hexadécimal valide, "
+"de type 3ff ou 1b160 (Général)."
+
+#: mediatagger-def-i18n.php:169
+msgid "Media taxonomy"
+msgstr "Taxinomie média"
+
+#: mediatagger-def-i18n.php:176
+msgid "Override original post taxonomy with media taxonomy"
+msgstr "Déduire les tags des posts de l'union des tags médias"
+
+#: mediatagger-def-i18n.php:177
+msgid ""
+"Carefully read this note :\n"
+"\n"
+"This option allows to let the media taxonomy defined with MediaTagger "
+"supersede the post taxonomy provided as standard by WordPress.\n"
+"If you activate this feature : every time you tag a media from the "
+"MediaTagger editor, the post containing this media will be associated to the "
+"tag list formed from a logical OR between all the tags set on the medias "
+"contained in the post. \n"
+"\n"
+"Any former tag manually set on the post will be lost and supersed by this "
+"logical media taxonomy combination. For that reason it is recommended to "
+"backup your WordPress database before the first activation of this feature."
+msgstr ""
+"Lire attentivement ce qui suit :\n"
+"\n"
+"Cette option une fois activée déduira de la taxinomie média la taxinomie du "
+"post auquel ces médias sont rattachés. Les tags associés au post seront "
+"formés par un OU logique entre tous les tags des médias de ce post. \n"
+"\n"
+"Les tags associés précédemment aux posts seront écrasés par cette taxinomie "
+"média. Pour cette raison une sauvegarde de la base de données WordPress peut "
+"être une bonne idée avant d'activer cette fonctionnalité."
+
+#: mediatagger-def-i18n.php:183 mediatagger-def-i18n.php:324
+#: mediatagger-def-i18n.php:458 mediatagger-def-i18n.php:475
+msgid "Yes"
+msgstr "Oui"
+
+#: mediatagger-def-i18n.php:184 mediatagger-def-i18n.php:325
+#: mediatagger-def-i18n.php:459 mediatagger-def-i18n.php:476
+msgid "No"
+msgstr "Non"
+
+#: mediatagger-def-i18n.php:193
+msgid "Preview the Media Taxonomy scheme"
+msgstr "Prévisualiser la taxinomie média"
+
+#: mediatagger-def-i18n.php:194
+msgid ""
+"This preview function lets you evaluate what would the media taxonomy be "
+"compared to your current posts tagging.\n"
+"\n"
+"After clicking this link you will be directed to the preview page. From this "
+"page you will then have the choice to run an automatic retagging batch."
+msgstr ""
+"Le lien vous conduira sur la page de prévisualisation.A partir de là vous "
+"pourrez accepter de continuer grâce à un processus de re-tagging automatique"
+
+#: mediatagger-def-i18n.php:197
+msgid "Preview"
+msgstr "Prévisualisation"
+
+#: mediatagger-def-i18n.php:206
+msgid "Tag editor"
+msgstr "Editeur de tags"
+
+#: mediatagger-def-i18n.php:214
+msgid "Tagging excluded tags"
+msgstr "Tags exclus de la classification"
+
+#: mediatagger-def-i18n.php:215
+msgid ""
+"List of comma separated tag names defined in your blog and that will not "
+"appear in the Tag Editor"
+msgstr ""
+"Liste de noms de tags définis dans le blog et qui seront exclus de l'éditeur "
+"de tags ci-dessus, à séparer par une virgule"
+
+#: mediatagger-def-i18n.php:217
+msgid ""
+"The tag exclusion list must contain available tags separated by commas (Tag "
+"Editor)."
+msgstr ""
+"La liste de noms de tags exclus doit comprendre des noms de tags existants "
+"séparés par une virgule (Editeur de tags)"
+
+#: mediatagger-def-i18n.php:224
+msgid "Number of tags displayed per column"
+msgstr "Nombre de tags affichés par colonne"
+
+#: mediatagger-def-i18n.php:225
+msgid ""
+"Set this number to have a convenient columnar display of your tags in the "
+"Tag Editor, properly spread over the above available horizontal space"
+msgstr ""
+"Régler cette valeur de manière à avoir un affichage des tags par colonne "
+"équitablement réparti dans l'espace disponible ci-dessus."
+
+#: mediatagger-def-i18n.php:227
+msgid ""
+"The number of tags displayed by column must be an integer greater than 0 "
+"(Tag Editor)."
+msgstr ""
+"Le nombre de tags affichés par colonne doit être un entier positif (Editeur "
+"de tags)"
+
+#: mediatagger-def-i18n.php:234
+msgid "Maximum image pixel height"
+msgstr "Largeur ou hauteur d'image maximale (px)"
+
+#: mediatagger-def-i18n.php:235
+msgid "Used to scale the images displayed in the Tag Editor"
+msgstr ""
+"Utilisé pour redimensionner les images affichées dans l'Editeur de Tags"
+
+#: mediatagger-def-i18n.php:237
+msgid ""
+"The maximum image pixel height must be an integer greater than 100 (Tag "
+"Editor)."
+msgstr ""
+"La hauteur d'image maximale doit être un entier supérieur à 100 (Editeur de "
+"tags)"
+
+#: mediatagger-def-i18n.php:244
+msgid "Maximum image pixel height for group display"
+msgstr "Hauteur d'image maximale pour l'affichage groupé"
+
+#: mediatagger-def-i18n.php:245
+msgid "Used to scale the images displayed in the Tag Editor for group tagging"
+msgstr ""
+"Utilisé pour dimensionner les images affichées dans l'Editeur de Tags en "
+"mode groupe"
+
+#: mediatagger-def-i18n.php:247
+msgid ""
+"The maximum image pixel height must be an integer greater than 10 (Tag "
+"Editor)."
+msgstr ""
+"La hauteur d'image maximale doit être un entier supérieur à 10 (Editeur de "
+"tags)"
+
+#: mediatagger-def-i18n.php:254
+msgid "Maximum number of media displayed per page"
+msgstr "Nombre maximal de médias affichés par page"
+
+#: mediatagger-def-i18n.php:255
+msgid "Maximum number of media that can be displayed on one page"
+msgstr "Nombre maximal de médias affichés par page"
+
+#: mediatagger-def-i18n.php:257
+msgid ""
+"The maximum number of media per page must be greater than 10 and less than "
+"500 (Tag Editor)."
+msgstr ""
+"Le nombre maximal de médias affichés par page doit être compris entre 10 et "
+"500 (Editeur de tags)."
+
+#: mediatagger-def-i18n.php:286
+msgid "Search format"
+msgstr "Format de recherche"
+
+#: mediatagger-def-i18n.php:294
+msgid "Search excluded tags"
+msgstr "Tags exclus de la recherche"
+
+#: mediatagger-def-i18n.php:295
+msgid ""
+"List of comma separated tag names defined in your blog and that will not "
+"appear in the list of searchable tags"
+msgstr ""
+"Liste de noms de tags définis dans le blog et qui seront exclus de la liste "
+"de tags affichés sur la page de recherche, à séparer par une virgule"
+
+#: mediatagger-def-i18n.php:297
+msgid ""
+"The tag exclusion list must contain available tags separated by commas "
+"(Search format)."
+msgstr ""
+"La liste de noms de tags exclus doit comprendre des noms de tags existants "
+"séparés par une virgule (Format de recherche)"
+
+#: mediatagger-def-i18n.php:304
+msgid "Default search display mode"
+msgstr "Mode d'affichage de la recherche par défaut"
+
+#: mediatagger-def-i18n.php:305
+msgid ""
+"Tag cloud is more compact but does not allow the multi-criteria search "
+"provided by the check boxes form.\n"
+"Tag form offers multiple key search.\n"
+"Search field manages search based on media name."
+msgstr ""
+"Le nuage de tags est plus compact, mais ne permet pas la recherche "
+"multicritères.\n"
+"Le formulaire de tags permet la recherche multiple.\n"
+"La recherche par le champ est effectuée sur les noms de médias."
+
+#: mediatagger-def-i18n.php:309
+msgid "Tag form"
+msgstr "Formulaire de tags"
+
+#: mediatagger-def-i18n.php:313
+msgid "At least one default display mode needs to be selected (Search format)."
+msgstr ""
+"Au moins un format d'affichage de recherche doit être sélectionné (Format de "
+"recherche)"
+
+#: mediatagger-def-i18n.php:320
+msgid "Visitors can switch between available search formats"
+msgstr "Mode d'affichage de recherche modifiable par les visiteurs"
+
+#: mediatagger-def-i18n.php:321
+msgid ""
+"If 'yes' is selected, the result page allows the user to dynamically select "
+"the most appropriate search format.\n"
+"Otherwise, format is fixed to default display style set above.\n"
+"Javascript must be enabled in the navigator to use this capability"
+msgstr ""
+"Sinon, le mode d'affichage est fixe et déterminé par le paramétrage ci-"
+"dessus - Le visiteur doit avoir accepté l'exécution de Javascript dans son "
+"navigateur"
+
+#: mediatagger-def-i18n.php:334
+msgid "Number of tags displayed per column in form mode"
+msgstr "Nombre de tags affichés par colonne en mode formulaire"
+
+#: mediatagger-def-i18n.php:335
+msgid ""
+"Set this number to have a convenient columnar display of your tags in the "
+"search section, properly spread over the available horizontal space"
+msgstr ""
+"Régler cette valeur de manière à avoir un affichage des tags par colonne "
+"équitablement réparti dans le formulaire de recherche"
+
+#: mediatagger-def-i18n.php:337
+msgid ""
+"The number of tags displayed by column must be an integer greater than 0 "
+"(Search format)."
+msgstr ""
+"Le nombre de tags affichés par colonne doit être un entier positif (Format "
+"de recherche)"
+
+#: mediatagger-def-i18n.php:345
+msgid "Search form font size (pt)"
+msgstr "Taille de fonte du formulaire de recherche (pt)"
+
+#: mediatagger-def-i18n.php:346
+msgid "Font size to be used for the search form made of check boxes and tags"
+msgstr "Taille de la fonte à utiliser pour le formulaire de recherche"
+
+#: mediatagger-def-i18n.php:348
+msgid ""
+"The search form font must be a positive integer expressed in pt (Search "
+"format)."
+msgstr ""
+"La taille de fonte du formulaire doit être un entier positif (Format de "
+"recherche)"
+
+#: mediatagger-def-i18n.php:355
+msgid "Number of tags displayed in the tag cloud"
+msgstr "Nombre de tags affichés dans le nuage de tags"
+
+#: mediatagger-def-i18n.php:356
+msgid ""
+"Number of tags selected among the highest ranked displayed in the tag "
+"cloud ; put 0 to get all the tags"
+msgstr ""
+"Nombre de tags à afficher parmi les occurences les plus fortes ; pour avoir "
+"tous les tags, mettre 0"
+
+#: mediatagger-def-i18n.php:358
+msgid ""
+"The number of tags displayed in the tag cloud must be an integer greater "
+"than 0 ; if 0 all the tags are displayed (Search format)"
+msgstr ""
+"Le nombre de tags dans le nuage de tags doit être un entier positif ; pour "
+"afficher tous les tags mettre 0 (Format de recherche)"
+
+#: mediatagger-def-i18n.php:365
+msgid "Tag cloud order"
+msgstr "Classement du nuage de  tags"
+
+#: mediatagger-def-i18n.php:366
+msgid ""
+"Select the appropriate option to have the tags ordered aphabetically, by "
+"occurence or randomly, depending on your application.\n"
+"Note that this ordering is applied after having selected the highest ranking "
+"tags according to the parameter just above"
+msgstr ""
+"Sélectionner l'option appropriée pour ordonner les tags alphabétiquement, "
+"par occurence ou aléatoirement."
+
+#: mediatagger-def-i18n.php:368
+msgid "Alphabetical"
+msgstr "Alphabétique"
+
+#: mediatagger-def-i18n.php:369
+msgid "Rank"
+msgstr "Occurence"
+
+#: mediatagger-def-i18n.php:370
+msgid "Random"
+msgstr "Aléatoire"
+
+#: mediatagger-def-i18n.php:379
+msgid "Tag cloud minimum font size (pt)"
+msgstr "Taille de fonte minimum pour le nuage de tags (pt)"
+
+#: mediatagger-def-i18n.php:380
+msgid "This parameter sets the font size for the least used tag"
+msgstr "Règle la taille de fonte correspondant au tag le moins utilisé"
+
+#: mediatagger-def-i18n.php:382 mediatagger-def-i18n.php:392
+msgid "Tag cloud minimum font size must be a positive integer (Search format)"
+msgstr ""
+"La taille de fonte minimum du nuage de tags doit être un entier positif "
+"(Format de recherche)"
+
+#: mediatagger-def-i18n.php:389
+msgid "Tag cloud maximum font size (pt)"
+msgstr "Taille de fonte maximum pour le nuage de tags (pt)"
+
+#: mediatagger-def-i18n.php:390
+msgid "This parameter sets the font size for the most used tag"
+msgstr "Règle la taille de fonte correspondant au tag le plus utilisé"
+
+#: mediatagger-def-i18n.php:400
+msgid "Minimum tag cloud color in hex format"
+msgstr "Couleur de fonte minimale pour le nuage de tags (hex)"
+
+#: mediatagger-def-i18n.php:401
+msgid ""
+"Tag cloud dynamic colors : this font color will be used for the tags with "
+"the lowest use. Set to -1 to not use dynamic colors"
+msgstr ""
+"Coloration graduelle du nuage de tags : cette couleur de fonte sera utilisée "
+"pour les tags les moins utilisés. Régler à -1 pour ne pas utiliser de "
+"couleurs graduelles"
+
+#: mediatagger-def-i18n.php:403
+msgid ""
+"The minimum tagcloud color must be a valid hexadecimal color code as 3ff or "
+"a1b160, or -1 for not using dynamic colors (Search format)"
+msgstr ""
+"La couleur minimale du nuage de tags doit être codée sous un format "
+"hexadécimal valide, de type 3ff ou 1b160, ou -1 pour désactiver la "
+"coloration graduelle (Format de recherche)"
+
+#: mediatagger-def-i18n.php:411
+msgid "Maximum tag cloud color in hex format"
+msgstr "Couleur de fonte maximale pour le nuage de tags (hex)"
+
+#: mediatagger-def-i18n.php:412
+msgid ""
+"Tag cloud dynamic colors : this font color will be used for the tags with "
+"the highest use. Set to -1 to not use dynamic colors"
+msgstr ""
+"Coloration graduelle du nuage de tags : cette couleur de fonte sera utilisée "
+"pour les tags les plus utilisés. Régler à -1 pour ne pas utiliser de "
+"couleurs graduelles"
+
+#: mediatagger-def-i18n.php:414
+msgid ""
+"The maximum tagcloud color must be a valid hexadecimal color code as 3ff or "
+"a1b160, or -1 for not using dynamic colors (Search format)"
+msgstr ""
+"La couleur maximale du nuage de tags doit être codée sous un format "
+"hexadécimal valide, de type 3ff ou 1b160, ou -1 pour désactiver la "
+"coloration graduelle (Format de recherche)"
+
+#: mediatagger-def-i18n.php:422
+msgid "Tag cloud highlighting font color in hex format"
+msgstr "Couleur de fonte de mise en valeur pour le nuage de tags"
+
+#: mediatagger-def-i18n.php:423
+msgid ""
+"This font color is used to highlight the tags selected for a search ; used "
+"also for the tag cloud hover effect when dynamic colors are used for the tag "
+"cloud.\n"
+"Set to -1 if you don't want hover effect in your tag cloud with dynamic "
+"colors and if you don't want to highlight the selected tag"
+msgstr ""
+"Couleur de fonte destinée à la mise en valeur du tag selectionné pour la "
+"recherche ; également pour la couleur de fonte hover pour le nuage de tags "
+"en couleurs graduelles. \n"
+"Règler à -1 pour ne pas avoir d'effet de survol avec couleurs dynamiques."
+
+#: mediatagger-def-i18n.php:426
+msgid ""
+"The tag cloud highlighting font color must be a valid hexadecimal color code "
+"as 3ff or a1b160, or -1 for no higlighting effect (Search format)"
+msgstr ""
+"La couleurde mise en valeur du nuage de tags doit être codée sous un format "
+"hexadécimal valide, de type 3ff ou 1b160, ou -1 pour désactiver la mise en "
+"valeur (Format de recherche)"
+
+#: mediatagger-def-i18n.php:433
+msgid "Output format"
+msgstr "Format résultat"
+
+#: mediatagger-def-i18n.php:440
+msgid "Default result display mode"
+msgstr "Mode d'affichage des résultats par défaut"
+
+#: mediatagger-def-i18n.php:441
+msgid ""
+"Select gallery style for a condensed graphical output, title list for pure "
+"text.\n"
+"Images will be scaled in both cases using maximum image pixel width or "
+"height specified below"
+msgstr ""
+"Sélectionner le style galerie pour un affichage dense des résultats sous "
+"forme graphique, liste de titre pour du texte pur.Les images seront "
+"redimensionnées dans tous les cas en fonction du paramètre largeur ou "
+"hauteur maximale d'image ci-dessous"
+
+#: mediatagger-def-i18n.php:443
+msgid "Image gallery"
+msgstr "Galerie d'images"
+
+#: mediatagger-def-i18n.php:444
+msgid "Image list"
+msgstr "Liste d'images"
+
+#: mediatagger-def-i18n.php:445
+msgid "Title list"
+msgstr "Liste de titres"
+
+#: mediatagger-def-i18n.php:454
+msgid "Visitors can switch between available output formats"
+msgstr "Mode d'affichage des résultats modifiable par les visiteurs"
+
+#: mediatagger-def-i18n.php:455
+msgid ""
+"If 'yes' is selected, the result page allows the user to dynamically select "
+"the most appropriate output format.\n"
+"Otherwise, format is fixed to default output style set above.\n"
+"Javascript must be enabled in the navigator to use this capability."
+msgstr ""
+"Sinon, le mode d'affichage résultat est fixe et déterminé par le paramétrage "
+"ci-dessus - Le visiteur doit avoir accepté l'exécution de Javascript dans "
+"son navigateur"
+
+#: mediatagger-def-i18n.php:468
+msgid "Optimize thumbnail transfer"
+msgstr "Optimiser le transfert d'images (galerie, liste d'images)"
+
+#: mediatagger-def-i18n.php:469
+msgid ""
+"If 'Yes' is selected, the GD graphic library will be used server side to "
+"resize the images to the exact dimension used for displaying in the client "
+"browser.\n"
+"Otherwise, the images will be transferred in full format and directly "
+"resized in the browser.\n"
+"For given server configurations, this optimization does not produce the "
+"expected result.\n"
+"When activating this option, check on your search page that the result "
+"gallery or image list is displayed correctly.\n"
+"If not, disable this option as proposed by default.\n"
+"This option is selectable only if the GD library is detected on the server "
+"(check in the footnote below)."
+msgstr ""
+"Si 'Oui' est sélectionné, la librairie graphique GD sera utilisée côté "
+"serveur pour redimensionner les images avant transfert vers le navigateur "
+"client.\n"
+"Sinon, les images seront transférées dans leur format d'origine et "
+"redimensionnée dans le navigateur.\n"
+"Si vous activez cette option, assurez-vous que les vignettes images sont "
+"affichées correctement dans la galerie résultat. Dans le cas contraire, "
+"désactiver l'option, comme proposé par défaut.\n"
+"Cette option n'est sélectionnable que si la librairie GD est détectée sur le "
+"serveur (vérifier en pied de page)."
+
+#: mediatagger-def-i18n.php:486
+msgid "Gallery output format"
+msgstr "Format résultat - Galerie"
+
+#: mediatagger-def-i18n.php:493
+msgid "Number of images per gallery page"
+msgstr "Nombre d'images par page galerie"
+
+#: mediatagger-def-i18n.php:494
+msgid ""
+"Number of images to be listed on the search result page in case the display "
+"format is set to 'Gallery'."
+msgstr ""
+"Nombre d'images à afficher par page de résultat en mode d'affichage \"galerie"
+"\""
+
+#: mediatagger-def-i18n.php:496
+msgid "The number of images per page must be positive (Gallery output format)"
+msgstr ""
+"Le nombre d'images par page doit être entier positif (Format résultat - "
+"Galerie)"
+
+#: mediatagger-def-i18n.php:503
+msgid "Link on the gallery thumbnails points to"
+msgstr "Les images présentées en mode galerie pointent vers"
+
+#: mediatagger-def-i18n.php:504
+msgid ""
+"Select 'Plain size image' to link the gallery thumbnails to the full size "
+"image.\n"
+"Otherwise the thumbnails will be linked to the post where the image was "
+"posted."
+msgstr ""
+"Sélectionner 'Image grand format' pour faire pointer les vignettes vers "
+"l'image plein format.\n"
+"Sinon les vignettes pointeront vers le post dans lequel les images "
+"apparaissent"
+
+#: mediatagger-def-i18n.php:506
+msgid "Plain size image"
+msgstr "Image grand format"
+
+#: mediatagger-def-i18n.php:507
+msgid "Post containing the image"
+msgstr "Post contenant l'image"
+
+#: mediatagger-def-i18n.php:516 mediatagger-def-i18n.php:566
+msgid "Maximum image pixel width or height"
+msgstr "Largeur ou hauteur d'image maximale (px)"
+
+#: mediatagger-def-i18n.php:517
+msgid ""
+"Used to scale the images displayed in gallery display mode on the Image Tag "
+"Search Result Page. The largest of the (width, height) will be scaled to "
+"this number"
+msgstr ""
+"Utilisé pour redimensionner les images affichées sur la page résultat en "
+"mode galerie. Le max(H,L) sera mis à l'échelle avec ce chiffre"
+
+#: mediatagger-def-i18n.php:519
+msgid ""
+"The maximum image pixel width or height must be an integer greater than 10 "
+"(Gallery output format)"
+msgstr ""
+"La largeur ou hauteur d'image maximale doint être un entier supérieur à 10 "
+"(Format résultat - Galerie)"
+
+#: mediatagger-def-i18n.php:526
+msgid "Image frame pixel width"
+msgstr "Epaisseur de la bordure (px)"
+
+#: mediatagger-def-i18n.php:527
+msgid ""
+"Image border width used for the gallery display style. If border is set to "
+"0, images are displayed border to border.\n"
+"In case an image framing plugin or theme is activated, this setting will be "
+"generally superseded by the specific framing theme or plugin."
+msgstr ""
+"Bordure d'image utilisée pour le mode galerie.\n"
+"Si la bordure des images est gérée par un plugin ou thème spécifique, le "
+"réglage effectué par le plugin ou thème en question l'emportera probablement "
+"sur ce paramètre."
+
+#: mediatagger-def-i18n.php:530
+msgid ""
+"The image frame pixel width must be an integer greater than 0 (Gallery "
+"output format)"
+msgstr ""
+"L'épaisseur de bordure doit être un entier positif (Format résultat - "
+"Galerie)"
+
+#: mediatagger-def-i18n.php:538
+msgid "Image border color in hex format"
+msgstr "Couleur de la bordure en format hexadécimal"
+
+#: mediatagger-def-i18n.php:539
+msgid ""
+"Image border color used to frame each gallery image. This parameter is "
+"significant only if the image border set above is greater than 0.\n"
+"In case an image framing plugin or theme is activated, this setting will be "
+"generally superseded by the specific framing theme or plugin."
+msgstr ""
+"Couleur de bordure d'image en mode galerie. Ce paramètre n'a d'effet que "
+"pour une épaisseur de bordure  (ci-dessus) supérieure à 0"
+
+#: mediatagger-def-i18n.php:542
+msgid ""
+"The image frame color must be a valid hexadecimal color code as 3ff or "
+"a1b160 (Gallery output format)"
+msgstr ""
+"La couleur de bordure d'image doit être codée sous un format hexadécimal "
+"valide, de type 3ff ou 1b160 (Format résultat - Galerie)"
+
+#: mediatagger-def-i18n.php:549
+msgid "Image list output format"
+msgstr "Format résultat - Liste d'images"
+
+#: mediatagger-def-i18n.php:556
+msgid "Number of images per list page"
+msgstr "Nombre d'images par page"
+
+#: mediatagger-def-i18n.php:557
+msgid ""
+"Number of images to be listed on the search result page in case the display "
+"format is set to 'Image list'"
+msgstr ""
+"Nombre d'images à afficher par page de résultat en mode d'affichage \"liste "
+"d'images\""
+
+#: mediatagger-def-i18n.php:559
+msgid ""
+"The number of images per page must be positive (Image list output format)"
+msgstr ""
+"Le nombre d'images par page doit être strictement positif (Format résultat - "
+"Liste d'images)"
+
+#: mediatagger-def-i18n.php:567
+msgid ""
+"Used to scale the images displayed in list mode on the Image Tag Search "
+"Result Page. The largest of the (width, height) will be scaled to this "
+"number'"
+msgstr ""
+"Utilisé pour redimensionner les images affichées sur la page résultat en "
+"mode liste. Le max(H,L) sera mis à l'échelle avec ce chiffre"
+
+#: mediatagger-def-i18n.php:569
+msgid ""
+"The maximum image pixel width or height must be an integer greater than 10 "
+"(Image list output format)"
+msgstr ""
+"La taille normalisée d'image doit être un entier positif supérieur à 10 "
+"(Format résultat - Liste d'images)"
+
+#: mediatagger-def-i18n.php:576
+msgid "Title list output format"
+msgstr "Format résultat - Liste de titres"
+
+#: mediatagger-def-i18n.php:583
+msgid "Number of image titles per list page"
+msgstr "Nombre de titres d'images par page"
+
+#: mediatagger-def-i18n.php:584
+msgid ""
+"Number of images to be listed on the search result page in case the display "
+"format is set to 'Title list'"
+msgstr ""
+"Nombre d'images à afficher par page de résultat en mode d'affichage \"liste "
+"de titres\""
+
+#: mediatagger-def-i18n.php:586
+msgid ""
+"The number of image titles per page must be positive (Title list output "
+"format)"
+msgstr ""
+"Le nombre de titres d'images par page doit être strictement positif (Format "
+"résultat - Liste de titres)"
+
+#: mediatagger-def-i18n.php:593
+msgid "Misceallenous"
+msgstr "Divers"
+
+#: mediatagger-def-i18n.php:600
+msgid "Audit database integrity"
+msgstr "Vérification de l'intégrité de la base de données"
+
+#: mediatagger-def-i18n.php:601
+msgid ""
+"This preview function lets you evaluate the inconsistencies detected in your "
+"WordPress database.\n"
+"\n"
+"After clicking this link you will be directed to the preview page. From this "
+"page you will then have the choice to run automatic cleanup batches.\n"
+"This function involves heavy SQL computation. Depending on your hosting "
+"plan, this checker can be aborted if you exceed the maximum number of SQL "
+"queries allowed in your plan."
+msgstr ""
+"Le lien vous conduira sur la page de prévisualisation. A partir de là vous "
+"pourrez accepter de continuer grâce à un processus de re-tagging automatique."
+
+#: mediatagger-def-i18n.php:605
+msgid "Audit"
+msgstr "Vérifier"
+
+#: mediatagger-def-i18n.php:614
+msgid "Display credit line"
+msgstr "Afficher la référence au plugin MediaTagger"
+
+#: mediatagger-def-i18n.php:615
+msgid ""
+"A possibility is offered to not display the very tiny MediaTagger credit "
+"line shown below the search form in plain format (not in widget).\n"
+"Anyhow, be aware of the very significative work that was required to develop "
+"this plugin to push it to what you can enjoy today.\n"
+"If you decide not to show this line and assuming you like this plugin, I let "
+"to your good willingness the possibility to include anywhere else on your "
+"site a credit line linking back to my home site (http://www.photos-dauphine."
+"com)"
+msgstr ""
+"Vous pouvez choisir de ne pas afficher la très discrète référence au plugin "
+"MediaTagger située sous le formulaire de recherche.\n"
+"Soyez toutefois conscient de l'effort de développement considérable "
+"entrepris pour aboutir au plugin tel que vous l'utilisez aujourd'hui.\n"
+"Si vous souhaitez ne pas afficher cette référence, vous pouvez encore "
+"établir un lien vers le site http://www.photos-dauphine.com sur la page de "
+"votre choix."
+
+#~ msgid ""
+#~ "Number of image titles to be listed on the search result page in case the "
+#~ "display format is set to 'Title list'"
+#~ msgstr ""
+#~ "Nombre de titres d''images à afficher par page de résultats en mode "
+#~ "d'affichage \"liste d'images\""
