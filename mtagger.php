@@ -395,7 +395,7 @@ class wp_mediatagger {
 				else
 					return 1;
 			} else {
-				echo "Cached taxonomy outdated - RECALCULATING <br/>";
+                $_SESSION['mtagger']['flash_messages'][] = 'Cached taxonomy outdated - RECALCULATING';
 				/*
 				if ($tax_cache['tag_source'] != $tag_source) echo "out of date due to tag_source update <br/>";
 				if ($tax_cache['md5_tag_groups'] != md5($tag_groups)) echo "out of date due to tag_groups update <br/>";
@@ -656,15 +656,15 @@ class wp_mediatagger {
 					$media_tags = self::get_media_tags($media_id);
 					//self::print_ro($media_info);
 					//self::print_ro($media_tags);
-					echo '<div style="margin:20px;float:left"><img src="' . $media_info->image . '" height="' . self::$opt['admin_img_height'] . '" ></div>';
+					echo '<div style="margin:20px;float:left"><img src="' . $media_info->size_urls['large'] . '" height="' . self::$opt['admin_img_height'] . '" ></div>';
 					//echo '<div style="margin:20px;float:left"><img src="' . $media_info->image . '" ' . ($media_info->w < $media_info->h ? 'height="' : 'width="') . self::$opt['admin_img_height'] . '" ></div>';
-					echo '<div style="padding:20px;">';
-					echo '<i>' . self::$t->file . ' : </i>' . basename($media_info->url) . '<br/>';
-					echo '<i>Description : </i>' . $media_info->title  . '<br/>';
-					echo '<i>Type : </i>' . $media_info->mime  . '<br/>';
-					echo '<i>Post : </i>' . $media_info->post_title  . '<br/>';
+					echo '<ul style="padding:20px;">';
+					echo '<li><i>' . self::$t->file . ' : </i>' . basename($media_info->url) . '</li>';
+					echo '<li><i>Description : </i>' . $media_info->title  . '</li>';
+					echo '<li><i>Type : </i>' . $media_info->mime  . '</li>';
+					echo '<li><i>Post : </i>' . ($media_info->post_title ? $media_info->post_title : '-')  . '</li>';
 					//self::print_ro($media_info);
-					echo '</div>';
+					echo '</ul>';
 					
 					// Display tags
 					echo '<div style="clear:both">' . self::print_tag_form($media_tags, 1) . '</div>';
@@ -980,7 +980,7 @@ class wp_mediatagger {
 			echo '<div class="media_list" style="background-color:#' . $bckcol . ';">' . 
 				'<p style="width:25px;background-color:#f0f0f0"><input type="checkbox" style="vertical-align:sub" name="mdtg_select[]" value="' . 
 				$media_id . '" ' . (in_array($media_id, $list_select) ? 'checked ' : ' ') . 'onclick="mdtg_manage_checkboxes(' . $var_arg . ');"' . '></p>' .
-				'<p style="width:60px;"><img ' . self::get_optimized_thumbnail($media_info, 31) . '></p>' .
+				'<p style="width:60px; text-align: center;"><img ' . self::get_optimized_thumbnail($media_info, 49) . '></p>' .
 				'<p style="width:500px;">' . $post_title . " : " . $media_title . '</p>' .
 				'<p>';
 			foreach($media_tags as $key=>$tag) {
@@ -996,15 +996,18 @@ class wp_mediatagger {
 	// Return thumbnail, optimized to the requested size if the image magic library is available
 	//
 	private function get_optimized_thumbnail($media_info, $img_h) {
-		
 		$img_w = round($media_info->w * $img_h / $media_info->h);
 		
-		if (self::$opt['result_display_optimize_xfer'] == 1)
-			$img_html = 'src="' . self::$PLUGIN_DIR_URL . 'thumbnail.php?s=' . $media_info->image . '&w=' . $img_w . '&h=' . $img_h . '" ';
-		else
-			$img_html = 'src="' . $media_info->image . '" ';
-		$img_html .= 'width="' . $img_w . '" height="' . $img_h . '" ';
-		return $img_html; 
+		if (self::$opt['result_display_optimize_xfer'] == 1) {
+		    $img_html = 'src="'. $media_info->size_urls['thumbnail'] .'" ';
+		}
+		else {
+		    $img_html = 'src="'. $media_info->image .'" ';
+		}
+        
+        $img_html .= 'style="max-width: '. $img_w .'px; width: auto; height: auto; max-height: '. $img_h .'px" ';
+		
+        return $img_html; 
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1075,6 +1078,10 @@ class wp_mediatagger {
 		$media_info->title = get_the_title($obj_id);
 		$media_info->mime = get_post_mime_type($obj_id);
 		$media_info->url = wp_get_attachment_url($obj_id);
+        $media_info->size_urls['thumbnail'] = wp_get_attachment_thumb_url($obj_id);
+        $media_info->size_urls['medium'] = wp_get_attachment_url($obj_id, 'medium');
+        $media_info->size_urls['large'] = wp_get_attachment_url($obj_id, 'large');
+        $media_info->size_urls['full'] = wp_get_attachment_url($obj_id, 'full');
 	
 		switch($media_info->mime) {
 			case "image/jpeg":
