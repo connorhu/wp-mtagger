@@ -172,8 +172,10 @@ class wp_mediatagger {
 			echo '<div class="updated"><p>' . $msg . '</p></div>';
 		}
 
-        echo '<div class="updated"><p>' . implode('<br>', $_SESSION['mtagger']['flash_messages']) . '</p></div>';
-        $_SESSION['mtagger']['flash_messages'] = [];
+        if (isset($_SESSION['mtagger']['flash_messages']) && is_array($_SESSION['mtagger']['flash_messages']) && count($_SESSION['mtagger']['flash_messages']) > 0) {
+            echo '<div class="updated"><p>' . implode('<br>', $_SESSION['mtagger']['flash_messages']) . '</p></div>';
+            $_SESSION['mtagger']['flash_messages'] = [];
+        }
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
