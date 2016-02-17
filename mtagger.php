@@ -171,6 +171,9 @@ class wp_mediatagger {
 			update_option($option_name, '');	// reset message to avoid re-display
 			echo '<div class="updated"><p>' . $msg . '</p></div>';
 		}
+
+        echo '<div class="updated"><p>' . implode('<br>', $_SESSION['mtagger']['flash_messages']) . '</p></div>';
+        $_SESSION['mtagger']['flash_messages'] = [];
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -400,7 +403,7 @@ class wp_mediatagger {
 				*/
 			}
 		} else {
-			echo "No cached taxonomy detected - Computing fresh one <br/>";
+            $_SESSION['mtagger']['flash_messages'][] = 'No cached taxonomy detected - Computing fresh one';
 		}
 
 		if ($tag_source <= 2) {	// select only tags, or tags and categories	
@@ -2798,11 +2801,6 @@ echo $strjs;
 			self::check_table_exists();
 		
 		$sql_result = $wpdb->get_results($sql_query);
-		if (mysql_error()) {
-			echo 'MYSQL query returned error executing query <strong>"'. $sql_query . '"</strong> : <br/>=> <span style="color:red">' . 
-				htmlentities(mysql_error()) . '</span><br/>';
-			$sql_result = "SQL_EXEC_ERROR";
-		}
 		return $sql_result;
 	}
 
