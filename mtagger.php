@@ -1,16 +1,15 @@
 <?php
 /*
-Plugin Name: MediaTagger
-Plugin URI: http://www.photos-dauphine.com/wp-mediatagger-plugin
-Description: Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
-Author: www.photos-dauphine.com
-Author URI: http://www.photos-dauphine.com/
-Version: 4.0.9
-Stable Tag: 4.0.9
+Plugin Name: MTagger
+Description: Forked MediaTagger extension. Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
+Author: connor
+Author URI: http://blog.connor.hu
+Version: 4.0.10
+Stable Tag: 4.0.10
 */
 
 
-class wp_mediatagger{
+class wp_mediatagger {
 		
 	const 	MIN_PHP_VERSION = 50000;
 	//const 	DEBUG = 1;
