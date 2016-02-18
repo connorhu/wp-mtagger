@@ -379,9 +379,10 @@ class wp_mediatagger {
 		$ts_term_taxonomy_table = self::get_table_timestamp($wpdb->term_taxonomy);
 		$ts_mediatagger_table = self::get_table_timestamp(self::$SQL_MDTG_TABLE);
 		//unset(self::$opt['cache']);	
-		$tax_cache = self::$opt['cache'];
 		
-		if (isset($tax_cache)){
+		if (isset(self::$opt['cache'])) {
+            $tax_cache = self::$opt['cache'];
+            
 			if ($tax_cache['tag_source'] == $tag_source && 
 					$tax_cache['md5_tag_groups'] == md5($tag_groups) && 
 					$tax_cache['ts_terms_table'] == $ts_terms_table &&
@@ -2814,7 +2815,7 @@ echo $strjs;
 			return;
 		}
 		
-		if (!self::$opt['table_conversion_OK'])
+		if (isset(self::$opt['table_conversion_OK']) && !self::$opt['table_conversion_OK'])
 			self::check_table_exists();
 		
 		$sql_result = $wpdb->get_results($sql_query);
@@ -2860,7 +2861,7 @@ echo $strjs;
 	//
     private function translate_i18_strings($t, $form_file) {
 
-		if ($_SERVER['REMOTE_ADDR'] == PHD_CLIENT_IP) {
+		if (defined('PHD_CLIENT_IP') && $_SERVER['REMOTE_ADDR'] == PHD_CLIENT_IP) {
 			//echo PHD_CLIENT_IP . " detected<br/>";
 
 			$def_filename = self::$PLUGIN_DIR_PATH . self::$PLUGIN_NAME_LC . '-def.php';
