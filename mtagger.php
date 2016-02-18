@@ -76,9 +76,13 @@ class wp_mediatagger {
 		
 		// Load java script
 		//
-		$js_filename = self::$PLUGIN_NAME_LC . '.js';
-		wp_register_script(self::$PLUGIN_NAME_LC, self::$PLUGIN_DIR_URL . $js_filename, false, self::$PLUGIN_VERSION);
-		wp_enqueue_script(self::$PLUGIN_NAME_LC);
+
+        $pluginName = self::$PLUGIN_NAME_LC;
+        $jsPath = self::$PLUGIN_DIR_URL . self::$PLUGIN_NAME_LC . '.js';
+        $version = self::$PLUGIN_VERSION;
+        add_action('wp_enqueue_script', function () use ($pluginName, $jsPath) {
+            wp_register_script($pluginName, $jsPath, false, $version);
+        });
 
 		wp_enqueue_script('jquery');		
 		
