@@ -541,8 +541,8 @@ class wp_mediatagger {
 		}
 		//self::print_ro($_POST);
 		
-		$submit_type = $_POST['mdtg_submit_list'];
-		$view = ($_POST['mdtg_view'] ? $_POST['mdtg_view'] : 'Explorer');
+		$submit_type = isset($_POST['mdtg_submit_list']) ? $_POST['mdtg_submit_list'] : null;
+		$view = (isset($_POST['mdtg_view']) && $_POST['mdtg_view']) ? $_POST['mdtg_view'] : 'Explorer';
 		
 		if (($view == 'Explorer' && $submit_type != self::$t->tag_) || $submit_type == 'Explorer') {
 			self::Explorer_page();
@@ -817,15 +817,15 @@ class wp_mediatagger {
 		$list_type_desc = array('media_all' => self::$t->all_media, 'media_tagged' => self::$t->tagged_media, 'media_untagged' => self::$t->untagged_media, 
 			'custom_list' => self::$t->list_media, 'post' => 'post', 'search' => 'search result');
 
-		$search_keyword = $_POST['mdtg_search'];
-		$list_select = ($_POST['mdtg_select'] ? $_POST['mdtg_select'] : array());
-		$custom_list = ($_POST['mdtg_custom_list'] ? explode(',', $_POST['mdtg_custom_list']) : array());
-		$list_type = $_POST['mdtg_list_type'];
+		$search_keyword = isset($_POST['mdtg_search']) ? $_POST['mdtg_search'] : null;
+		$list_select = (isset($_POST['mdtg_select']) ? $_POST['mdtg_select'] : array());
+		$custom_list = (isset($_POST['mdtg_custom_list']) ? explode(',', $_POST['mdtg_custom_list']) : array());
+		$list_type = isset($_POST['mdtg_list_type']) ? $_POST['mdtg_list_type'] : null;
 		$list_type = ($list_type && !($list_type == 'search' && !$search_keyword)  ? $list_type : 'media_untagged');	// media_all || media_tagged || media_untagged || list || post
 		if ($list_type != 'search') $search_keyword = '';
 
 		// Manage custom list
-		switch($_POST['mdtg_submit_list']) {
+		switch (isset($_POST['mdtg_submit_list']) ? $_POST['mdtg_submit_list'] : null) {
 			case self::$t->add_to_list_ :
 				$custom_list = array_unique(array_merge($custom_list, $list_select));
 				$list_type = 'custom_list';
@@ -905,8 +905,8 @@ class wp_mediatagger {
 	//
 	private function manage_explorer_window($media_list, &$list_select, &$media_displayed_list, &$display_start, &$display_depth, $display_all) {
 	
-		$display_start = ($_POST['mdtg_display_start'] ? $_POST['mdtg_display_start'] : 0);
-		$display_depth = ($_POST['mdtg_display_depth'] ? $_POST['mdtg_display_depth'] : 20);
+		$display_start = (isset($_POST['mdtg_display_start']) ? $_POST['mdtg_display_start'] : 0);
+		$display_depth = (isset($_POST['mdtg_display_depth']) ? $_POST['mdtg_display_depth'] : 20);
 		if ($display_start < 0) $display_start = 0;
 		if ($display_depth < 1) $display_depth = 1;
 		if ($display_all) $display_depth = count($media_list);
@@ -930,7 +930,7 @@ class wp_mediatagger {
 			
 		$select_counter = count($list_select);
 
-		$custom_list = ($_POST['mdtg_custom_list'] ? explode(',', $_POST['mdtg_custom_list']) : array());
+		$custom_list = (isset($_POST['mdtg_custom_list']) ? explode(',', $_POST['mdtg_custom_list']) : array());
 		$var_arg = ($submit_checkboxes ? -1 : count($custom_list));
 
 		//self::print_ro($media_list);
