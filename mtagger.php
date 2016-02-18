@@ -81,9 +81,8 @@ class wp_mediatagger {
         $version = self::$PLUGIN_VERSION;
         add_action('wp_enqueue_script', function () use ($pluginName, $jsPath, $version) {
             wp_register_script($pluginName, $jsPath, false, $version);
+            wp_register_script('jquery');
         });
-
-		wp_enqueue_script('jquery');		
 		
 		//
 		// Load CSS
