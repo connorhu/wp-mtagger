@@ -296,9 +296,9 @@ class wp_mediatagger {
 		$options = get_option(self::$PLUGIN_NAME_LC);
 		
 		//$force_serialize = 1;	// set to 1 for testing
-		if ($options != '' && !$force_serialize) {	// options available 'inline' - read it
-			$admin_msg .= self::$t->plugin_options_detected_serial;			
-			
+		if ($options != '' && isset($force_serialize) && !$force_serialize) {	// options available 'inline' - read it
+			$admin_msg .= self::$t->plugin_options_detected_serial;
+
 		} else {	// no single entry detected - try first to detect old fashion options
 			if (get_option('wpit_admin_num_tags_per_col') != '') {	// old fashion detected : read and convert
 				$admin_msg .= self::$t->plugin_options_detected_itemized;
