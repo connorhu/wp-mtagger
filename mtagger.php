@@ -76,11 +76,10 @@ class wp_mediatagger {
 		
 		// Load java script
 		//
-
         $pluginName = self::$PLUGIN_NAME_LC;
         $jsPath = self::$PLUGIN_DIR_URL . self::$PLUGIN_NAME_LC . '.js';
         $version = self::$PLUGIN_VERSION;
-        add_action('wp_enqueue_script', function () use ($pluginName, $jsPath) {
+        add_action('wp_enqueue_script', function () use ($pluginName, $jsPath, $version) {
             wp_register_script($pluginName, $jsPath, false, $version);
         });
 
@@ -88,9 +87,10 @@ class wp_mediatagger {
 		
 		//
 		// Load CSS
-		$css_filename = self::$PLUGIN_NAME_LC . '.css';
-		wp_register_style(self::$PLUGIN_NAME_LC, self::$PLUGIN_DIR_URL . $css_filename, false, self::$PLUGIN_VERSION);
-		wp_enqueue_style(self::$PLUGIN_NAME_LC);
+        $cssPath = self::$PLUGIN_DIR_URL . self::$PLUGIN_NAME_LC . '.css';
+        add_action('wp_enqueue_style', function () use ($pluginName, $cssPath, $version) {
+            wp_register_style($pluginName, $cssPath, false, $version);
+        });
 		
 		// Plugin filters
 		add_filter('plugin_action_links', array($this, 'action_links'), 10, 2);
