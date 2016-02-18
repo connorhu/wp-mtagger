@@ -1140,6 +1140,10 @@ class wp_mediatagger {
 				$media_info->post_URI = get_tag_link($sql_result[0]->term_id);	//get_bloginfo('url') . '/?tag=' . $sql_result[0]->slug;
 				$media_info->post_title = "Tag : " . $sql_result[0]->slug;
 			}
+            else {
+				$media_info->post_URI = false;
+				$media_info->post_title = false;
+            }
 		}
 		//print "image parent post ID : " . $img_info->post_ID . "<br/>";
 		//print "image parent post URI : " . $img_info->post_URI . "<br/>";
