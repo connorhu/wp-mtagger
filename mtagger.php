@@ -1030,6 +1030,16 @@ class wp_mediatagger {
 		
 		return $tags;
 	}
+    
+    public function image_has_tag($imageId, $tagId)
+    {
+        foreach ($this->get_media_tags($imageId) as $data) {
+            if ($data->term_taxonomy_id == $tagId) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 	////////////////////////////////////////////////////////////////////////////////////
 	// Get tags for a list of media
@@ -1828,10 +1838,8 @@ echo $strjs;
 					case 1:	// gallery
 						if ($is_image) {
 							$strout .= '<a href="' . ($link_media_to_post ? $img_info->post_URI : $img_info->url) . '" title="' . $img_tooltip . 
-								'"><img src="' . ($result_display_optimize_xfer ? 
-									$thumb_url . '?s=' . $img_info->image . '&w=' . $img_w . '&h=' . $img_h :
-									$img_info->image) . 
-								'" width="' . $img_w . '" height="' . $img_h . '" alt="' . $img_tooltip . '" style="border:' . $img_border_width . 
+								'"><img src="' . ($img_info->size_urls['thumbnail']) . 
+								'" height="' . $img_h . '" alt="' . $img_tooltip . '" style="padding-right: 4px; border:' . $img_border_width . 
 								'px solid #' . $img_border_color . '"></a>';
 						} else {	// attachment is not an image : TXT, PDF, MP3, etc.
 							$strout .= '<span style="float:left"><a href="'. ($link_media_to_post ? $img_info->post_URI : $img_info->url) . '" title="' . $img_tooltip .
