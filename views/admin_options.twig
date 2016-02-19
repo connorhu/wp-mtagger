@@ -1,0 +1,32 @@
+
+<h1>{{ title }}</h1>
+
+{{ form_start(form) }}
+
+    <h3>General</h3>
+    
+    {% for key in ['admin_media_formats', 'admin_tags_source', 'admin_tags_groups', 'admin_background_color'] %}
+        {{ form_row(form[key]) }}
+    {% endfor %}
+    
+    <h3>Media taxonomy</h3>
+
+    {% for key in ['admin_override_post_taxonomy'] %}
+        {{ form_row(form[key]) }}
+    {% endfor %}
+    
+    <h3>Tag editor</h3>
+    
+    {% for key in ['admin_tags_excluded', 'admin_num_tags_per_col', 'admin_img_height', 'admin_img_group_height', 'admin_max_img_page'] %}
+        {{ form_row(form[key]) }}
+    {% endfor %}
+    
+    <h3>Search format</h3>
+    
+    {% for key in ['search_tags_excluded', 'search_default_display_mode', 'search_display_switchable', 'search_num_tags_per_col', 'search_form_font', 'tagcloud_num_tags', 'tagcloud_order', 'tagcloud_font_min', 'tagcloud_font_max', 'tagcloud_color_min', 'tagcloud_color_max', 'tagcloud_highlight_color'] %}
+        {{ form_row(form[key]) }}
+    {% endfor %}
+    
+    {{ form_row(form.save) }}
+
+{{ form_rest(form) }}

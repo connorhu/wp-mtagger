@@ -1,6 +1,7 @@
 <?php
 /*
 Plugin Name: MTagger
+Depends: Symfony-components
 Description: Forked MediaTagger extension. Extensively configurable plugin packed with a bunch of features enabling media tagging, search and media taxonomy.
 Author: connor
 Author URI: http://blog.connor.hu
@@ -8,11 +9,16 @@ Version: 4.0.10
 Stable Tag: 4.0.10
 */
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 class wp_mediatagger {
 		
-	const 	MIN_PHP_VERSION = 50000;
-	//const 	DEBUG = 1;
+	const 	MIN_PHP_VERSION = 50400;
+	const 	DEBUG = false;
 	//const 	DEBUG_SQL_WRITE = 1;
 
 	private static $PHP_VERSION;
@@ -48,7 +54,7 @@ class wp_mediatagger {
 	//		Load : construct / loading / init / admin notice
 	//
     function __construct() {
-		
+        
 		// Initialize basic plugin information - mainly naming, version, path
 		//
 		self::set_plugin_information();	
@@ -63,12 +69,25 @@ class wp_mediatagger {
 		
 		// Do all plugin init
 		//
-		add_action('plugins_loaded', array($this, 'plugin_load'));
+		add_action('plugins_loaded', array($this, 'plugin_load'), 100);
 		add_action('init', array($this, 'plugin_init'));
 		add_action('admin_notices' , array($this, 'admin_message_display'));
 		
 		if (is_admin()) {
-			add_action('admin_menu', array($this, 'add_admin_menu'));
+			add_action('admin_menu', function () {
+        		add_utility_page(self::$PLUGIN_NAME, self::$PLUGIN_NAME, "manage_options", self::$PLUGIN_NAME_LC, array($this, 'manager_page'),
+        			self::$PLUGIN_DIR_URL . 'images/menu.png');
+        		add_submenu_page(self::$PLUGIN_NAME_LC, self::$t->explorer, self::$t->explorer, "manage_options", self::$PLUGIN_NAME_LC, array($this, 'manager_page'));
+        		add_submenu_page(self::$PLUGIN_NAME_LC, "Options", "Options", "manage_options", self::$PLUGIN_NAME_LC .'_options', array($this, 'render_options_page'));
+        		add_submenu_page(self::$PLUGIN_NAME_LC, "Player", "Player", "manage_options", self::$PLUGIN_NAME_LC .'_database', array($this, 'player_page'));
+        		
+                if (self::DEBUG) {
+        			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$opt", "______ self::\$opt", "manage_options", self::$PLUGIN_NAME_LC .'_dump_opt', array($this, 'dump_opt_page'));
+        			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$t", "______ self::\$t", "manage_options", self::$PLUGIN_NAME_LC .'_dump_def', array($this, 'dump_def_page'));
+        			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$form", "______ self::\$form", "manage_options", self::$PLUGIN_NAME_LC .'_dump_form', array($this, 'dump_form_page'));
+        			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$tax", "______ self::\$tax", "manage_options", self::$PLUGIN_NAME_LC .'_dump_tax', array($this, 'dump_tax_page'));
+        		}
+            });
 			//add_action('admin_bar_menu', array($this, 'add_menu_admin_bar'), 100);
 		}
 		
@@ -138,9 +157,6 @@ class wp_mediatagger {
 		$filename_prefix = self::$PLUGIN_DIR_PATH . self::$PLUGIN_NAME_LC;
  
 		
- 		include_once($filename_prefix . '-form.php');
-		self::$form = $form;
-																						
 		include_once($filename_prefix . '-ini.php');
 		self::$opt_init = $opt_init;
 
@@ -207,6 +223,7 @@ class wp_mediatagger {
 		// Save to database in case of fix at loading
 		update_option(self::$PLUGIN_NAME_LC, self::$opt);
 
+        TwigComponent::addViewDirectory(__DIR__ .'/views');
 
 		//d($this);
 	}
@@ -236,24 +253,6 @@ class wp_mediatagger {
 	//
     function plugin_init(){
 		//d("plugin init");
-	}
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Admin menu function 
-	//
-	function add_admin_menu(){
-				
-		add_utility_page(self::$PLUGIN_NAME, self::$PLUGIN_NAME, "manage_options", self::$PLUGIN_NAME_LC, array($this, 'manager_page'),
-			self::$PLUGIN_DIR_URL . 'images/menu.png');
-		add_submenu_page(self::$PLUGIN_NAME_LC, self::$t->explorer, self::$t->explorer, "manage_options", self::$PLUGIN_NAME_LC, array($this, 'manager_page'));
-		add_submenu_page(self::$PLUGIN_NAME_LC, "Options", "Options", "manage_options", self::$PLUGIN_NAME_LC .'_options', array($this, 'options_page'));
-		add_submenu_page(self::$PLUGIN_NAME_LC, "Player", "Player", "manage_options", self::$PLUGIN_NAME_LC .'_database', array($this, 'player_page'));
-		if (defined('self::DEBUG')) {
-			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$opt", "______ self::\$opt", "manage_options", self::$PLUGIN_NAME_LC .'_dump_opt', array($this, 'dump_opt_page'));
-			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$t", "______ self::\$t", "manage_options", self::$PLUGIN_NAME_LC .'_dump_def', array($this, 'dump_def_page'));
-			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$form", "______ self::\$form", "manage_options", self::$PLUGIN_NAME_LC .'_dump_form', array($this, 'dump_form_page'));
-			add_submenu_page(self::$PLUGIN_NAME_LC, "______ self::\$tax", "______ self::\$tax", "manage_options", self::$PLUGIN_NAME_LC .'_dump_tax', array($this, 'dump_tax_page'));
-		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -293,23 +292,6 @@ class wp_mediatagger {
 		// Plugin options :								
 		// Try first to read options from single entry to detect if plugin upgraded to inline options
 		$options = get_option(self::$PLUGIN_NAME_LC);
-		
-		//$force_serialize = 1;	// set to 1 for testing
-		if ($options != '' && isset($force_serialize) && !$force_serialize) {	// options available 'inline' - read it
-			$admin_msg .= self::$t->plugin_options_detected_serial;
-
-		} else {	// no single entry detected - try first to detect old fashion options
-			if (get_option('wpit_admin_num_tags_per_col') != '') {	// old fashion detected : read and convert
-				$admin_msg .= self::$t->plugin_options_detected_itemized;
-				
-				foreach(self::$opt_init as $opt_name => $opt_default){
-					$options[$opt_name] = self::get_option_safe($opt_name);
-				}
-			} else {	// no old fashion detected : keep default value initialized by constructor
-				$admin_msg .= self::$t->plugin_options_not_detected;				
-				$options = self::$opt_init;
-			}
-		}
 		
 		// Check the options queried from DB match those required by this plug version, provided by the opt_init table
 		if (count(array_diff_key(self::$opt_init, $options))) {	// if not, scan initialize the missing options with default value
@@ -488,7 +470,7 @@ class wp_mediatagger {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Check minimum PHP version
 	//
-	private function check_php_version(){	
+	private function checkPHPVersion(){	
 		if (self::get_php_version() < self::MIN_PHP_VERSION) { 
 			self::user_message(self::$t->php_version_outdated, self::MIN_PHP_VERSION/10000, self::$PLUGIN_NAME);
 			self::user_message(self::$t->php_version_current, phpversion());
@@ -2007,248 +1989,162 @@ echo $strjs;
 		$mode_value ^= (1 << $n);
 		//phdbg($mode_value);	
 	}
-		
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Admin panel : dump_opt_page
-	//
-	function dump_opt_page(){
-				
-		if (self::check_php_version()) return;
 
-		echo "<h1>" . self::$PLUGIN_NAME . " - self::\$opt</h1>";
+    protected function getOptionForm()
+    {
+        $builder = SymfonyForm::getFactory()->createBuilder(FormType::class, self::$opt);
+        $builder->add('admin_media_formats', ChoiceType::class, [
+            'label' => 'File formats for tagging',
+            'choices' => [
+                'jpeg' => 1,
+                'gif'  => 2,
+                'png'  => 3,
+                'txt'  => 4,
+                'rtf'  => 5,
+                'pdf'  => 6,
+                'mp3'  => 7 
+            ],
+            'multiple' => true,
+            'expanded' => true,
+            'required' => false,
+        ]);
+        $builder->add('admin_tags_source', ChoiceType::class, [
+            'label' => 'Tagging source',
+            'choices' => [
+                'Tags' => 1,
+                'Tags and categories'  => 2,
+                'Categories'  => 3,
+            ],
+            'multiple' => false,
+            'expanded' => false,
+            'required' => false,
+        ]);
+        $builder->add('admin_tags_groups', TextareaType::class, [
+            'label' => 'Tags groups',
+            'required' => false,
+        ]);
+        $builder->add('admin_background_color', TextType::class, [
+            'label' => 'Fields background color',
+            'required' => false,
+        ]);
+        $builder->add('admin_override_post_taxonomy', ChoiceType::class, [
+            'label' => 'Override original post taxonomy with media taxonomy',
+            'choices' => [
+                'Yes' => 1,
+                'No'  => 0,
+            ],
+            'required' => false,
+        ]);
+        $builder->add('admin_tags_excluded', TextType::class, [
+            'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('admin_num_tags_per_col', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('admin_img_height', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('admin_img_group_height', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('admin_max_img_page', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
 
-		self::print_ro(self::$opt);
-	}
+        $builder->add('search_tags_excluded', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('search_default_display_mode', ChoiceType::class, [
+            'choices' => [
+                'Tag cloud' => 1,
+                'Tag form' => 2,
+                'Search field' => 3,
+            ],
+            'required' => false,
+        ]);
+        $builder->add('search_display_switchable', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('search_num_tags_per_col', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('search_form_font', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('tagcloud_num_tags', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('tagcloud_order', ChoiceType::class, [
+            'choices' => [
+                'Alphabetical' => 1,
+                'Rank' => 2,
+                'Random' => 3,
+            ],
+            'required' => false,
+        ]);
+        $builder->add('tagcloud_font_min', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('tagcloud_font_max', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('tagcloud_color_min', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('tagcloud_color_max', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
+        $builder->add('tagcloud_highlight_color', TextType::class, [
+            // 'label' => 'Tagging excluded tags',
+            'required' => false,
+        ]);
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Admin panel : dump_def_page
-	//
-	function dump_def_page(){
-				
-		if (self::check_php_version()) return;
-
-		echo "<h1>" . self::$PLUGIN_NAME . " - self::\$t</h1>";
-
-		self::print_ro(self::$t);
-	}
+        $builder->add('save', SubmitType::class, [
+            'label' => 'Update options',
+        ]);
+                    
+        return $builder->getForm();
+    }
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Admin panel : dump_form_page
-	//
-	function dump_form_page(){
-				
-		if (self::check_php_version()) return;
-
-		echo "<h1>" . self::$PLUGIN_NAME . " - self::\$form</h1>";
-
-		self::print_ro(self::$form);
-	}
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Admin panel : dump_def_page
-	//
-	function dump_tax_page(){
-				
-		if (self::check_php_version()) return;
-
-		echo "<h1>" . self::$PLUGIN_NAME . " - self::\$tax</h1>";
-
-		self::print_ro(self::$tax);
-	}
-
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Admin panel : options        
-	//
-	function options_page(){
+    /**
+     *  Admin panel : options
+     */
+	public function render_options_page() {
 		$error_list = array();
 
-		if (self::check_php_version()) return; ?>
-
-		<h1><?php echo self::$PLUGIN_NAME ?> - Options</h1>
-                         
-        <?php 
-		//self::print_ro($_POST);
-		//self::print_ro(self::$form);
-
-		//	Determine the display mode : options (default) || check_pdf || preview_tax || audit_database
-		$form_display = $_POST['form_display'];
-		if (!$form_display)
-			$form_display = 'options';
-		
-		// Start form
-		//
-		?>	
-        <form name="mdtg_form" method="post" action="">
-            <input type="hidden" name="form_display" value="">
-		
-        <?php
-        if ($form_display == 'options') { 	// display option form
-			if (strlen($_POST['submit_options']) > 0) {	// form was submitted - option page not displayed for the first time
-				// Check input data validity - revert to last good one if invalid data
-				self::check_submit_data($_POST, $error_list);
-				// Save to database
-				update_option(self::$PLUGIN_NAME_LC, self::$opt);
-				
-				// display errors
-				// self::print_ro($error_list);
-				if (count($error_list)) {
-					self::user_message(self::$t->invalid_option_value);
-					foreach($error_list as $varname) {
-						self::user_message(self::$form[$varname]['desc'] . ' - ' . self::$form[$varname]['errmsg']);				
-					}
-				} else {
-					self::user_message(self::$t->options_saved);	
-				}
-			}	// end "if (strlen($_POST['submit_options']) > 0)"
-			?>
-		  
-            <p><i><?php echo self::$t->options_mouse_over ?></i></p>
-    
-			<?php self::print_option_form($error_list); ?>
-                
-            <div class="submit"><input type="submit" name="submit_options" value="<?php echo self::$t->update_options ?> &raquo;" /></div>
-            <br/>
-
-		<?php
-		} // end "($form_display == 'options')"
-		else {
-			switch ($form_display) {
-				case 'check_pdf' : 
-					self::check_pdf_converter(1, 1);	// args : force check, verbose
-					break;
-				case 'preview_tax' : 
-					self::preview_taxonomy();			// previsualize image taxonomy applied to posts
-					break;
-				case 'audit_database' : 
-					self::audit_database();			// audit database inconsistencies
-					break;
-			}
-			?>
-			</br>
-			<div class="submit"><input type="submit" name="return" value="<?php self::_e('Return') ?> "></div>
-			<?php
-		}		
-		?>
+		if (self::checkPHPVersion()) return;
         
-        </form>
+        $form = $this->getOptionForm();
         
-    <hr />
-    <p>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="padding-right:10px; float:left">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="WY6KNNHATBS5Q">
-    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-    </form>
-    
-    </form>
-    
-    <?php echo self::$t->option_pane_donation . '<br/>'. self::$t->option_pane_donation2; ?>
-    </p>
-    
-    <hr />
-    <p style="padding:0;margin-top:-5px;font-size:0.8em"><em><?php echo ' <a href="http://www.photos-dauphine.com/wp-mediatagger-plugin" title="WordPress MediaTagger Plugin Home">WP MediaTagger</a> ' . self::$PLUGIN_VERSION . ' | ' ; echo 'PHP ' . phpversion() .  ' | MySQL ' . self::$MYSQL_VERSION . ' | GD Lib ' . ( self::$GD_VERSION ? self::$GD_VERSION : self::$t->not_available) ;?></em></p>
+        $data = [
+            'title' => self::$PLUGIN_NAME .' - Options',
+            'form' => $form->createView(),
+        ];
         
-        <?php
-//		self::print_ro(self::$opt);
-//		self::print_ro(self::$tax);
-		
+        $form->handleRequest();
+        
+        if ($form->isValid()) {
+            self::$opt = $form->getData();
+            update_option(self::$PLUGIN_NAME_LC, self::$opt);
+        }
+        
+        echo  TwigComponent::env()->render('admin_options.twig', $data);
 	}
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Display all available options with highlight in case of error 
-	//
-	private function print_option_form($error_list) {
 
-		foreach(self::$form as $option_name => $option_descriptor) {
-		
-			$option_val = (array_key_exists($option_name, self::$opt) ? self::$opt[$option_name] : '');
-			//echo self::print_ro($option_val);
-			
-			$input_type = $option_descriptor['type'];
-			$desc = $option_descriptor['desc'];
-			
-			if ($input_type == 'HEADER') {
-				echo '<h3>' . $desc . '</h3>';
-				continue;
-			}
-	
-			$tooltip = $option_descriptor['tooltip'];
-			$script_varname = 'mdtg_' . $option_name;
-			
-			//	Parse item specific options depending on def file
-			//
-			if (array_key_exists('list', $option_descriptor)) {		// a list is declared in the -form.php file
-				$varlist = $option_descriptor['list'];
-			}
-			if (array_key_exists('text', $option_descriptor)) {		// a text is declared in the -form.php file
-				$link_text = $option_descriptor['text'];
-			}
-			if (array_key_exists('url', $option_descriptor)) {			// an url is declared in the -form.php file
-				$link_url = $option_descriptor['url'];
-			}
-	
-			$readonly = self::run_eval($option_name, $option_val, 'readonly');	// 0->1, 1->0, 2->0			target : 0->0, 1->1, 2->0
-			
-			$size = 4;	// default input field size
-			if (array_key_exists('size', $option_descriptor)) {	// a size is declared in the -def.php file
-				$size = $option_descriptor['size'];
-			}
-					
-			if (array_key_exists('order', $option_descriptor)) {	// a list order is declared in the -def.php file
-				$order = $option_descriptor['order'];	// list of indexes - ex : array(1,3,2),
-			} else {	// Natural order 1,2,3...
-				$order = range(1, sizeof($varlist));
-			}
-			
-			//	Lets go... print item
-			//
-			$html = $desc;	
-			if (in_array($option_name, $error_list)) {
-				$html = "<span class='option_highlight'>" . $html . "</span>";	// highlight parameter if error detected
-			}
-							
-			echo "<div style='clear:both;'><p class='label'>" . $html ."</p>";
-			
-			switch($input_type){
-					
-				case 'TEXT':
-					echo '<input type="text" name="' . $script_varname . '" value="' . $option_val . '" size="' . $size . '" title="'  . $tooltip . 
-						'" ' . ($readonly ? 'readonly ' : '') . '>';
-					break;
-	
-				case 'TEXTAREA':
-					echo '<textarea name="' . $script_varname . '" title="' . $tooltip . '" cols="70" rows="11">' . stripslashes($option_val) . '</textarea>';
-					break;
-					
-				case 'SELECT_XOR':
-					echo '<select name="' . $script_varname . '" title="' . $tooltip . '" ' . ($readonly ? 'disabled' : '') .  '>';
-					foreach($order as $n) {
-						echo "<option value='" . $n . "' " . ($option_val == $n ? "selected" : "") . ">" . $varlist[$n-1] . "&nbsp;</option>";	
-					}
-					echo "</select>";
-					break;
-					
-				case 'SELECT_OR':
-					//self::print_ro($varlist);
-					echo '<input type="hidden" name="' . $script_varname . '[]" value="_hidden_checklist_init_">';	// to have script variable reported even if no selection made
-					foreach($varlist as $key => $item){	
-					//self::print_ro( $item);
-						echo '<label><input type="checkbox" value="' . intval($key+1) . '" name="' . $script_varname . '[]"' .
-						(in_array($key+1, $option_val) ? ' checked' : '') . ' title="' . $tooltip . '">' . self::item_format($item) . '</label> &nbsp;';
-					}
-					break;
-					
-				case 'LINK':
-					echo '<a href="" onClick="' . $link_url . ';return false;" title="'. $tooltip . '">' . $link_text . '</a>';
-					break;
-	
-			}
-			echo "</div>";
-		}
-	}
-	
 	////////////////////////////////////////////////////////////////
 	// Format item - used for PDF generation check
 	//
@@ -2262,75 +2158,6 @@ echo $strjs;
 				break;
 		}
 		return $item;
-	}
-	
-	
-	////////////////////////////////////////////////////////////////
-	// Check data submitted by POST variable is valid
-	//	
-	private function check_submit_data($collect, &$error_list) {
-		
-		//self::print_ro(self::$opt);
-		//self::print_ro($collect);
-		
-		//	check each option complies with the checker routine, if implemented
-		//	
-		foreach($collect as $script_varname => $varval) {
-			$tab = explode("mdtg_", $script_varname);
-			if (count($tab) < 2) continue;	// not the right form variable, should start with mdtg_
-			
-			if (is_array($varval))			// remove the always present element used to track empty selections
-				if ($varval[0] == '_hidden_checklist_init_') array_shift($varval);
-					
-			$varname = $tab[1];
-			//echo "=== " . $varname . "<br/>";
-			
-			if (self::run_eval($varname, $varval)){
-				self::$opt[$varname] = $varval;
-			} else {
-				$error_list[] = $varname;
-			}			
-		}
-		
-		//	check options coherence
-		//	
-		self::check_option_coherence($error_list);
-		
-		//self::print_ro(self::$opt);		
-	}
-
-	////////////////////////////////////////////////////////////////
-	// 	Evaluate expression
-	//	func-type : 'checker', 'readonly'
-	//
-	function run_eval($varname, $varval, $func_type='checker') {	
-	
-		$vardef = self::$form[$varname];
-	
-		if (array_key_exists($func_type, $vardef)) {	// a checker function is declared in the -def.php file
-			$expression = $vardef[$func_type];
-			//if($func_type =='checker') echo $expression . '<br/>';
-			if (is_array($varval))
-				$expression = str_replace('@VAL', var_export($varval, true), $expression);
-			else
-				$expression = str_replace('@VAL', $varval, $expression);
-			//if($func_type =='checker') echo $expression . '<br/>';
-			
-			$eval_str = "\$is_invalid = ! (" . $expression . ") ; return 1 ;";
-			//if($func_type =='checker') echo $eval_str . '<br/>';
-			
-			$eval_exec_ok = eval($eval_str);	// eval("\$is_invalid = ! ($expression) ; return 1 ;");
-			if ($eval_exec_ok != 1 || $is_invalid) {
-				//if($func_type =='checker') echo "!!!!!!! NOK !!!!!!!<br/>";
-				return 0;
-			} else {
-				//if($func_type =='checker') echo "OK <br/>";
-				return 1;
-			}
-		} else {	// no checker declared : OK by default
-			//if($func_type =='checker') echo "Default OK <br/>";
-			return ($func_type =='readonly' ? 0 : 2);
-		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
